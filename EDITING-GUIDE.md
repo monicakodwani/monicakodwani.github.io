@@ -58,6 +58,14 @@ The CV PDF path is:
 "cvPath": "docs/resume.pdf"
 ```
 
+## Edit Light And Dark Mode Colors
+
+Open `assets/css/variables.css`.
+
+The light theme colors are in `:root`. The dark theme colors are in
+`:root[data-theme="dark"]`. The moon/sun button itself lives in
+`components/header.html`.
+
 ## Edit Publications
 
 Open `publications.html`.
@@ -87,14 +95,14 @@ Replace:
 docs/resume.pdf
 ```
 
-Keep the filename `cv.pdf` unless you also update `content/site.json`.
+Keep the filename `resume.pdf` unless you also update `content/site.json`.
 
 ## Replace The Profile Image
 
 The current homepage image is:
 
 ```text
-assets/images/profile/portrait-placeholder.svg
+assets/images/profile/headshot-monica.jpg
 ```
 
 Replace that file with a portrait or update the image path in `index.html`.

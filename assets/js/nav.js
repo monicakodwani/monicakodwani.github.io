@@ -13,8 +13,16 @@ function getCurrentPageName() {
   return lastPart;
 }
 
+const THEME_STORAGE_KEY = "mk-theme";
+const DARK_MODE_QUERY = "(prefers-color-scheme: dark)";
+
 function getStoredTheme() {
-  return window.localStorage.getItem("mk-theme");
+  try {
+    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+    return storedTheme === "dark" || storedTheme === "light" ? storedTheme : "";
+  } catch (error) {
+    return "";
+  }
 }
 
 function getPreferredTheme() {
@@ -24,18 +32,40 @@ function getPreferredTheme() {
     return storedTheme;
   }
 
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  if (!window.matchMedia) {
+    return "light";
+  }
+
+  return window.matchMedia(DARK_MODE_QUERY).matches ? "dark" : "light";
 }
 
 function applyTheme(theme) {
-  document.documentElement.dataset.theme = theme;
+  const safeTheme = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = safeTheme;
+  return safeTheme;
+}
+
+function storeTheme(theme) {
+  try {
+    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch (error) {
+    // The visual toggle should still work when storage is unavailable.
+  }
 }
 
 function updateThemeToggleLabel(button) {
   const theme = document.documentElement.dataset.theme || "light";
   const nextTheme = theme === "dark" ? "light" : "dark";
-  button.textContent = theme === "dark" ? "Light" : "Dark";
-  button.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
+  const label = `Switch to ${nextTheme} mode`;
+  const text = button.querySelector("[data-theme-toggle-text]");
+
+  button.setAttribute("aria-label", label);
+  button.setAttribute("title", label);
+  button.setAttribute("aria-pressed", String(theme === "dark"));
+
+  if (text) {
+    text.textContent = label;
+  }
 }
 
 function initializeThemeToggle() {
@@ -52,9 +82,25 @@ function initializeThemeToggle() {
     const currentTheme = document.documentElement.dataset.theme || "light";
     const nextTheme = currentTheme === "dark" ? "light" : "dark";
     applyTheme(nextTheme);
-    window.localStorage.setItem("mk-theme", nextTheme);
+    storeTheme(nextTheme);
     updateThemeToggleLabel(button);
   });
+
+  if (window.matchMedia) {
+    const mediaQuery = window.matchMedia(DARK_MODE_QUERY);
+    const handleSystemThemeChange = (event) => {
+      if (!getStoredTheme()) {
+        applyTheme(event.matches ? "dark" : "light");
+        updateThemeToggleLabel(button);
+      }
+    };
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleSystemThemeChange);
+    } else if (mediaQuery.addListener) {
+      mediaQuery.addListener(handleSystemThemeChange);
+    }
+  }
 }
 
 function initializeMobileNav() {

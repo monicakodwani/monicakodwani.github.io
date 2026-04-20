@@ -16,6 +16,19 @@
         document.head.appendChild(base);
       })();
     </script>
+    <script>
+      (function () {
+        try {
+          var storedTheme = window.localStorage.getItem("mk-theme");
+          var preferredTheme =
+            storedTheme ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.dataset.theme = preferredTheme;
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
     <title>Publications | Monica Kodwani</title>
     <meta
       name="description"
