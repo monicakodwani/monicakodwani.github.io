@@ -1,0 +1,13 @@
+<svg width="960" height="1120" viewBox="0 0 960 1120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Monica Kodwani initials mark</title>
+  <desc id="desc">Abstract portrait mark with the initials MK.</desc>
+  <rect width="960" height="1120" rx="48" fill="#EEE5D9" />
+  <rect x="72" y="72" width="816" height="976" rx="36" fill="#F9F6F0" />
+  <circle cx="480" cy="390" r="180" fill="#D9E9E5" />
+  <path d="M246 846C246 700.81 363.81 583 509 583H515C660.19 583 778 700.81 778 846V922H246V846Z" fill="#2F6B66" opacity="0.9" />
+  <circle cx="480" cy="402" r="122" fill="#F4EFE7" />
+  <path d="M380 429C380 387.026 414.026 353 456 353H504C545.974 353 580 387.026 580 429V480C580 533.019 537.019 576 484 576H476C423.981 576 380 533.019 380 480V429Z" fill="#D5B99A" />
+  <rect x="336" y="168" width="288" height="108" rx="54" fill="#F9F6F0" />
+  <text x="480" y="235" text-anchor="middle" fill="#234F4B" font-size="46" font-family="Georgia, serif" font-weight="700">MK</text>
+  <text x="480" y="988" text-anchor="middle" fill="#4E5A56" font-size="28" font-family="system-ui, sans-serif">Replace with your headshot when ready</text>
+</svg>

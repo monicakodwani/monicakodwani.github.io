@@ -1,0 +1,26 @@
+{
+  "name": "Monica Kodwani",
+  "pronouns": "She/Her",
+  "role": "PhD student in usable security and privacy",
+  "institution": "The George Washington University",
+  "location": "Washington, DC area",
+  "shortBio": "I am a PhD student in usable security and privacy at The George Washington University. My research focuses on human-centered evaluation, auditing, and privacy reflection for generative AI systems.",
+  "quickFacts": [
+    {
+      "label": "Current role",
+      "value": "PhD student in usable security and privacy"
+    },
+    {
+      "label": "Institution",
+      "value": "The George Washington University"
+    },
+    {
+      "label": "Research focus",
+      "value": "Human-centered AI evaluation, auditing, and privacy reflection"
+    },
+    {
+      "label": "Current work",
+      "value": "Audit tools, AI interaction history dashboards, and evaluation infrastructure"
+    }
+  ]
+}

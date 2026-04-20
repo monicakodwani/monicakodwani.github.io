@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-page="cv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function () {
+        var parts = window.location.pathname.split("/").filter(Boolean);
+        var isGitHubPages = window.location.hostname.endsWith("github.io");
+        var basePath =
+          isGitHubPages && parts.length > 0 && !parts[0].includes(".")
+            ? "/" + parts[0]
+            : "";
+        var base = document.createElement("base");
+        base.href = window.location.origin + basePath + "/";
+        document.head.appendChild(base);
+      })();
+    </script>
+    <title>CV | Monica Kodwani</title>
+    <meta
+      name="description"
+      content="Curriculum vitae page for Monica Kodwani with research focus and CV download."
+    />
+    <link rel="icon" href="assets/images/icons/monogram.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+    <script type="module" src="assets/js/main.js"></script>
+  </head>
+  <body data-page="cv">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div id="site-header"></div>
+
+    <main id="main-content">
+      <section class="section page-intro">
+        <div class="container narrow-flow">
+          <p class="section-kicker">CV</p>
+          <h1>Curriculum vitae</h1>
+          <p class="page-lead">
+            A current CV with education, publications, research experience, and
+            selected technical work.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container split-layout">
+          <div class="panel panel-prominent">
+            <p class="panel-kicker">Primary document</p>
+            <h2>Download or open the current CV</h2>
+            <p>
+              The CV covers education, publications, research experience,
+              projects, and selected technical work.
+            </p>
+            <div class="button-row">
+              <a class="button button-primary" data-cv-link href="docs/resume.pdf" target="_blank" rel="noreferrer">
+                Open CV PDF
+              </a>
+              <a class="button button-secondary" href="index.html#contact">Contact</a>
+            </div>
+          </div>
+
+          <aside class="panel">
+            <div class="section-heading section-heading--compact">
+              <p class="section-kicker">Quick Facts</p>
+            </div>
+            <dl class="fact-list" data-cv-facts></dl>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+  </body>
+</html>

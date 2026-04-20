@@ -1,0 +1,26 @@
+{
+  "site": {
+    "name": "Monica Kodwani",
+    "tagline": "Human-centered AI evaluation, privacy reflection, and audit tools.",
+    "description": "Personal academic website for Monica Kodwani, a PhD student studying human-centered evaluation, auditing, and privacy reflection for generative AI.",
+    "roleLine": "PhD student in usable security and privacy at The George Washington University",
+    "location": "Washington, DC area",
+    "footerNote": "Human-centered AI evaluation, privacy reflection, and audit tools.",
+    "cvPath": "docs/resume.pdf",
+    "lastUpdated": "April 2026"
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "href": "index.html"
+    },
+    {
+      "label": "Publications",
+      "href": "publications.html"
+    },
+    {
+      "label": "CV",
+      "href": "cv.html"
+    }
+  ]
+}

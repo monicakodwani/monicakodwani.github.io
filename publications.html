@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-page="publications">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function () {
+        var parts = window.location.pathname.split("/").filter(Boolean);
+        var isGitHubPages = window.location.hostname.endsWith("github.io");
+        var basePath =
+          isGitHubPages && parts.length > 0 && !parts[0].includes(".")
+            ? "/" + parts[0]
+            : "";
+        var base = document.createElement("base");
+        base.href = window.location.origin + basePath + "/";
+        document.head.appendChild(base);
+      })();
+    </script>
+    <title>Publications | Monica Kodwani</title>
+    <meta
+      name="description"
+      content="Publications by Monica Kodwani on generative AI evaluation, safety perceptions, AI perception metrics, and privacy labels."
+    />
+    <link rel="icon" href="assets/images/icons/monogram.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+    <script type="module" src="assets/js/main.js"></script>
+  </head>
+  <body data-page="publications">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div id="site-header"></div>
+
+    <main id="main-content">
+      <section class="section page-intro">
+        <div class="container narrow-flow">
+          <p class="section-kicker">Publications</p>
+          <h1>Publications</h1>
+          <p class="page-lead">
+            Peer-reviewed and preprint work on human-centered AI evaluation,
+            safety perceptions, measurement, and privacy transparency.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container publication-stack">
+          <!--
+            Publication editing pattern:
+            1. Copy one <article class="publication-card"> block.
+            2. Paste it where the paper should appear.
+            3. Edit title, authors, venue/year, abstract, status, and links.
+            4. Remove the status <span> or links if they are not needed.
+          -->
+
+          <!-- Publication entry -->
+          <article class="publication-card" id="facct-2026-probing-bias-trustworthiness">
+            <!-- title -->
+            <h2>How Probing for Problems and Bias Affects Perceptions of AI Chatbot Trustworthiness</h2>
+
+            <!-- authors: replace with the full author list when ready -->
+
+            <p class="publication-authors">
+              Jan Tolsdorf, Max Planck Institute for Security and Privacy (MPI-SP), Germany;
+              Alan F. Luo, University of Maryland, USA;
+              Monica Kodwani, The George Washington University, USA;
+              Junho Eum, The George Washington University, USA;
+              Mahmood Sharif, Tel Aviv University, Israel;
+              Michelle L. Mazurek, University of Maryland, USA;
+              Adam J. Aviv, The George Washington University, USA
+            </p>
+
+            <!-- venue / year / optional status -->
+            <p class="publication-meta">
+              <span>FAccT 2026</span>
+              <span class="badge">To appear</span>
+            </p>
+
+            <!-- abstract or short description -->
+            <p>
+              Large-scale interactive study (N=254, 551 conversations) on
+              probing, missed problems, bias, and chatbot trustworthiness.
+            </p>
+
+            <!-- links: add PDF/code/project links here when available -->
+            <div class="publication-links">https://facctconference.org</div>
+          </article>
+
+          <!-- Publication entry -->
+          <article class="publication-card" id="soups-2025-safety-perceptions">
+            <!-- title -->
+            <h2>Safety Perceptions of Generative {AI} Conversational Agents: Uncovering Perceptual Differences in Trust, Risk, and Fairness</h2>
+
+            <!-- authors: replace with the full author list when ready -->
+            <p class="publication-authors">Jan Tolsdorf, Max Planck Institute for Security and Privacy (MPI-SP), Germany;
+              Alan F. Luo, University of Maryland, USA;
+              Monica Kodwani, The George Washington University, USA;
+              Junho Eum, The George Washington University, USA;
+              Mahmood Sharif, Tel Aviv University, Israel;
+              Michelle L. Mazurek, University of Maryland, USA;
+              Adam J. Aviv, The George Washington University, USA</p>
+
+            <!-- venue / year / optional status -->
+            <p class="publication-meta">
+              <span>SOUPS 2025</span>
+            </p>
+
+            <!-- abstract or short description -->
+            <p>
+              Study of trust, risk, and fairness in safety perceptions of
+              generative AI conversational agents.
+            </p>
+
+            <!-- links: add PDF/code/project links here when available -->
+            <div class="publication-links">https://www.usenix.org/conference/soups2025/presentation/tolsdorf</div>
+          </article>
+
+          <!-- Publication entry -->
+          <article class="publication-card" id="conpro-2025-scale-1-to-5">
+            <!-- title -->
+            <h2>On a Scale of 1 to 5, How Reliable Are AI User Studies? A Call for Developing Validated, Meaningful Scales and Metrics about User Perceptions of AI Systems</h2>
+
+            <!-- authors: replace with the full author list when ready -->
+            <p class="publication-authors">Jan Tolsdorf, Max Planck Institute for Security and Privacy (MPI-SP), Germany;
+              Alan F. Luo, University of Maryland, USA;
+              Monica Kodwani, The George Washington University, USA;
+              Junho Eum, The George Washington University, USA;
+              Mahmood Sharif, Tel Aviv University, Israel;
+              Michelle L. Mazurek, University of Maryland, USA;
+              Adam J. Aviv, The George Washington University, USA</p>
+
+            <!-- venue / year / optional status -->`
+            <p class="publication-meta">
+              <span>IEEE SPW ConPro 2025</span>
+            </p>
+
+            <!-- abstract or short description -->
+            <p>
+              Methodological critique of unvalidated AI perception metrics and
+              simple rating scales.
+            </p>
+
+            <!-- links: add PDF/code/project links here when available -->
+            <div class="publication-links"></div>
+          </article>
+
+          <!-- Publication entry -->
+          <article class="publication-card" id="pets-2024-honesty-best-policy">
+            <!-- title -->
+            <h2>Honesty is the Best Policy: On the Accuracy of Apple Privacy Labels Compared to Apps' Privacy Policies</h2>
+
+            <!-- authors: replace with the full author list when ready -->
+            <p class="publication-authors">Mir Masood Ali, David G. Balash, Monica Kodwani, Chris Kanich, Adam J. Aviv</p>
+
+            <!-- venue / year / optional status -->
+            <p class="publication-meta">
+              <span>PETS 2024</span>
+            </p>
+
+            <!-- abstract or short description -->
+            <p>
+              Research comparing Apple privacy labels with privacy policies,
+              examining transparency and consistency in privacy disclosures.
+            </p>
+
+            <!-- links: add PDF/code/project links here when available -->
+            <div class="publication-links">https://arxiv.org/abs/2306.17063</div>
+          </article>
+
+          <!-- Publication entry -->
+          <article class="publication-card" id="arxiv-longitudinal-privacy-labels">
+            <!-- title -->
+            <h2>Longitudinal Analysis of Privacy Labels in the Apple App Store</h2>
+
+            <!-- authors: replace with the full author list when ready -->
+            <p class="publication-authors">David G. Balash, Mir Masood Ali, Monica Kodwani, Xiaoyuan Wu, Chris Kanich, Adam J. Aviv</p>
+
+            <!-- venue / year / optional status -->
+            <p class="publication-meta">
+              <span>arXiv preprint</span>
+              <span class="badge">Preprint</span>
+            </p>
+
+            <!-- abstract or short description -->
+            <p>
+              Large-scale ecosystem analysis of privacy labels over time.
+            </p>
+
+            <!-- links: add PDF/code/project links here when available -->
+            <div class="publication-links">https://arxiv.org/abs/2206.02658</div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+  </body>
+</html>

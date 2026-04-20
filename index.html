@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-page="home">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function () {
+        var parts = window.location.pathname.split("/").filter(Boolean);
+        var isGitHubPages = window.location.hostname.endsWith("github.io");
+        var basePath =
+          isGitHubPages && parts.length > 0 && !parts[0].includes(".")
+            ? "/" + parts[0]
+            : "";
+        var base = document.createElement("base");
+        base.href = window.location.origin + basePath + "/";
+        document.head.appendChild(base);
+      })();
+    </script>
+    <title>Monica Kodwani</title>
+    <meta
+      name="description"
+      content="Monica Kodwani is a PhD student researching human-centered AI evaluation, auditing, and privacy reflection."
+    />
+    <link rel="icon" href="assets/images/icons/monogram.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+    <script type="module" src="assets/js/main.js"></script>
+  </head>
+  <body data-page="home">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div id="site-header"></div>
+
+    <main id="main-content">
+      <section class="section home-profile">
+        <div class="container home-profile__grid">
+          <div class="home-profile__copy">
+            <p class="eyebrow" data-home-role></p>
+            <h1 data-home-name>Monica Kodwani</h1>
+            <p class="page-lead" data-home-bio></p>
+
+            <dl class="compact-facts">
+              <div>
+                <dt>Affiliation</dt>
+                <dd data-home-institution></dd>
+              </div>
+              <div>
+                <dt>Location</dt>
+                <dd data-home-location></dd>
+              </div>
+              <div id="contact">
+                <dt>Email</dt>
+                <dd>
+                  <a class="text-link" data-home-email-link href="#">
+                    <span data-home-email></span>
+                  </a>
+                </dd>
+              </div>
+            </dl>
+
+            <ul class="profile-links" data-home-links></ul>
+          </div>
+
+          <figure class="portrait-card">
+            <img
+              src="assets/images/profile/headshot-monica.jpg"
+              alt="Portrait of Monica Kodwani."
+            />
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+  </body>
+</html>
