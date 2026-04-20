@@ -15,7 +15,7 @@ There is no build step, framework, or dependency install.
 - `index.html`
   Home page. Most profile text is loaded from `content/profile.json` and `content/contact.json`.
 - `publications.html`
-  Publications page. Publication entries are plain HTML blocks with comments so they are easy to duplicate and edit.
+  Publications page. Publication entries are rendered from `content/publications.json`.
 - `cv.html`
   CV page. The PDF path is controlled by `content/site.json`.
 - `404.html`
@@ -23,9 +23,13 @@ There is no build step, framework, or dependency install.
 - `content/site.json`
   Site title, footer text, navigation, and CV PDF path.
 - `content/profile.json`
-  Name, role, institution, location, short bio, and CV quick facts.
+  Name, role, institution, location, short bio, and quick facts.
 - `content/contact.json`
   Email and external profile links.
+- `content/featured-project.json`
+  The featured project shown on the homepage.
+- `content/publications.json`
+  Publication entries shown on the Publications page.
 - `assets/css/`
   Styling.
 - `assets/js/`
@@ -50,41 +54,49 @@ Open [http://localhost:8000](http://localhost:8000).
 
 - Update homepage bio: edit `content/profile.json`
 - Update email or profile links: edit `content/contact.json`
+- Update featured project: edit `content/featured-project.json`
 - Update navigation or CV path: edit `content/site.json`
-- Update publications: edit `publications.html`
+- Update publications: edit `content/publications.json`
 - Replace CV: replace `docs/resume.pdf`
-- Replace profile image: replace `assets/images/profile/portrait-placeholder.svg`
+- Replace profile image: replace `assets/images/profile/headshot-monica.jpg`
 
 ## Add A Publication
 
-Open `publications.html`.
+Open `content/publications.json`.
 
-Each paper is one clearly separated block:
+Each paper is one clearly separated object:
 
-```html
-<article class="publication-card" id="unique-paper-id">
-  <h2>Paper Title</h2>
-  <p class="publication-authors">Author list</p>
-  <p class="publication-meta">
-    <span>Venue Year</span>
-    <span class="badge">Optional status</span>
-  </p>
-  <p>Short abstract or description.</p>
-  <div class="publication-links">
-    <a class="text-link" href="https://example.com">PDF</a>
-  </div>
-</article>
+```json
+{
+  "id": "unique-paper-id",
+  "title": "Paper Title",
+  "authors": "Author list",
+  "venue": "Venue",
+  "year": "2026",
+  "status": "Optional status",
+  "summary": "Short abstract or description.",
+  "links": [
+    {
+      "label": "PDF",
+      "url": "https://example.com"
+    }
+  ]
+}
 ```
 
-Copy an existing block, paste it where the paper should appear, and edit the fields.
+Copy an existing object, paste it where the paper should appear, and edit the fields.
+
+## Featured Project
+
+The homepage featured project is controlled by `content/featured-project.json`.
+Use `"primary"` for the main project link and `"secondary"` for supporting links.
+
+## Theme
+
+Light and dark colors live in `assets/css/variables.css`. The early theme loader is `assets/js/theme-init.js`, and the moon/sun toggle markup is in `components/header.html`.
 
 ## GitHub Pages Deployment
 
-1. Put the site files at the root of a GitHub repository.
-2. Push the repository.
-3. In GitHub, open `Settings -> Pages`.
-4. Choose `Deploy from a branch`.
-5. Select `main` and `/`.
-6. Save.
+This repository deploys through `.github/workflows/pages.yml`.
 
-The relative links and base-path helper are written to work on both local servers and GitHub Pages.
+The public site is served at [https://monicakodwani.github.io/](https://monicakodwani.github.io/). Pushing the GitHub Pages branch triggers a new deployment.

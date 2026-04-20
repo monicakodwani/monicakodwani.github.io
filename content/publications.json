@@ -1,0 +1,72 @@
+[
+  {
+    "id": "facct-2026-probing-bias-trustworthiness",
+    "title": "How Probing for Problems and Bias Affects Perceptions of AI Chatbot Trustworthiness",
+    "authors": "Jan Tolsdorf; Alan F. Luo; Monica Kodwani; Junho Eum; Mahmood Sharif; Michelle L. Mazurek; Adam J. Aviv",
+    "venue": "FAccT",
+    "year": "2026",
+    "status": "To appear",
+    "summary": "Large-scale interactive study (N=254, 551 conversations) on probing, missed problems, bias, and chatbot trustworthiness.",
+    "links": [
+      {
+        "label": "Conference",
+        "url": "https://facctconference.org"
+      }
+    ]
+  },
+  {
+    "id": "soups-2025-safety-perceptions",
+    "title": "Safety Perceptions of Generative AI Conversational Agents: Uncovering Perceptual Differences in Trust, Risk, and Fairness",
+    "authors": "Jan Tolsdorf; Alan F. Luo; Monica Kodwani; Junho Eum; Mahmood Sharif; Michelle L. Mazurek; Adam J. Aviv",
+    "venue": "SOUPS",
+    "year": "2025",
+    "status": "",
+    "summary": "Study of trust, risk, and fairness in safety perceptions of generative AI conversational agents.",
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://www.usenix.org/conference/soups2025/presentation/tolsdorf"
+      }
+    ]
+  },
+  {
+    "id": "conpro-2025-scale-1-to-5",
+    "title": "On a Scale of 1 to 5, How Reliable Are AI User Studies? A Call for Developing Validated, Meaningful Scales and Metrics about User Perceptions of AI Systems",
+    "authors": "Jan Tolsdorf; Alan F. Luo; Monica Kodwani; Junho Eum; Mahmood Sharif; Michelle L. Mazurek; Adam J. Aviv",
+    "venue": "IEEE SPW ConPro",
+    "year": "2025",
+    "status": "",
+    "summary": "Methodological critique of unvalidated AI perception metrics and simple rating scales.",
+    "links": []
+  },
+  {
+    "id": "pets-2024-honesty-best-policy",
+    "title": "Honesty is the Best Policy: On the Accuracy of Apple Privacy Labels Compared to Apps' Privacy Policies",
+    "authors": "Mir Masood Ali; David G. Balash; Monica Kodwani; Chris Kanich; Adam J. Aviv",
+    "venue": "PETS",
+    "year": "2024",
+    "status": "",
+    "summary": "Research comparing Apple privacy labels with privacy policies, examining transparency and consistency in privacy disclosures.",
+    "links": [
+      {
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2306.17063"
+      }
+    ]
+  },
+  {
+    "id": "arxiv-longitudinal-privacy-labels",
+    "title": "Longitudinal Analysis of Privacy Labels in the Apple App Store",
+    "authors": "David G. Balash; Mir Masood Ali; Monica Kodwani; Xiaoyuan Wu; Chris Kanich; Adam J. Aviv",
+    "venue": "arXiv",
+    "year": "",
+    "status": "Preprint",
+    "summary": "Large-scale ecosystem analysis of privacy labels over time.",
+    "links": [
+      {
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2206.02658"
+      }
+    ]
+  }
+]

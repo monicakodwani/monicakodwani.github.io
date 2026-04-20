@@ -4,23 +4,23 @@
   "role": "PhD student in usable security and privacy",
   "institution": "The George Washington University",
   "location": "Washington, DC area",
-  "shortBio": "I am a PhD student in usable security and privacy at The George Washington University. My research focuses on human-centered evaluation, auditing, and privacy reflection for generative AI systems.",
+  "shortBio": "I am a PhD student in usable security and privacy at The George Washington University. I build human-centered tools and methods for evaluating, auditing, and governing generative AI systems in real-world use, with a focus on privacy reflection, transparency, and accountability.",
   "quickFacts": [
     {
-      "label": "Current role",
+      "label": "Role",
       "value": "PhD student in usable security and privacy"
     },
     {
-      "label": "Institution",
-      "value": "The George Washington University"
+      "label": "Area",
+      "value": "Human-centered evaluation and governance of generative AI"
     },
     {
-      "label": "Research focus",
-      "value": "Human-centered AI evaluation, auditing, and privacy reflection"
+      "label": "Methods",
+      "value": "Interactive audits, user studies, privacy reflection tools, and evaluation infrastructure"
     },
     {
-      "label": "Current work",
-      "value": "Audit tools, AI interaction history dashboards, and evaluation infrastructure"
+      "label": "Systems",
+      "value": "Audit interfaces, AI interaction history dashboards, and open-source evaluation workflows"
     }
   ]
 }

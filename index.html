@@ -16,23 +16,11 @@
         document.head.appendChild(base);
       })();
     </script>
-    <script>
-      (function () {
-        try {
-          var storedTheme = window.localStorage.getItem("mk-theme");
-          var preferredTheme =
-            storedTheme ||
-            (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-          document.documentElement.dataset.theme = preferredTheme;
-        } catch (error) {
-          document.documentElement.dataset.theme = "light";
-        }
-      })();
-    </script>
+    <script src="assets/js/theme-init.js"></script>
     <title>Monica Kodwani</title>
     <meta
       name="description"
-      content="Monica Kodwani is a PhD student researching human-centered AI evaluation, auditing, and privacy reflection."
+      content="Monica Kodwani is a PhD student building human-centered tools and methods for evaluating, auditing, and governing generative AI systems."
     />
     <link rel="icon" href="assets/images/icons/monogram.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/css/variables.css" />
@@ -82,6 +70,22 @@
               alt="Portrait of Monica Kodwani."
             />
           </figure>
+        </div>
+      </section>
+
+      <section class="section home-overview" aria-label="Research overview">
+        <div class="container home-overview__grid">
+          <section class="home-block" aria-labelledby="quick-facts-heading">
+            <p class="section-kicker" id="quick-facts-heading">Quick Facts</p>
+            <dl class="fact-list fact-list--compact" data-home-quick-facts></dl>
+          </section>
+
+          <section class="home-block home-featured-project" aria-labelledby="featured-project-heading">
+            <p class="section-kicker">Featured Project</p>
+            <h2 id="featured-project-heading" data-featured-project-title></h2>
+            <p data-featured-project-summary></p>
+            <div class="button-row" data-featured-project-links></div>
+          </section>
         </div>
       </section>
     </main>

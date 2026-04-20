@@ -44,13 +44,15 @@ export async function loadSiteShell() {
 }
 
 export async function loadContentBundle() {
-  const [site, profile, contact] = await Promise.all([
+  const [site, profile, contact, featuredProject, publications] = await Promise.all([
     loadJson("content/site.json"),
     loadJson("content/profile.json"),
-    loadJson("content/contact.json")
+    loadJson("content/contact.json"),
+    loadJson("content/featured-project.json"),
+    loadJson("content/publications.json")
   ]);
 
-  return { site, profile, contact };
+  return { site, profile, contact, featuredProject, publications };
 }
 
 export function createElement(tagName, className, textContent) {

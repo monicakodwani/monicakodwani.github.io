@@ -30,7 +30,7 @@ function renderSiteChrome(content) {
 }
 
 function renderHome(content) {
-  const { profile, contact } = content;
+  const { profile, contact, featuredProject } = content;
 
   setText("[data-home-name]", profile.name);
   setText("[data-home-role]", profile.role);
@@ -55,6 +55,81 @@ function renderHome(content) {
     link.rel = "noreferrer";
     listItem.appendChild(link);
     links.appendChild(listItem);
+  });
+
+  const facts = document.querySelector("[data-home-quick-facts]");
+  clearChildren(facts);
+
+  if (facts) {
+    profile.quickFacts.forEach((fact) => {
+      facts.appendChild(createElement("dt", "", fact.label));
+      facts.appendChild(createElement("dd", "", fact.value));
+    });
+  }
+
+  setText("[data-featured-project-title]", featuredProject.title);
+  setText("[data-featured-project-summary]", featuredProject.summary);
+
+  const projectLinks = document.querySelector("[data-featured-project-links]");
+  clearChildren(projectLinks);
+
+  if (projectLinks) {
+    featuredProject.links.forEach((item) => {
+      const linkClass =
+        item.style === "primary" ? "button button-primary" : "button button-secondary";
+      const link = createElement("a", linkClass, item.label);
+      link.href = item.url;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      projectLinks.appendChild(link);
+    });
+  }
+}
+
+function renderPublications(content) {
+  const list = document.querySelector("[data-publication-list]");
+  clearChildren(list);
+
+  if (!list) {
+    return;
+  }
+
+  content.publications.forEach((publication) => {
+    const article = createElement("article", "publication-card");
+    article.id = publication.id;
+
+    article.appendChild(createElement("h2", "", publication.title));
+    article.appendChild(createElement("p", "publication-authors", publication.authors));
+
+    const meta = createElement("p", "publication-meta");
+    const venue = [publication.venue, publication.year].filter(Boolean).join(" ");
+    meta.appendChild(createElement("span", "", venue));
+
+    if (publication.status) {
+      meta.appendChild(createElement("span", "badge", publication.status));
+    }
+
+    article.appendChild(meta);
+
+    if (publication.summary) {
+      article.appendChild(createElement("p", "", publication.summary));
+    }
+
+    if (publication.links && publication.links.length > 0) {
+      const links = createElement("div", "publication-links");
+
+      publication.links.forEach((item) => {
+        const link = createElement("a", "text-link", item.label);
+        link.href = item.url;
+        link.target = "_blank";
+        link.rel = "noreferrer";
+        links.appendChild(link);
+      });
+
+      article.appendChild(links);
+    }
+
+    list.appendChild(article);
   });
 }
 
@@ -86,6 +161,11 @@ function renderPage(content) {
 
   if (page === "home") {
     renderHome(content);
+    return;
+  }
+
+  if (page === "publications") {
+    renderPublications(content);
     return;
   }
 

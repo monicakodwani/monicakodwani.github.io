@@ -259,14 +259,45 @@
 }
 
 .home-profile {
-  min-height: calc(100vh - 12rem);
+  min-height: 0;
   display: grid;
   align-items: center;
+  padding-bottom: var(--space-6);
 }
 
 .home-profile__copy {
   display: grid;
   gap: var(--space-4);
+}
+
+.home-overview {
+  padding-top: 0;
+}
+
+.home-overview__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-line);
+}
+
+.home-block {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+
+.home-featured-project {
+  max-width: 48rem;
+}
+
+.home-featured-project h2 {
+  font-size: clamp(1.45rem, 2vw, 2rem);
+}
+
+.home-featured-project p {
+  color: var(--color-text-muted);
 }
 
 .compact-facts {
@@ -378,6 +409,11 @@
   display: grid;
   grid-template-columns: auto 1fr;
   gap: var(--space-3);
+}
+
+.fact-list--compact {
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-2) var(--space-4);
 }
 
 .fact-list dt {
@@ -642,7 +678,8 @@
   }
 
   .theme-section__columns,
-  .project-card__layout {
+  .project-card__layout,
+  .home-overview__grid {
     grid-template-columns: 1fr;
   }
 
@@ -652,7 +689,8 @@
 }
 
 @media (max-width: 640px) {
-  .compact-facts div {
+  .compact-facts div,
+  .fact-list--compact {
     grid-template-columns: 1fr;
     gap: 0.15rem;
   }

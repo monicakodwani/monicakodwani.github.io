@@ -26,8 +26,21 @@ Most homepage fields come from:
 - `institution`
 - `location`
 - `shortBio`
+- `quickFacts`
 
 Keep JSON syntax valid: double quotes around text, commas between fields, and no trailing comma after the last field.
+
+## Edit The Featured Project
+
+Open `content/featured-project.json`.
+
+Update:
+
+- `title`
+- `summary`
+- `links`
+
+Each link has a `label`, `url`, and `style`. Use `"primary"` for the main project link and `"secondary"` for supporting links.
 
 ## Edit Contact Links
 
@@ -68,24 +81,30 @@ The light theme colors are in `:root`. The dark theme colors are in
 
 ## Edit Publications
 
-Open `publications.html`.
+Open `content/publications.json`.
 
-Each publication is one repeated block. The source includes comments for the fields:
+Each publication is one object with these fields:
 
 - title
 - authors
-- venue / year / status
-- abstract or short description
+- venue
+- year
+- status
+- summary
 - links
 
 To add a new paper:
 
-1. Copy one full `<article class="publication-card">` block.
+1. Copy one full publication object.
 2. Paste it where the paper should appear.
 3. Change the `id`.
-4. Edit the title, authors, venue/year, description, and links.
+4. Edit the title, authors, venue, year, summary, status, and links.
 
-If a paper has no link yet, leave the `publication-links` div empty.
+If a paper has no link yet, use an empty links array:
+
+```json
+"links": []
+```
 
 ## Replace The CV
 
