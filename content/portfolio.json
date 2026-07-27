@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "roleLine": "Human-centered AI researcher and research-tool builder",
+    "lede": "I study how people evaluate, trust, audit, and govern generative AI — and I build the interfaces and research infrastructure needed to collect those judgments at scale.",
+    "context": "PhD candidate in Computer Science at The George Washington University."
+  },
+  "researchProfile": [
+    {
+      "label": "Research",
+      "value": "Human-centered evaluation, AI auditing, trust, privacy, and governance of generative AI."
+    },
+    {
+      "label": "Methods",
+      "value": "Interactive experiments, large-scale online studies, interviews, surveys, qualitative analysis, and mixed methods."
+    },
+    {
+      "label": "Systems",
+      "value": "Evaluation interfaces, auditing workflows, AI interaction-history dashboards, study platforms, and human-data infrastructure."
+    },
+    {
+      "label": "Currently",
+      "value": "PhD candidate in Computer Science at The George Washington University, advised by Adam Aviv."
+    }
+  ],
+  "projectsPage": {
+    "lede": "Each project combines research design with systems I built to run it. Together they cover human evaluation and auditing, research infrastructure, privacy and interaction histories, and workplace adoption and governance."
+  },
+  "publicationsPage": {
+    "lede": "Peer-reviewed and preprint work on generative AI evaluation and auditing, measurement of user perceptions, and privacy transparency. My earlier work on privacy labels runs directly into my current focus: how people and institutions evaluate the systems they are asked to trust."
+  },
+  "cvPage": {
+    "lede": "My CV covers education, publications, research experience, systems I have built, and technical skills.",
+    "summary": "PhD candidate in Computer Science (usable security and privacy; trustworthy AI) at The George Washington University. I work on human-centered evaluation and auditing of generative AI, privacy, and AI governance, and I build the study platforms and interfaces that make that research possible."
+  }
+}

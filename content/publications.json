@@ -2,11 +2,13 @@
   {
     "id": "facct-2026-probing-bias-trustworthiness",
     "title": "How Probing for Problems and Bias Affects Perceptions of AI Chatbot Trustworthiness",
-    "authors": "Jan Tolsdorf; Alan F. Luo; Monica Kodwani; Junho Eum; Mahmood Sharif; Michelle L. Mazurek; Adam J. Aviv",
+    "authors": "Jan Tolsdorf, Alan F. Luo, Monica Kodwani, Junho Eum, Mahmood Sharif, Michelle L. Mazurek, Adam J. Aviv",
     "venue": "FAccT",
+    "venueFull": "ACM Conference on Fairness, Accountability, and Transparency",
     "year": "2026",
     "status": "To appear",
-    "summary": "Large-scale interactive study (N=254, 551 conversations) on probing, missed problems, bias, and chatbot trustworthiness.",
+    "topics": ["Generative AI evaluation"],
+    "summary": "Large-scale interactive study (254 participants, 551 conversations) of how lay users probe chatbots for problems and bias. Participants often failed to surface expected issues, and even limited probing frequently increased trust — revealing systematic gaps in user-driven auditing.",
     "links": [
       {
         "label": "Conference",
@@ -17,11 +19,13 @@
   {
     "id": "soups-2025-safety-perceptions",
     "title": "Safety Perceptions of Generative AI Conversational Agents: Uncovering Perceptual Differences in Trust, Risk, and Fairness",
-    "authors": "Jan Tolsdorf; Alan F. Luo; Monica Kodwani; Junho Eum; Mahmood Sharif; Michelle L. Mazurek; Adam J. Aviv",
+    "authors": "Jan Tolsdorf, Alan F. Luo, Monica Kodwani, Junho Eum, Mahmood Sharif, Michelle L. Mazurek, Adam J. Aviv",
     "venue": "SOUPS",
+    "venueFull": "Symposium on Usable Privacy and Security",
     "year": "2025",
     "status": "",
-    "summary": "Study of trust, risk, and fairness in safety perceptions of generative AI conversational agents.",
+    "topics": ["Generative AI evaluation"],
+    "summary": "Survey of 123 U.S. chatbot users with a new trust–risk–fairness instrument. Identified three user segments — Hesitant Skeptics, Cautious Trusters, and Confident Adopters — with usage frequency, not demographics, the strongest predictor of higher trust and lower perceived risk.",
     "links": [
       {
         "label": "Paper",
@@ -32,21 +36,25 @@
   {
     "id": "conpro-2025-scale-1-to-5",
     "title": "On a Scale of 1 to 5, How Reliable Are AI User Studies? A Call for Developing Validated, Meaningful Scales and Metrics about User Perceptions of AI Systems",
-    "authors": "Jan Tolsdorf; Alan F. Luo; Monica Kodwani; Junho Eum; Mahmood Sharif; Michelle L. Mazurek; Adam J. Aviv",
+    "authors": "Jan Tolsdorf, Alan F. Luo, Monica Kodwani, Junho Eum, Mahmood Sharif, Michelle L. Mazurek, Adam J. Aviv",
     "venue": "IEEE SPW ConPro",
+    "venueFull": "IEEE Security & Privacy Workshops — Workshop on Technology and Consumer Protection",
     "year": "2025",
     "status": "",
-    "summary": "Methodological critique of unvalidated AI perception metrics and simple rating scales.",
+    "topics": ["Measurement & methods"],
+    "summary": "Review of 130 AI user studies showing that most measure user perceptions with unvalidated Likert items. Calls for a community repository of rigorously tested scales and outlines a roadmap for developing validated measures of how people perceive AI systems.",
     "links": []
   },
   {
     "id": "pets-2024-honesty-best-policy",
     "title": "Honesty is the Best Policy: On the Accuracy of Apple Privacy Labels Compared to Apps' Privacy Policies",
-    "authors": "Mir Masood Ali; David G. Balash; Monica Kodwani; Chris Kanich; Adam J. Aviv",
+    "authors": "Mir Masood Ali, David G. Balash, Monica Kodwani, Chris Kanich, Adam J. Aviv",
     "venue": "PETS",
+    "venueFull": "Proceedings on Privacy Enhancing Technologies",
     "year": "2024",
     "status": "",
-    "summary": "Research comparing Apple privacy labels with privacy policies, examining transparency and consistency in privacy disclosures.",
+    "topics": ["Privacy transparency"],
+    "summary": "Large-scale comparison of Apple privacy labels against apps' actual privacy policies using fine-tuned language models. Identified significant discrepancies between what labels claim and what policies state, with implications for label accuracy and developer support.",
     "links": [
       {
         "label": "arXiv",
@@ -57,11 +65,13 @@
   {
     "id": "arxiv-longitudinal-privacy-labels",
     "title": "Longitudinal Analysis of Privacy Labels in the Apple App Store",
-    "authors": "David G. Balash; Mir Masood Ali; Monica Kodwani; Xiaoyuan Wu; Chris Kanich; Adam J. Aviv",
+    "authors": "David G. Balash, Mir Masood Ali, Monica Kodwani, Xiaoyuan Wu, Chris Kanich, Adam J. Aviv",
     "venue": "arXiv",
-    "year": "",
+    "venueFull": "arXiv preprint",
+    "year": "2022",
     "status": "Preprint",
-    "summary": "Large-scale ecosystem analysis of privacy labels over time.",
+    "topics": ["Privacy transparency"],
+    "summary": "Weekly snapshots of 1.6 million apps (July 2021 – October 2022) tracking privacy-label adoption over time. Found roughly 70% adoption driven largely by new apps, with labels rarely updated after creation — raising questions about their reliability.",
     "links": [
       {
         "label": "arXiv",

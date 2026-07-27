@@ -1,0 +1,144 @@
+[
+  {
+    "id": "auditing-infrastructure",
+    "category": "Research infrastructure",
+    "title": "Human-Centered Generative AI Auditing Platform",
+    "oneLiner": "Open-source infrastructure for running structured human evaluations of generative AI systems.",
+    "summary": "An open-source platform for designing and running structured human evaluations of generative AI. Researchers configure studies that combine surveys, live model conversations, and guided auditing tasks; participants annotate model behavior turn by turn; and the system exports structured data ready for analysis.",
+    "problem": "Automated benchmarks measure model behavior on fixed inputs. They say little about what people actually notice, question, or tolerate when they use a model. Collecting those judgments rigorously requires purpose-built software — consent flows, tutorials, chat interfaces, annotation tools, data pipelines — that research teams usually rebuild from scratch for every study.",
+    "role": "I design and build the platform, and I use it to run my own auditing studies.",
+    "built": [
+      "Configurable study flows that combine surveys, live chatbot conversations, and guided auditing tasks",
+      "Turn-level highlighting and annotation of model responses",
+      "Likert-scale and free-text responses tied to specific conversation turns",
+      "Tutorial gating so participants practice the auditing task before the main study",
+      "Structured data storage, export, and study replay for analysis and reproducibility",
+      "Study content separated from system logic, so new studies are configured rather than re-programmed"
+    ],
+    "methods": [
+      "Research system architecture",
+      "Study workflow design",
+      "Human-data collection",
+      "Reproducible study tooling"
+    ],
+    "stack": "React and Node.js",
+    "scale": "Used to run a 254-participant, 551-conversation auditing study",
+    "status": "Open source · in active development",
+    "findings": [],
+    "publications": [],
+    "links": [
+      {
+        "label": "Project page",
+        "url": "https://monicakodwani.github.io/genai-auditing-gwoscon/",
+        "type": "primary"
+      },
+      {
+        "label": "Online demo",
+        "url": "https://chatbot-audit.onrender.com",
+        "type": "secondary"
+      },
+      {
+        "label": "GitHub repository",
+        "url": "https://github.com/gwusec/GenAI-Auditing",
+        "type": "secondary"
+      }
+    ]
+  },
+  {
+    "id": "how-people-audit",
+    "category": "Human evaluation & auditing",
+    "title": "How People Audit and Trust Generative AI",
+    "oneLiner": "What happens when everyday users are asked to find problems in AI chatbots — 254 participants, 551 audited conversations.",
+    "summary": "A research program on user-driven auditing of generative AI. In a large interactive study, 254 U.S. participants held 551 conversations with chatbots through a purpose-built audit interface, probing for problematic and unfair behavior and rating what they found.",
+    "problem": "“Let people try the model” is often treated as a meaningful check on AI systems. This work tests that assumption directly: when everyday users are asked to find problems, what do they catch, what do they miss, and what happens to their trust along the way?",
+    "whyItMatters": "Human evaluation is not automatically reliable. Access to a model does not guarantee meaningful scrutiny, prior beliefs shape what people notice, and the interfaces and measures used to collect judgments shape the evidence produced. Evaluation and governance processes that rely on user feedback need to account for all three.",
+    "role": "I led the 254-participant interactive study and designed and deployed the chat, survey, and annotation system it ran on, working with a multi-institution team on study design and analysis.",
+    "built": [],
+    "findings": [
+      "Participants often failed to surface problems the study design expected them to find.",
+      "Probing frequently increased trust in the chatbot, even when the probing was limited or unsuccessful.",
+      "Participants who began with higher trust flagged fewer problems.",
+      "A companion survey of 123 U.S. chatbot users identified three segments — Hesitant Skeptics, Cautious Trusters, and Confident Adopters — with usage frequency, not demographics, the strongest predictor of trust.",
+      "A review of 130 AI user studies found that most measure user perceptions with unvalidated rating scales, motivating validated instruments for AI research."
+    ],
+    "methods": [
+      "Interactive online experiments",
+      "Survey design",
+      "Psychometrics",
+      "Statistical and qualitative analysis"
+    ],
+    "stack": "",
+    "scale": "254 U.S. participants · 551 conversations",
+    "status": "Published at SOUPS 2025 and ConPro 2025 · FAccT 2026 to appear",
+    "collaborators": "Joint work with co-authors at The George Washington University and partner universities.",
+    "publications": [
+      "facct-2026-probing-bias-trustworthiness",
+      "soups-2025-safety-perceptions",
+      "conpro-2025-scale-1-to-5"
+    ],
+    "links": [
+      {
+        "label": "SOUPS 2025 paper",
+        "url": "https://www.usenix.org/conference/soups2025/presentation/tolsdorf",
+        "type": "primary"
+      }
+    ]
+  },
+  {
+    "id": "interaction-history-reflection",
+    "category": "Privacy & interaction histories",
+    "title": "Reflecting on AI Interaction Histories",
+    "oneLiner": "A dashboard study of what people disclose to chatbots over time — and what changes when they see it all in one place.",
+    "summary": "People share things with AI chatbots one conversation at a time, but providers store those conversations together. This study puts participants in front of their own interaction history — surfaced in a purpose-built dashboard with guided reflection prompts — to examine what they notice about their disclosures and whether it changes how they manage their data.",
+    "problem": "Individually, chatbot conversations can feel disposable. Stored together, they can reveal sensitive details and support inferences across conversations — for profiling, marketing, or worse — that no single exchange shows. Most users never look back at what they have shared.",
+    "role": "I designed the study and I am building the dashboard and data-collection tooling.",
+    "built": [
+      "A consent-based mechanism for collecting participants' own AI interaction histories",
+      "A participant-facing dashboard that surfaces selected past conversations",
+      "Guided reflection prompts focused on sensitive disclosures and cross-conversation inference",
+      "Pre- and post-intervention measures of disclosure awareness, perceived privacy risk, perceived benefits, and intentions to review, delete, or manage stored histories"
+    ],
+    "methods": [
+      "Intervention study design",
+      "Dashboard development",
+      "Pre/post measurement",
+      "Privacy research"
+    ],
+    "stack": "",
+    "scale": "",
+    "status": "IRB approved · data collection in progress",
+    "statusNote": "Results will be reported when data collection is complete.",
+    "findings": [],
+    "publications": [],
+    "links": []
+  },
+  {
+    "id": "workplace-ai-governance",
+    "category": "Workplace adoption & governance",
+    "title": "AI in the Workplace: Adoption, Trust, and Governance",
+    "oneLiner": "Interview studies on how employees and AI practitioners actually use, verify, and govern AI at work.",
+    "summary": "Semi-structured interview studies with employees and AI practitioners examining how AI actually enters the workplace: the tasks people use it for, why they adopt or avoid it, how they verify its output, and how organizations decide what counts as appropriate use.",
+    "problem": "Standards and governance guidance are written for organizations, but adoption happens person by person. Understanding how employees actually decide, verify, and improvise is a precondition for governance that works in practice.",
+    "questions": [
+      "What tasks do employees use AI for, and what effect does it have on their work?",
+      "Why do people adopt AI tools — or deliberately avoid them?",
+      "How do employees decide when AI use is appropriate, and how do they verify output?",
+      "What support and governance do organizations actually provide?",
+      "How do practitioners run human-centered evaluations inside real organizations, and what evidence changes product and governance decisions?"
+    ],
+    "role": "I conduct interviews and qualitative analysis as part of a collaboration with researchers at the National Institute of Standards and Technology (NIST).",
+    "built": [],
+    "methods": [
+      "Semi-structured interviews",
+      "Qualitative coding and analysis",
+      "Governance analysis"
+    ],
+    "stack": "",
+    "scale": "",
+    "status": "Research in progress",
+    "collaborators": "Interview study conducted in collaboration with researchers at NIST.",
+    "findings": [],
+    "publications": [],
+    "links": []
+  }
+]
