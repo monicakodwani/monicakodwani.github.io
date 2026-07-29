@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="shared/theme-init.js"></script>
+    <title>Design previews | Monica Kodwani</title>
+    <meta
+      name="description"
+      content="Comparison page for three in-progress design previews of Monica Kodwani's website. None of these is the production site yet."
+    />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../assets/images/icons/monogram.svg" type="image/svg+xml" />
+    <!--
+      This hub page is intentionally self-contained: one small style block,
+      no dependencies on any of the three design options it links to.
+    -->
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f6f4;
+        --surface: #ffffff;
+        --text: #232826;
+        --muted: #5b6461;
+        --heading: #141816;
+        --line: #d8dedb;
+        --accent: #276b60;
+        --accent-text: #f6fbfa;
+      }
+
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+        --bg: #151817;
+        --surface: #1d2220;
+        --text: #eceeed;
+        --muted: #adb7b2;
+        --heading: #f7f9f8;
+        --line: #3a4441;
+        --accent: #86c9be;
+        --accent-text: #10201d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+      }
+
+      .wrap {
+        max-width: 62rem;
+        margin: 0 auto;
+        padding: 3rem 1.25rem 4rem;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: -5rem;
+        z-index: 10;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        background: var(--accent);
+        color: var(--accent-text);
+        text-decoration: none;
+      }
+
+      .skip-link:focus {
+        top: 1rem;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+      }
+
+      .topbar a {
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration: none;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .topbar a:hover,
+      .card-links a:hover {
+        text-decoration: underline;
+      }
+
+      h1 {
+        color: var(--heading);
+        font-size: clamp(1.9rem, 4vw, 2.6rem);
+        line-height: 1.15;
+        margin: 0 0 0.75rem;
+      }
+
+      h2 {
+        color: var(--heading);
+        font-size: 1.3rem;
+        margin: 0;
+      }
+
+      .note {
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--accent);
+        background: var(--surface);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        margin: 1.5rem 0 2.5rem;
+        color: var(--muted);
+      }
+
+      .note strong {
+        color: var(--text);
+      }
+
+      .options {
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 1.5rem;
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .card-kicker {
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin: 0;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .card-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.25rem;
+        align-items: center;
+      }
+
+      .card-links a {
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration: none;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .card-links a.primary {
+        background: var(--accent);
+        color: var(--accent-text);
+        padding: 0 1.1rem;
+        border-radius: 8px;
+      }
+
+      .card-links a.primary:hover {
+        text-decoration: none;
+        filter: brightness(1.08);
+      }
+
+      .theme-toggle {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--text);
+        font: inherit;
+        font-weight: 600;
+        padding: 0.55rem 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        min-height: 44px;
+      }
+
+      footer {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="wrap">
+      <header class="topbar">
+        <a href="../index.html">← Current production site</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span data-theme-toggle-text>Switch theme</span>
+        </button>
+      </header>
+
+      <main id="main-content">
+        <h1>Design previews</h1>
+        <p>
+          Three complete previews of a redesigned website for Monica Kodwani.
+          All three render the same shared content — projects, publications, CV,
+          and contact details — with genuinely different layout, typography, and
+          visual rhythm. Each preview includes its own Home, Projects,
+          Publications, and CV pages, plus light and dark themes.
+        </p>
+
+        <div class="note" role="note">
+          <strong>These are previews, not the live site.</strong>
+          No option has been promoted to production. The current public site is
+          unchanged and remains the deployed version until one direction is
+          chosen.
+        </div>
+
+        <div class="options" id="options">
+          <article class="card">
+            <p class="card-kicker">Option A</p>
+            <h2>Editorial Research Portfolio</h2>
+            <p>
+              Calm and literary, in the manner of a well-set research feature.
+              Large serif headings, narrow reading columns, thin rules instead of
+              cards, small uppercase labels, and a refined deep-green palette.
+              Case studies read like magazine features with an offset metadata
+              rail. Aims at credibility across both academia and research labs.
+            </p>
+            <div class="card-links">
+              <a class="primary" href="editorial/index.html">Open editorial preview</a>
+              <a href="editorial/projects.html">Projects</a>
+              <a href="editorial/publications.html">Publications</a>
+              <a href="editorial/cv.html">CV</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <p class="card-kicker">Option B</p>
+            <h2>Technical Research Systems</h2>
+            <p>
+              Structured and modular, built to foreground the systems behind the
+              research. Bordered panels, numbered sections, monospace metadata
+              labels for role, scale, methods, and status, and a cool palette
+              with a single deep-blue accent. Project pages read like concise
+              spec sheets. Aims at research-engineering and human-data
+              infrastructure roles.
+            </p>
+            <div class="card-links">
+              <a class="primary" href="technical/index.html">Open technical preview</a>
+              <a href="technical/projects.html">Projects</a>
+              <a href="technical/publications.html">Publications</a>
+              <a href="technical/cv.html">CV</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <p class="card-kicker">Option C</p>
+            <h2>Human-Centered Warm Minimalism</h2>
+            <p>
+              Warm, personal, and minimal: soft neutral backgrounds, a terracotta
+              accent, rounded shapes, a larger portrait, and short first-person
+              sections. Case studies are told as concise stories — the question,
+              what was built, what was learned. Aims at researchers, product
+              teams, and mixed-methods roles while staying precise.
+            </p>
+            <div class="card-links">
+              <a class="primary" href="warm/index.html">Open warm preview</a>
+              <a href="warm/projects.html">Projects</a>
+              <a href="warm/publications.html">Publications</a>
+              <a href="warm/cv.html">CV</a>
+            </div>
+          </article>
+        </div>
+      </main>
+
+      <footer>
+        <p>
+          Every preview renders shared data from <code>content/</code>, so
+          factual edits (projects, publications, contact details) apply to all
+          three options at once. See <code>DESIGN-OPTIONS.md</code> in the
+          repository root for how to promote a chosen option to production.
+        </p>
+      </footer>
+    </div>
+
+    <script type="module">
+      import { initThemeToggle } from "./shared/theme.js";
+      initThemeToggle(document.querySelector("[data-theme-toggle]"));
+    </script>
+  </body>
+</html>
