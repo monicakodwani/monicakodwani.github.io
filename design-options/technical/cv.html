@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../shared/theme-init.js"></script>
+  <title>CV | Monica Kodwani</title>
+  <meta name="description" content="Curriculum vitae of Monica Kodwani, PhD candidate in Computer Science at The George Washington University: education, publications, research experience, and systems built.">
+  <meta name="robots" content="noindex">
+  <meta property="og:title" content="CV | Monica Kodwani">
+  <meta property="og:description" content="Curriculum vitae covering education, publications, research experience, systems, and technical skills.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://monicakodwani.github.io/assets/images/profile/headshot-monica.jpg">
+  <link rel="icon" href="../../assets/images/icons/monogram.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./technical.css">
+  <script type="module" src="./technical.js"></script>
+</head>
+<body data-page="cv">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">Monica Kodwani</a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="toggle-icon" aria-hidden="true">☰</span>
+        <span>Menu</span>
+      </button>
+      <nav id="site-nav" class="site-nav" data-site-nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="publications.html">Publications</a>
+        <a href="cv.html" aria-current="page">CV</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode">
+          <span class="toggle-icon" aria-hidden="true">◐</span>
+          <span>Theme</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <h1>Curriculum vitae</h1>
+    <p class="hero-lede" data-page-lede></p>
+
+    <div class="cv-panel panel panel--accent-top">
+      <h2>Research summary</h2>
+      <p data-cv-summary></p>
+      <div class="btn-row">
+        <a class="btn btn--primary" data-cv-link href="../../docs/resume.pdf" target="_blank" rel="noopener">Open CV (PDF)</a>
+        <a class="btn btn--secondary" data-email-link href="mailto:monicakodwani@gwu.edu">Email me</a>
+      </div>
+      <h2 class="spec-label">Profiles</h2>
+      <ul class="profile-links" data-profile-links></ul>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner" data-footer></div>
+  </footer>
+</body>
+</html>
