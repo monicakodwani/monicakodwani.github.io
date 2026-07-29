@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../shared/theme-init.js"></script>
+  <title>CV | Monica Kodwani</title>
+  <meta name="description" content="Curriculum vitae of Monica Kodwani, PhD candidate in Computer Science at The George Washington University, available as a PDF.">
+  <meta name="robots" content="noindex">
+  <meta property="og:title" content="CV | Monica Kodwani">
+  <meta property="og:description" content="Curriculum vitae of Monica Kodwani, available as a PDF.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://monicakodwani.github.io/assets/images/profile/headshot-monica.jpg">
+  <link rel="icon" href="../../assets/images/icons/monogram.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./warm.css">
+  <script type="module" src="./warm.js"></script>
+</head>
+<body data-page="cv">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">Monica Kodwani</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="cv.html" aria-current="page">CV</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+          <span class="theme-toggle-icon" aria-hidden="true"></span>
+          <span class="visually-hidden" data-theme-toggle-text>Switch to dark mode</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-intro">
+      <h1>Curriculum vitae</h1>
+      <p class="page-lede" id="page-lede"></p>
+    </section>
+    <section class="cv-panel" aria-labelledby="cv-panel-heading">
+      <h2 id="cv-panel-heading" class="visually-hidden">CV download and summary</h2>
+      <div class="cta-row">
+        <a class="btn btn-primary btn-large" id="cv-open" href="../../docs/resume.pdf" target="_blank" rel="noopener">Open CV (PDF)</a>
+        <a class="btn btn-secondary" id="cv-email" href="#">Email me</a>
+      </div>
+      <p class="cv-summary" id="cv-summary"></p>
+      <ul class="profile-links" id="cv-links"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner" id="site-footer"></div>
+    <p class="preview-note">Design preview — not the production site. <a href="../index.html">All design previews</a></p>
+  </footer>
+</body>
+</html>
