@@ -1,102 +1,98 @@
-# Monica Kodwani Academic Website
+# Monica Kodwani — Personal Website
 
-Minimal static academic website for GitHub Pages.
+Static academic and professional website for GitHub Pages. No framework, no
+build step, no npm dependencies: plain HTML, CSS, vanilla JavaScript modules,
+and JSON content files loaded with `fetch()`.
 
-The site has three public pages:
+The production pages at the repository root use the **Human-Centered Warm
+Minimalism** design (Option C of three explored directions). The other two
+directions remain as working previews under `design-options/`. See
+[DESIGN-OPTIONS.md](DESIGN-OPTIONS.md) for the full comparison and for how a
+different option could be promoted later.
 
-- `index.html` — brief bio, photo, contact information, and profile links
-- `publications.html` — editable publication list
+## Production pages
+
+- `index.html` — hero, research profile, selected work
+- `projects.html` — four case studies rendered from `content/projects.json`
+- `publications.html` — publication list rendered from
+  `content/publications.json`
 - `cv.html` — CV download page
+- `404.html` — static missing-page fallback (root-absolute paths, no
+  JavaScript, since GitHub Pages serves it at arbitrary URLs)
 
-There is no build step, framework, or dependency install.
+## Production assets
 
-## Folder Map
+- `assets/css/site.css` — all styling, light and dark themes (palette
+  variables at the top of the file)
+- `assets/js/site.js` — page renderers (home, projects, publications, CV)
+- `assets/js/data.js` — JSON content loading and small DOM helpers
+- `assets/js/theme.js` — theme toggle and mobile navigation behavior
+- `assets/js/theme-init.js` — early theme loader that prevents a flash of
+  the wrong theme
+- `assets/images/profile/headshot-monica.jpg` — portrait
+- `docs/resume.pdf` — the CV PDF
 
-- `index.html`
-  Home page. Most profile text is loaded from `content/profile.json` and `content/contact.json`.
-- `publications.html`
-  Publications page. Publication entries are rendered from `content/publications.json`.
-- `cv.html`
-  CV page. The PDF path is controlled by `content/site.json`.
-- `404.html`
-  Missing-page fallback.
-- `content/site.json`
-  Site title, footer text, navigation, and CV PDF path.
-- `content/profile.json`
-  Name, role, institution, location, short bio, and quick facts.
-- `content/contact.json`
-  Email and external profile links.
-- `content/featured-project.json`
-  The featured project shown on the homepage.
-- `content/publications.json`
-  Publication entries shown on the Publications page.
-- `assets/css/`
-  Styling.
-- `assets/js/`
-  Small scripts for loading shared header/footer/navigation and JSON-backed profile/contact content.
-- `assets/images/profile/`
-  Profile image.
-- `docs/resume.pdf`
-  CV PDF.
+## Design previews
 
-## Run Locally
+- `design-options/index.html` — comparison hub for all three directions
+- `design-options/editorial/` — Option A: Editorial Research Portfolio
+- `design-options/technical/` — Option B: Technical Research Systems
+- `design-options/warm/` — Option C (the design now in production)
+- `design-options/shared/` — data loading and theme behavior used by the
+  previews
 
-Because the site loads shared components and JSON files with `fetch()`, preview it through a local server:
+## Content model
+
+All factual content lives in `content/` and is shared by the production site
+and every preview, so a single edit updates everything:
+
+- `content/site.json` — site name, footer text, navigation labels, CV PDF
+  path, "last updated" date
+- `content/profile.json` — name, role, institution, location, short bio
+- `content/contact.json` — email and external profile links
+- `content/portfolio.json` — hero copy, research-profile entries, page
+  intros
+- `content/projects.json` — structured case-study data for the four
+  research projects
+- `content/publications.json` — publication entries (title, authors, venue,
+  year, status, topics, summary, links)
+
+See [EDITING-GUIDE.md](EDITING-GUIDE.md) for field-by-field editing help.
+
+## Run locally
+
+The site loads JSON content with `fetch()`, so preview it through a local
+server from the repository root:
 
 ```bash
-cd /Users/monicakodwani/Documents/Playground/monica-kodwani-site
 python3 -m http.server 8000
 ```
 
-Open [http://localhost:8000](http://localhost:8000).
+Then open:
 
-## Common Edits
+- Production site: [http://localhost:8000](http://localhost:8000)
+- Design previews: [http://localhost:8000/design-options/](http://localhost:8000/design-options/)
 
-- Update homepage bio: edit `content/profile.json`
-- Update email or profile links: edit `content/contact.json`
-- Update featured project: edit `content/featured-project.json`
-- Update navigation or CV path: edit `content/site.json`
-- Update publications: edit `content/publications.json`
-- Replace CV: replace `docs/resume.pdf`
-- Replace profile image: replace `assets/images/profile/headshot-monica.jpg`
+## Common edits
 
-## Add A Publication
-
-Open `content/publications.json`.
-
-Each paper is one clearly separated object:
-
-```json
-{
-  "id": "unique-paper-id",
-  "title": "Paper Title",
-  "authors": "Author list",
-  "venue": "Venue",
-  "year": "2026",
-  "status": "Optional status",
-  "summary": "Short abstract or description.",
-  "links": [
-    {
-      "label": "PDF",
-      "url": "https://example.com"
-    }
-  ]
-}
-```
-
-Copy an existing object, paste it where the paper should appear, and edit the fields.
-
-## Featured Project
-
-The homepage featured project is controlled by `content/featured-project.json`.
-Use `"primary"` for the main project link and `"secondary"` for supporting links.
+- Hero or research profile text: `content/portfolio.json`
+- Projects and case studies: `content/projects.json`
+- Publications: `content/publications.json`
+- Email or profile links: `content/contact.json`
+- Footer note, location, or "last updated": `content/site.json`
+- Replace CV: overwrite `docs/resume.pdf`
+- Replace portrait: overwrite `assets/images/profile/headshot-monica.jpg`
+- Colors and themes: variables at the top of `assets/css/site.css`
 
 ## Theme
 
-Light and dark colors live in `assets/css/variables.css`. The early theme loader is `assets/js/theme-init.js`, and the moon/sun toggle markup is in `components/header.html`.
+Light and dark mode follow the visitor's system preference, can be toggled
+manually, and persist the choice in `localStorage` under the key `mk-theme`.
+The production site and all previews share that key.
 
-## GitHub Pages Deployment
+## Deployment
 
-This repository deploys through `.github/workflows/pages.yml`.
-
-The public site is served at [https://monicakodwani.github.io/](https://monicakodwani.github.io/). Pushing the GitHub Pages branch triggers a new deployment.
+`.github/workflows/pages.yml` deploys the repository to GitHub Pages on every
+push to `master`. The public site is served at
+[https://monicakodwani.github.io/](https://monicakodwani.github.io/). Work on
+other branches does not affect the live site until merged into `master`.

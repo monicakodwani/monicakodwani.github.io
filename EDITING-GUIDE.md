@@ -1,127 +1,122 @@
 # Editing Guide
 
-This site is intentionally small. The main pages are:
+This site is intentionally small and edited mostly through JSON files in
+`content/`. Those files feed the production pages at the repository root and
+the design previews under `design-options/`, so one edit updates everything.
 
-- Home: `index.html`
-- Publications: `publications.html`
-- CV: `cv.html`
+## Preview locally
 
-## Preview Locally
+From the repository root:
 
 ```bash
-cd /Users/monicakodwani/Documents/Playground/monica-kodwani-site
 python3 -m http.server 8000
 ```
 
-Open [http://localhost:8000](http://localhost:8000), make edits, save, and refresh.
+Open [http://localhost:8000](http://localhost:8000) for the production site
+and [http://localhost:8000/design-options/](http://localhost:8000/design-options/)
+for the design previews. Edit, save, refresh. (If a change to a JSON file
+doesn't appear, do a hard refresh — the browser sometimes caches the JSON
+for a few minutes.)
 
-## Edit Homepage Text
+JSON rules that always apply: double quotes around text, commas between
+fields, no trailing comma after the last field. If a page shows a loading
+error, the most likely cause is a JSON syntax slip — run:
 
-Open `content/profile.json`.
-
-Most homepage fields come from:
-
-- `name`
-- `role`
-- `institution`
-- `location`
-- `shortBio`
-- `quickFacts`
-
-Keep JSON syntax valid: double quotes around text, commas between fields, and no trailing comma after the last field.
-
-## Edit The Featured Project
-
-Open `content/featured-project.json`.
-
-Update:
-
-- `title`
-- `summary`
-- `links`
-
-Each link has a `label`, `url`, and `style`. Use `"primary"` for the main project link and `"secondary"` for supporting links.
-
-## Edit Contact Links
-
-Open `content/contact.json`.
-
-Update:
-
-- `email`
-- GitHub URL
-- LinkedIn URL
-- Google Scholar URL
-
-To remove a profile link, delete its whole object from the `links` array.
-
-## Edit Navigation Or CV Path
-
-Open `content/site.json`.
-
-The navigation currently contains only:
-
-- Home
-- Publications
-- CV
-
-The CV PDF path is:
-
-```json
-"cvPath": "docs/resume.pdf"
+```bash
+python3 -m json.tool content/projects.json
 ```
 
-## Edit Light And Dark Mode Colors
+(or whichever file you touched) to find the exact line.
 
-Open `assets/css/variables.css`.
+## Edit the homepage hero and research profile
 
-The light theme colors are in `:root`. The dark theme colors are in
-`:root[data-theme="dark"]`. The moon/sun button itself lives in
-`components/header.html`.
+Open `content/portfolio.json`:
 
-## Edit Publications
+- `hero.roleLine` — the line under your name
+- `hero.lede` — the first-person introduction sentence
+- `hero.context` — the "PhD candidate…" line
+- `researchProfile` — the four label + sentence pairs in "What I work on"
+- `projectsPage.lede`, `publicationsPage.lede`, `cvPage.lede`,
+  `cvPage.summary` — the intro text on those pages
 
-Open `content/publications.json`.
+## Edit projects and case studies
 
-Each publication is one object with these fields:
+Open `content/projects.json`. Each project is one object; empty strings and
+empty arrays are simply skipped by the pages:
 
-- title
-- authors
-- venue
-- year
-- status
-- summary
-- links
+- `id` — used for links like `projects.html#auditing-infrastructure`; do not
+  change casually
+- `category` — short label, e.g. "Research infrastructure"
+- `title`, `oneLiner`, `summary`
+- `problem` — rendered as "The question"
+- `whyItMatters` — optional context paragraph
+- `role` — what you personally did (first person, rendered as "My role")
+- `built` — list rendered as "What I built"
+- `questions` — list rendered as "Questions this work asks"
+- `findings` — list rendered as "What we learned"; leave empty until
+  results are real
+- `methods` — short labels rendered as chips
+- `stack`, `scale`, `status`, `statusNote`, `collaborators` — facts
+  rendered under "Where it stands" and the fact list
+- `publications` — publication `id`s from `content/publications.json`,
+  rendered as venue links automatically
+- `links` — objects with `label`, `url`, `type` (`"primary"` or
+  `"secondary"`)
 
-To add a new paper:
+## Edit publications
 
-1. Copy one full publication object.
-2. Paste it where the paper should appear.
-3. Change the `id`.
-4. Edit the title, authors, venue, year, summary, status, and links.
+Open `content/publications.json`. Each entry:
 
-If a paper has no link yet, use an empty links array:
+- `id` — anchor target; projects reference it via their `publications` field
+- `title`, `authors` (plain comma-separated string; your name is bolded
+  automatically), `venue`, `venueFull`, `year`
+- `status` — e.g. "To appear" or "Preprint"; empty string hides the badge
+- `topics` — small labels; keep to the existing set ("Generative AI
+  evaluation", "Measurement & methods", "Privacy transparency") or update
+  the set deliberately
+- `summary` — one short plain-language paragraph
+- `links` — `label` + `url`; use an empty array when there is no link yet
 
-```json
-"links": []
-```
+To add a paper: copy an existing object, give it a new `id`, edit the
+fields.
 
-## Replace The CV
+## Edit contact links
 
-Replace:
+`content/contact.json` — `email` plus the GitHub / LinkedIn / Google Scholar
+links. Remove a link by deleting its whole object.
 
-```text
-docs/resume.pdf
-```
+## Edit the footer, location, or CV path
 
-Keep the filename `resume.pdf` unless you also update `content/site.json`.
+`content/site.json` — `footerNote`, `location`, `lastUpdated` (shown in
+every footer; update it when you publish meaningful changes), and `cvPath`
+(currently `docs/resume.pdf`).
 
-## Replace The Profile Image
+## Replace the CV or portrait
 
-The current homepage image is:
+- CV: overwrite `docs/resume.pdf` (keep the filename, or update `cvPath` in
+  `content/site.json`).
+- Portrait: overwrite `assets/images/profile/headshot-monica.jpg`. Pages
+  crop it with CSS; the file itself is never modified.
 
-```text
-assets/images/profile/headshot-monica.jpg
-```
+## Edit colors and themes
 
-Replace that file with a portrait or update the image path in `index.html`.
+Production: the palette lives in CSS variables at the top of
+`assets/css/site.css` — `:root` for light, `:root[data-theme="dark"]` for
+dark. Each design preview keeps its own palette at the top of its CSS file
+(`design-options/editorial/editorial.css`,
+`design-options/technical/technical.css`, `design-options/warm/warm.css`).
+
+## Page structure (when text lives in HTML)
+
+The static page skeletons are the root HTML files themselves. Headings such
+as "What I work on" and "Selected work" are in `index.html`; the 404 page
+text is in `404.html`. The renderers that fill in JSON-driven parts are in
+`assets/js/site.js`.
+
+## The design previews
+
+The three previews share rendering infrastructure in
+`design-options/shared/` (`data.js`, `theme.js`, `theme-init.js`). Layout
+and styling live in each option's own directory. See
+[DESIGN-OPTIONS.md](DESIGN-OPTIONS.md) for what each option is trying to do
+and how the warm option was promoted to production.
