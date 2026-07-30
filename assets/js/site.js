@@ -1,6 +1,8 @@
 /*
- * Production site renderers (promoted from the warm design option).
- * Renders all factual content from content/*.json via ./data.js.
+ * Production site renderers.
+ * Fills the static page skeletons with content from content/*.json
+ * (loaded via ./data.js). One render function per page, keyed off
+ * document.body.dataset.page.
  */
 import {
   loadPortfolioContent,
@@ -27,20 +29,50 @@ function isExternal(url) {
   return /^https?:\/\//.test(url);
 }
 
-/* Renders the GitHub / LinkedIn / Google Scholar (+ optional Email) link list. */
-function renderProfileLinks(listElement, contact, includeEmail) {
+function findProject(content, id) {
+  return content.projects.find((project) => project.id === id);
+}
+
+/* Short badge for a project's maturity — derived, not styled per status */
+function statusBadge(project) {
+  if (project.publications && project.publications.length > 0) {
+    return "Published";
+  }
+  if ((project.status || "").toLowerCase().includes("open source")) {
+    return "Open source";
+  }
+  return "In progress";
+}
+
+/* Default case-study section headings; projects override via `headings` */
+const DEFAULT_HEADINGS = {
+  problem: "The question",
+  findings: "What we learned",
+  whyItMatters: "Why it matters",
+  built: "What I built",
+  questions: "Questions",
+  role: "My role",
+  status: "Current status"
+};
+
+function headingFor(project, key) {
+  return (project.headings && project.headings[key]) || DEFAULT_HEADINGS[key];
+}
+
+/* Email + GitHub / LinkedIn / Google Scholar as plain text links */
+function renderProfileLinks(listElement, contact) {
   if (!listElement) {
     return;
   }
   clearChildren(listElement);
-  if (includeEmail) {
-    const li = el("li");
-    li.appendChild(link("mailto:" + contact.email, "Email", "text-link"));
-    listElement.appendChild(li);
-  }
+
+  const emailItem = el("li");
+  emailItem.appendChild(link("mailto:" + contact.email, "Email"));
+  listElement.appendChild(emailItem);
+
   contact.links.forEach((item) => {
     const li = el("li");
-    li.appendChild(link(item.url, item.label, "text-link", true));
+    li.appendChild(link(item.url, item.label, "", true));
     listElement.appendChild(li);
   });
 }
@@ -56,17 +88,18 @@ function renderFooter(content) {
   const identity = el("div", "footer-identity");
   identity.appendChild(el("p", "footer-name", "Monica Kodwani"));
   identity.appendChild(el("p", "footer-note", site.footerNote));
-  identity.appendChild(el("p", "footer-meta", site.location));
-  identity.appendChild(el("p", "footer-meta", "Last updated: " + site.lastUpdated));
+  identity.appendChild(
+    el("p", "footer-meta", site.location + " · Last updated: " + site.lastUpdated)
+  );
   footer.appendChild(identity);
 
   const links = el("ul", "footer-links");
   const emailItem = el("li");
-  emailItem.appendChild(link("mailto:" + content.contact.email, content.contact.email, "text-link"));
+  emailItem.appendChild(link("mailto:" + content.contact.email, content.contact.email));
   links.appendChild(emailItem);
   content.contact.links.forEach((item) => {
     const li = el("li");
-    li.appendChild(link(item.url, item.label, "text-link", true));
+    li.appendChild(link(item.url, item.label, "", true));
     links.appendChild(li);
   });
   footer.appendChild(links);
@@ -74,212 +107,384 @@ function renderFooter(content) {
 
 /* ---------- home ---------- */
 
-function renderHome(content) {
+function renderHero(content) {
   const { hero } = content.portfolio;
   document.getElementById("hero-role").textContent = hero.roleLine;
   document.getElementById("hero-lede").textContent = hero.lede;
   document.getElementById("hero-context").textContent = hero.context;
-  renderProfileLinks(document.getElementById("hero-links"), content.contact, true);
+  renderProfileLinks(document.getElementById("hero-links"), content.contact);
+}
 
-  const profileGrid = document.getElementById("research-profile");
-  clearChildren(profileGrid);
-  content.portfolio.researchProfile.forEach((item) => {
-    const card = el("div", "profile-card");
-    card.appendChild(el("h3", "profile-label", item.label));
-    card.appendChild(el("p", "profile-value", item.value));
-    profileGrid.appendChild(card);
+function renderHowIWork(content) {
+  const grid = document.getElementById("how-grid");
+  clearChildren(grid);
+  content.portfolio.howIWork.forEach((item) => {
+    const block = el("div", "how-item");
+    block.appendChild(el("span", "kicker", item.label));
+    block.appendChild(el("p", "", item.value));
+    grid.appendChild(block);
   });
+}
 
-  const workGrid = document.getElementById("selected-work");
-  clearChildren(workGrid);
-  content.projects.forEach((project) => {
-    const card = el("article", "work-card");
-    card.appendChild(el("p", "chip chip-category", project.category));
+function renderFeaturedPlatform(content) {
+  const project = findProject(content, "auditing-infrastructure");
+  const target = document.getElementById("featured-platform");
+  if (!project || !target) {
+    return;
+  }
+  clearChildren(target);
 
-    const title = el("h3", "work-title");
-    title.appendChild(link("projects.html#" + project.id, project.title));
-    card.appendChild(title);
+  const title = el("h3", "feature-title");
+  title.appendChild(link("projects.html#" + project.id, project.title));
+  target.appendChild(title);
 
-    card.appendChild(el("p", "work-oneliner", project.oneLiner));
-    const meta = project.scale || project.status;
-    if (meta) {
-      card.appendChild(el("p", "work-meta", meta));
+  target.appendChild(el("p", "feature-summary", project.teaser || project.summary));
+  target.appendChild(el("p", "feature-evidence", project.scale + "."));
+
+  const actions = el("div", "cta-row");
+  actions.appendChild(
+    link("projects.html#" + project.id, "Read the case study", "btn btn-primary")
+  );
+  target.appendChild(actions);
+
+  const extra = el("ul", "link-row");
+  project.links.forEach((item) => {
+    const li = el("li");
+    li.appendChild(link(item.url, item.label, "text-link", isExternal(item.url)));
+    extra.appendChild(li);
+  });
+  target.appendChild(extra);
+}
+
+function renderFeaturedStudy(content) {
+  const project = findProject(content, "how-people-audit");
+  const target = document.getElementById("featured-study");
+  if (!project || !target) {
+    return;
+  }
+  clearChildren(target);
+
+  const title = el("h3", "feature-title");
+  title.appendChild(link("projects.html#" + project.id, project.title));
+  target.appendChild(title);
+
+  target.appendChild(el("p", "feature-summary", project.teaser || project.summary));
+
+  /* The strongest finding, phrased for the home page in projects.json */
+  if (project.pullQuote) {
+    const pull = el("div", "feature-pull");
+    pull.appendChild(el("p", "", project.pullQuote));
+    pull.appendChild(el("p", "feature-stat", project.scale));
+    target.appendChild(pull);
+  }
+
+  const links = el("ul", "link-row");
+  const caseLink = el("li");
+  caseLink.appendChild(
+    link("projects.html#" + project.id, "Read the case study", "text-link")
+  );
+  links.appendChild(caseLink);
+  project.links
+    .filter((item) => item.type === "primary")
+    .forEach((item) => {
+      const li = el("li");
+      li.appendChild(link(item.url, item.label, "text-link", true));
+      links.appendChild(li);
+    });
+  target.appendChild(links);
+}
+
+function renderSupportingWork(content) {
+  const grid = document.getElementById("supporting-work");
+  clearChildren(grid);
+
+  ["interaction-history-reflection", "workplace-ai-governance"].forEach((id) => {
+    const project = findProject(content, id);
+    if (!project) {
+      return;
     }
-    const more = el("p", "work-more");
-    more.appendChild(link("projects.html#" + project.id, "Read more →", "text-link"));
-    card.appendChild(more);
-    workGrid.appendChild(card);
+    const item = el("article", "support-item");
+    item.appendChild(el("p", "kicker kicker--muted", project.category));
+
+    const title = el("h3", "support-title");
+    title.appendChild(link("projects.html#" + project.id, project.title));
+    item.appendChild(title);
+
+    item.appendChild(el("p", "", project.oneLiner));
+    item.appendChild(el("p", "support-status", project.status));
+    grid.appendChild(item);
   });
+}
+
+function renderClosing(content) {
+  const target = document.getElementById("closing-text");
+  if (target) {
+    target.textContent = content.portfolio.jobSearch.text;
+  }
+
+  const links = document.getElementById("closing-links");
+  clearChildren(links);
+  const linkedIn = content.contact.links.find((item) => item.label === "LinkedIn");
+  const entries = [
+    ["mailto:" + content.contact.email, "Email", false],
+    [linkedIn ? linkedIn.url : "", "LinkedIn", true],
+    [content.site.site.cvPath, "View CV", false],
+    ["projects.html", "Projects", false]
+  ];
+  entries.forEach(([href, label, external]) => {
+    if (!href) {
+      return;
+    }
+    const li = el("li");
+    li.appendChild(link(href, label, "text-link", external));
+    links.appendChild(li);
+  });
+}
+
+function renderHome(content) {
+  renderHero(content);
+  renderHowIWork(content);
+  renderFeaturedPlatform(content);
+  renderFeaturedStudy(content);
+  renderSupportingWork(content);
+  renderClosing(content);
 }
 
 /* ---------- projects ---------- */
 
-function proseBlock(heading, text) {
-  const block = el("div", "prose-block");
-  block.appendChild(el("h3", "prose-heading", heading));
-  block.appendChild(el("p", "", text));
-  return block;
+function renderWorkIndex(content) {
+  const index = document.getElementById("work-index");
+  clearChildren(index);
+  index.appendChild(el("span", "kicker kicker--muted", "On this page"));
+  content.projects.forEach((project, i) => {
+    if (i > 0) {
+      const sep = el("span", "sep", "·");
+      sep.setAttribute("aria-hidden", "true");
+      index.appendChild(sep);
+    }
+    index.appendChild(link("#" + project.id, project.shortTitle || project.title));
+  });
 }
 
-function listBlock(heading, items, listClass) {
-  const block = el("div", "prose-block");
-  block.appendChild(el("h3", "prose-heading", heading));
-  const list = el("ul", listClass || "warm-list");
+function railEntry(rail, label, value) {
+  if (!value) {
+    return;
+  }
+  const wrap = el("div");
+  wrap.appendChild(el("dt", "", label));
+  const dd = el("dd");
+  if (typeof value === "string") {
+    dd.textContent = value;
+  } else {
+    dd.appendChild(value);
+  }
+  wrap.appendChild(dd);
+  rail.appendChild(wrap);
+}
+
+function caseSection(project, key, body) {
+  const section = el("div", "case-section");
+  section.appendChild(el("h3", "", headingFor(project, key)));
+  section.appendChild(body);
+  return section;
+}
+
+function caseList(items) {
+  const list = el("ul");
   items.forEach((item) => list.appendChild(el("li", "", item)));
-  block.appendChild(list);
-  return block;
+  return list;
+}
+
+function renderCaseStudy(content, project, index) {
+  const article = el("article", "case-study");
+  article.id = project.id;
+
+  const header = el("header", "case-header");
+  header.appendChild(el("span", "case-number", String(index + 1).padStart(2, "0")));
+  header.appendChild(el("span", "kicker kicker--muted", project.category));
+  header.appendChild(el("span", "badge", statusBadge(project)));
+  article.appendChild(header);
+
+  article.appendChild(el("h2", "case-title", project.title));
+
+  const columns = el("div", "case-columns");
+
+  /* Left rail: compact facts */
+  const rail = el("dl", "case-rail");
+  railEntry(rail, "Status", project.status);
+  railEntry(rail, "Scale", project.scale);
+  railEntry(rail, "Methods", (project.methods || []).join(", "));
+  railEntry(rail, "Stack", project.stack);
+  railEntry(rail, "Collaboration", project.collaborators);
+
+  if (project.publications && project.publications.length > 0) {
+    const list = el("div");
+    project.publications.forEach((pubId) => {
+      const publication = content.publications.find((p) => p.id === pubId);
+      if (!publication) {
+        return;
+      }
+      const line = el("div");
+      line.appendChild(
+        link("publications.html#" + pubId, publication.venue + " " + publication.year)
+      );
+      list.appendChild(line);
+    });
+    railEntry(rail, "Publications", list);
+  }
+
+  /* When a project lists publications, its external links are the papers
+     themselves — already linked above, so skip a duplicate Links block */
+  const external = project.publications && project.publications.length > 0
+    ? []
+    : (project.links || []).filter((item) => isExternal(item.url));
+  if (external.length > 0) {
+    const list = el("div");
+    external.forEach((item) => {
+      const line = el("div");
+      const anchor = link(item.url, item.label, "", true);
+      const arrow = el("span", "", " ↗");
+      arrow.setAttribute("aria-hidden", "true");
+      anchor.appendChild(arrow);
+      line.appendChild(anchor);
+      list.appendChild(line);
+    });
+    railEntry(rail, "Links", list);
+  }
+  columns.appendChild(rail);
+
+  /* Main column: summary + sections, varied by what the project has */
+  const main = el("div", "case-main");
+  main.appendChild(el("p", "case-summary", project.summary));
+
+  if (project.problem) {
+    main.appendChild(caseSection(project, "problem", el("p", "", project.problem)));
+  }
+
+  if (project.findings && project.findings.length > 0) {
+    const findings = el("div", "case-findings");
+    findings.appendChild(el("h3", "", headingFor(project, "findings")));
+    findings.appendChild(caseList(project.findings));
+    main.appendChild(findings);
+  }
+
+  if (project.whyItMatters) {
+    main.appendChild(
+      caseSection(project, "whyItMatters", el("p", "", project.whyItMatters))
+    );
+  }
+
+  if (project.built && project.built.length > 0) {
+    main.appendChild(caseSection(project, "built", caseList(project.built)));
+  }
+
+  if (project.questions && project.questions.length > 0) {
+    main.appendChild(caseSection(project, "questions", caseList(project.questions)));
+  }
+
+  if (project.role) {
+    main.appendChild(caseSection(project, "role", el("p", "", project.role)));
+  }
+
+  /* In-progress projects state their status in prose; published ones don't
+     repeat it (the rail and badge already carry it) */
+  if (project.statusNote) {
+    main.appendChild(
+      caseSection(
+        project,
+        "status",
+        el("p", "", project.status + ". " + project.statusNote)
+      )
+    );
+  }
+
+  const primaryLinks = (project.links || []).filter((item) => item.type === "primary");
+  if (primaryLinks.length > 0) {
+    const row = el("div", "cta-row case-links");
+    primaryLinks.forEach((item) => {
+      row.appendChild(
+        link(item.url, item.label, "btn btn-secondary", isExternal(item.url))
+      );
+    });
+    main.appendChild(row);
+  }
+
+  columns.appendChild(main);
+  article.appendChild(columns);
+  return article;
 }
 
 function renderProjects(content) {
   document.getElementById("page-lede").textContent = content.portfolio.projectsPage.lede;
+  renderWorkIndex(content);
 
   const container = document.getElementById("projects-list");
   clearChildren(container);
-
-  content.projects.forEach((project) => {
-    const article = el("article", "case-study");
-    article.id = project.id;
-
-    const header = el("header", "case-header");
-    header.appendChild(el("p", "chip chip-category", project.category));
-    header.appendChild(el("h2", "case-title", project.title));
-    article.appendChild(header);
-
-    if (project.summary) {
-      article.appendChild(el("p", "case-summary", project.summary));
-    }
-    if (project.problem) {
-      article.appendChild(proseBlock("The question", project.problem));
-    }
-    if (project.whyItMatters) {
-      article.appendChild(proseBlock("Why it matters", project.whyItMatters));
-    }
-    if (project.role) {
-      article.appendChild(proseBlock("My role", project.role));
-    }
-    if (project.built && project.built.length > 0) {
-      article.appendChild(listBlock("What I built", project.built));
-    }
-    if (project.questions && project.questions.length > 0) {
-      article.appendChild(listBlock("Questions this work asks", project.questions));
-    }
-    if (project.findings && project.findings.length > 0) {
-      const panel = el("div", "findings-panel");
-      panel.appendChild(el("h3", "prose-heading", "What we learned"));
-      const list = el("ul", "warm-list");
-      project.findings.forEach((finding) => list.appendChild(el("li", "", finding)));
-      panel.appendChild(list);
-      article.appendChild(panel);
-    }
-    if (project.methods && project.methods.length > 0) {
-      const block = el("div", "prose-block");
-      block.appendChild(el("h3", "prose-heading", "Methods"));
-      const chips = el("ul", "chip-list");
-      project.methods.forEach((method) => chips.appendChild(el("li", "chip", method)));
-      block.appendChild(chips);
-      article.appendChild(block);
-    }
-
-    const facts = el("dl", "case-facts");
-    const addFact = (label, value) => {
-      if (!value) {
-        return;
-      }
-      const pair = el("div", "case-fact");
-      pair.appendChild(el("dt", "", label));
-      pair.appendChild(el("dd", "", value));
-      facts.appendChild(pair);
-    };
-    addFact("Stack", project.stack);
-    addFact("Scale", project.scale);
-    addFact(
-      "Where it stands",
-      [project.status, project.statusNote].filter(Boolean).join(" — ")
-    );
-    addFact("Collaborators", project.collaborators);
-    if (facts.childElementCount > 0) {
-      article.appendChild(facts);
-    }
-
-    if (project.publications && project.publications.length > 0) {
-      const block = el("div", "prose-block");
-      block.appendChild(el("h3", "prose-heading", "Publications from this work"));
-      const list = el("ul", "chip-list");
-      project.publications.forEach((pubId) => {
-        const publication = content.publications.find((p) => p.id === pubId);
-        if (!publication) {
-          return;
-        }
-        const li = el("li");
-        li.appendChild(
-          link(
-            "publications.html#" + pubId,
-            publication.venue + " " + publication.year,
-            "chip chip-link"
-          )
-        );
-        list.appendChild(li);
-      });
-      block.appendChild(list);
-      article.appendChild(block);
-    }
-
-    if (project.links && project.links.length > 0) {
-      const row = el("div", "cta-row case-links");
-      project.links.forEach((item) => {
-        const className =
-          item.type === "primary" ? "btn btn-primary" : "btn btn-secondary";
-        row.appendChild(link(item.url, item.label, className, isExternal(item.url)));
-      });
-      article.appendChild(row);
-    }
-
-    container.appendChild(article);
+  content.projects.forEach((project, index) => {
+    container.appendChild(renderCaseStudy(content, project, index));
   });
 }
 
 /* ---------- publications ---------- */
 
 function renderPublications(content) {
-  document.getElementById("page-lede").textContent = content.portfolio.publicationsPage.lede;
+  document.getElementById("page-lede").textContent =
+    content.portfolio.publicationsPage.lede;
 
   const container = document.getElementById("publications-list");
   clearChildren(container);
 
+  /* Group by year, keeping the JSON's order of years and entries */
+  const groups = [];
   content.publications.forEach((publication) => {
-    const article = el("article", "publication");
-    article.id = publication.id;
-
-    const meta = el("p", "pub-meta");
-    const venueChip = el("span", "chip chip-venue", publication.venue + " " + publication.year);
-    venueChip.title = publication.venueFull;
-    meta.appendChild(venueChip);
-    if (publication.status) {
-      meta.appendChild(el("span", "chip chip-status", publication.status));
+    let group = groups.find((g) => g.year === publication.year);
+    if (!group) {
+      group = { year: publication.year, entries: [] };
+      groups.push(group);
     }
-    publication.topics.forEach((topic) => {
-      meta.appendChild(el("span", "chip chip-topic", topic));
+    group.entries.push(publication);
+  });
+
+  groups.forEach((group) => {
+    const section = el("section", "pub-year-group");
+    section.setAttribute("aria-label", "Publications from " + group.year);
+    section.appendChild(el("p", "pub-year", group.year));
+
+    const entries = el("div", "pub-entries");
+    group.entries.forEach((publication) => {
+      const article = el("article", "publication");
+      article.id = publication.id;
+
+      article.appendChild(el("h2", "pub-title", publication.title));
+
+      const authors = el("p", "pub-authors");
+      authors.appendChild(highlightAuthor(publication.authors));
+      article.appendChild(authors);
+
+      const venue = el("p", "pub-venue", publication.venueFull);
+      if (publication.status) {
+        venue.appendChild(document.createTextNode(" · "));
+        venue.appendChild(el("span", "pub-status", publication.status));
+      }
+      article.appendChild(venue);
+
+      article.appendChild(el("p", "pub-summary", publication.summary));
+
+      if (publication.links && publication.links.length > 0) {
+        const links = el("ul", "pub-links");
+        publication.links.forEach((item) => {
+          const li = el("li");
+          li.appendChild(link(item.url, item.label, "text-link", isExternal(item.url)));
+          links.appendChild(li);
+        });
+        article.appendChild(links);
+      }
+
+      entries.appendChild(article);
     });
-    article.appendChild(meta);
 
-    article.appendChild(el("h2", "pub-title", publication.title));
-
-    const authors = el("p", "pub-authors");
-    authors.appendChild(highlightAuthor(publication.authors));
-    article.appendChild(authors);
-
-    article.appendChild(el("p", "pub-venue-full", publication.venueFull));
-    article.appendChild(el("p", "pub-summary", publication.summary));
-
-    if (publication.links && publication.links.length > 0) {
-      const row = el("p", "pub-links");
-      publication.links.forEach((item) => {
-        row.appendChild(link(item.url, item.label, "text-link", isExternal(item.url)));
-      });
-      article.appendChild(row);
-    }
-
-    container.appendChild(article);
+    section.appendChild(entries);
+    container.appendChild(section);
   });
 }
 
@@ -290,12 +495,20 @@ function renderCv(content) {
   document.getElementById("cv-summary").textContent = content.portfolio.cvPage.summary;
   document.getElementById("cv-open").href = content.site.site.cvPath;
   document.getElementById("cv-email").href = "mailto:" + content.contact.email;
-  renderProfileLinks(document.getElementById("cv-links"), content.contact, false);
+  renderProfileLinks(document.getElementById("cv-links"), content.contact);
 }
 
 /* ---------- boot ---------- */
 
 document.addEventListener("DOMContentLoaded", async () => {
+  /* Header controls are wired before any fetch, so navigation and the theme
+     toggle keep working even if the content JSON fails to load */
+  initThemeToggle(document.getElementById("theme-toggle"));
+  initMobileNav(
+    document.querySelector(".menu-toggle"),
+    document.getElementById("site-nav")
+  );
+
   try {
     const content = await loadPortfolioContent();
     const page = document.body.dataset.page;
@@ -311,11 +524,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     renderFooter(content);
-    initThemeToggle(document.getElementById("theme-toggle"));
-    initMobileNav(
-      document.querySelector(".menu-toggle"),
-      document.getElementById("site-nav")
-    );
   } catch (error) {
     showLoadError(error);
   }

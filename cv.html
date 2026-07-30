@@ -7,10 +7,13 @@
   <title>CV | Monica Kodwani</title>
   <meta name="description" content="Curriculum vitae of Monica Kodwani, PhD candidate in Computer Science at The George Washington University, available as a PDF.">
   <link rel="canonical" href="https://monicakodwani.github.io/cv.html">
+  <meta property="og:url" content="https://monicakodwani.github.io/cv.html">
+  <meta name="twitter:card" content="summary_large_image">
   <meta property="og:title" content="CV | Monica Kodwani">
   <meta property="og:description" content="Curriculum vitae of Monica Kodwani, available as a PDF.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://monicakodwani.github.io/assets/images/profile/headshot-monica.jpg">
+  <meta property="og:image" content="https://monicakodwani.github.io/assets/images/og/social-card.png">
+  <meta property="og:image:alt" content="Monica Kodwani — Human-centered AI researcher">
   <link rel="icon" href="assets/images/icons/monogram.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
   <script type="module" src="assets/js/site.js"></script>
@@ -38,16 +41,24 @@
   </header>
 
   <main id="main-content">
+    <noscript>
+      <p class="load-error">
+        This page loads its content with JavaScript. Without it, the
+        <a href="docs/resume.pdf">CV PDF</a> and
+        <a href="mailto:monicakodwani@gwu.edu">email</a> still work.
+      </p>
+    </noscript>
     <section class="page-intro">
       <h1>Curriculum vitae</h1>
       <p class="page-lede" id="page-lede"></p>
     </section>
-    <section class="cv-panel" aria-labelledby="cv-panel-heading">
-      <h2 id="cv-panel-heading" class="visually-hidden">CV download and summary</h2>
+    <section class="cv-block" aria-labelledby="cv-heading">
+      <h2 id="cv-heading" class="visually-hidden">CV download and summary</h2>
       <div class="cta-row">
         <a class="btn btn-primary btn-large" id="cv-open" href="docs/resume.pdf" target="_blank" rel="noopener">Open CV (PDF)</a>
-        <a class="btn btn-secondary" id="cv-email" href="#">Email me</a>
+        <a class="text-link" id="cv-email" href="#">Email me</a>
       </div>
+      <hr class="cv-divider">
       <p class="cv-summary" id="cv-summary"></p>
       <ul class="profile-links" id="cv-links"></ul>
     </section>

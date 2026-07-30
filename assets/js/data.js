@@ -27,18 +27,19 @@ export function loadJson(fileName) {
   return promise;
 }
 
-/* Loads every content file the site uses, in parallel. */
+/* Loads every content file the site uses, in parallel.
+   (profile.json exists for the archived design previews; production
+   renderers don't read it, so it isn't fetched here.) */
 export async function loadPortfolioContent() {
-  const [site, profile, contact, portfolio, projects, publications] = await Promise.all([
+  const [site, contact, portfolio, projects, publications] = await Promise.all([
     loadJson("site.json"),
-    loadJson("profile.json"),
     loadJson("contact.json"),
     loadJson("portfolio.json"),
     loadJson("projects.json"),
     loadJson("publications.json")
   ]);
 
-  return { site, profile, contact, portfolio, projects, publications };
+  return { site, contact, portfolio, projects, publications };
 }
 
 export function el(tagName, className, textContent) {

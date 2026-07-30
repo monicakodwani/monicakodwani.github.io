@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="assets/js/theme-init.js"></script>
   <title>Monica Kodwani — Human-centered AI researcher</title>
-  <meta name="description" content="Monica Kodwani is a human-centered AI researcher and research-tool builder, and a PhD candidate in Computer Science at The George Washington University.">
+  <meta name="description" content="Monica Kodwani studies what people notice, miss, trust, and disclose when they use generative AI — and builds the study tools behind that work. PhD candidate at The George Washington University.">
   <link rel="canonical" href="https://monicakodwani.github.io/">
+  <meta property="og:url" content="https://monicakodwani.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
   <meta property="og:title" content="Monica Kodwani — Human-centered AI researcher">
-  <meta property="og:description" content="Human-centered AI researcher and research-tool builder. PhD candidate in Computer Science at The George Washington University.">
+  <meta property="og:description" content="I study what people notice, miss, trust, and disclose when they use generative AI. I also build the study tools behind that work.">
   <meta property="og:type" content="profile">
-  <meta property="og:image" content="https://monicakodwani.github.io/assets/images/profile/headshot-monica.jpg">
+  <meta property="og:image" content="https://monicakodwani.github.io/assets/images/og/social-card.png">
+  <meta property="og:image:alt" content="Monica Kodwani — Human-centered AI researcher">
   <link rel="icon" href="assets/images/icons/monogram.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
   <script type="module" src="assets/js/site.js"></script>
@@ -28,7 +31,7 @@
     "sameAs": [
       "https://github.com/monicakodwani",
       "https://www.linkedin.com/in/monicakodwani/",
-      "https://scholar.google.com/citations?user=w50aZXIAAAAJ&hl=en&authuser=2"
+      "https://scholar.google.com/citations?user=w50aZXIAAAAJ"
     ]
   }
   </script>
@@ -56,6 +59,13 @@
   </header>
 
   <main id="main-content">
+    <noscript>
+      <p class="load-error">
+        This page loads its content with JavaScript. Without it, the
+        <a href="docs/resume.pdf">CV PDF</a> and
+        <a href="mailto:monicakodwani@gwu.edu">email</a> still work.
+      </p>
+    </noscript>
     <section class="hero">
       <div class="hero-text">
         <h1>Monica Kodwani</h1>
@@ -64,25 +74,59 @@
         <p class="hero-context" id="hero-context"></p>
         <div class="cta-row">
           <a class="btn btn-primary" href="projects.html">View selected projects</a>
-          <a class="btn btn-secondary" href="docs/resume.pdf">Download CV</a>
+          <a class="text-link" href="docs/resume.pdf">View CV</a>
         </div>
         <ul class="profile-links" id="hero-links"></ul>
       </div>
       <div class="hero-portrait-wrap">
-        <img class="hero-portrait" src="assets/images/profile/headshot-monica.jpg" alt="Portrait of Monica Kodwani." width="2501" height="2501">
+        <!-- 900px derivative of headshot-monica.jpg; the original is kept unmodified -->
+        <img class="hero-portrait" src="assets/images/profile/headshot-monica-900.jpg" alt="Portrait of Monica Kodwani." width="900" height="900" fetchpriority="high">
       </div>
     </section>
 
-    <section class="band" aria-labelledby="profile-heading">
-      <div class="band-inner">
-        <h2 id="profile-heading">What I work on</h2>
-        <div class="profile-grid" id="research-profile"></div>
+    <section class="ruled" aria-labelledby="how-heading">
+      <h2 class="kicker" id="how-heading">How I work</h2>
+      <div class="how-grid" id="how-grid"></div>
+    </section>
+
+    <section class="ruled" aria-labelledby="platform-heading">
+      <h2 class="kicker" id="platform-heading">Featured project</h2>
+      <div class="feature">
+        <div id="featured-platform"></div>
+        <div class="feature-visual">
+          <figure class="feature-figure">
+            <img
+              src="assets/images/projects/audit-annotation.png"
+              alt="Chat interface from the auditing platform's tutorial: a participant highlights a sentence in a chatbot reply to mark it as a problematic passage."
+              width="1150"
+              height="834"
+            >
+            <figcaption>Turn-level marking in the platform's audit tutorial.</figcaption>
+          </figure>
+          <ol class="workflow" aria-label="Study workflow, in order">
+            <li>Survey</li>
+            <li>Chat</li>
+            <li>Audit</li>
+            <li>Export</li>
+          </ol>
+        </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="work-heading">
-      <h2 id="work-heading">Selected work</h2>
-      <div class="work-grid" id="selected-work"></div>
+    <section class="ruled" aria-labelledby="study-heading">
+      <h2 class="kicker" id="study-heading">Featured study</h2>
+      <div id="featured-study"></div>
+    </section>
+
+    <section class="ruled" aria-labelledby="progress-heading">
+      <h2 class="kicker" id="progress-heading">Also in progress</h2>
+      <div class="support-grid" id="supporting-work"></div>
+    </section>
+
+    <section class="ruled closing" aria-labelledby="closing-heading">
+      <h2 class="kicker" id="closing-heading">What's next</h2>
+      <p id="closing-text"></p>
+      <ul class="link-row" id="closing-links"></ul>
     </section>
   </main>
 
