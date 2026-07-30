@@ -1,14 +1,14 @@
 {
   "name": "Monica Kodwani",
   "pronouns": "She/Her",
-  "role": "PhD student in usable security and privacy",
+  "role": "PhD candidate in Computer Science",
   "institution": "The George Washington University",
   "location": "Washington, DC area",
-  "shortBio": "I am a PhD student in usable security and privacy at The George Washington University. I build human-centered tools and methods for evaluating, auditing, and governing generative AI systems in real-world use, with a focus on privacy reflection, transparency, and accountability.",
+  "shortBio": "I am a PhD candidate in Computer Science (usable security and privacy) at The George Washington University. I build human-centered tools and methods for evaluating, auditing, and governing generative AI systems in real-world use, with a focus on privacy reflection, transparency, and accountability.",
   "quickFacts": [
     {
       "label": "Role",
-      "value": "PhD student in usable security and privacy"
+      "value": "PhD candidate in Computer Science"
     },
     {
       "label": "Area",

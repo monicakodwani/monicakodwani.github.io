@@ -1,56 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" data-page="404">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script>
-      (function () {
-        var parts = window.location.pathname.split("/").filter(Boolean);
-        var isGitHubPages = window.location.hostname.endsWith("github.io");
-        var basePath =
-          isGitHubPages && parts.length > 0 && !parts[0].includes(".")
-            ? "/" + parts[0]
-            : "";
-        var base = document.createElement("base");
-        base.href = window.location.origin + basePath + "/";
-        document.head.appendChild(base);
-      })();
-    </script>
-    <script src="assets/js/theme-init.js"></script>
-    <title>Page Not Found | Monica Kodwani</title>
-    <meta
-      name="description"
-      content="Page not found on Monica Kodwani's academic website."
-    />
-    <link rel="icon" href="assets/images/icons/monogram.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/css/variables.css" />
-    <link rel="stylesheet" href="assets/css/base.css" />
-    <link rel="stylesheet" href="assets/css/layout.css" />
-    <link rel="stylesheet" href="assets/css/components.css" />
-    <link rel="stylesheet" href="assets/css/pages.css" />
-    <script type="module" src="assets/js/main.js"></script>
-  </head>
-  <body data-page="404">
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <div id="site-header"></div>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    GitHub Pages serves this page for any missing path (e.g. /foo/bar), so
+    every asset reference is root-absolute and nothing is loaded with fetch().
+  -->
+  <script src="/assets/js/theme-init.js"></script>
+  <title>Page not found | Monica Kodwani</title>
+  <meta name="description" content="Page not found on Monica Kodwani's website.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/images/icons/monogram.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body data-page="404">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <main id="main-content">
-      <section class="section hero-404">
-        <div class="container narrow-flow">
-          <p class="section-kicker">404</p>
-          <h1>This page doesn’t exist</h1>
-          <p class="page-lead">
-            The link may be out of date, or the page may have moved while the
-            site was being reorganized.
-          </p>
-          <div class="button-row">
-            <a class="button button-primary" href="index.html">Back to home</a>
-            <a class="button button-secondary" href="publications.html">Publications</a>
-          </div>
-        </div>
-      </section>
-    </main>
+  <!-- No nav menu here: it needs JS below the mobile breakpoint, and this
+       page stays JS-free. The buttons below cover navigation instead. -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/index.html">Monica Kodwani</a>
+    </div>
+  </header>
 
-    <div id="site-footer"></div>
-  </body>
+  <main id="main-content">
+    <section class="page-intro">
+      <h1>This page doesn&rsquo;t exist</h1>
+      <p class="page-lede">
+        The link may be out of date, or the page may have moved while the site
+        was being reorganized.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/index.html">Back to home</a>
+        <a class="btn btn-secondary" href="/projects.html">Projects</a>
+        <a class="btn btn-secondary" href="/publications.html">Publications</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-identity">
+        <p class="footer-name">Monica Kodwani</p>
+      </div>
+    </div>
+  </footer>
+</body>
 </html>

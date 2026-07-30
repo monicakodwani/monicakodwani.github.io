@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="assets/js/theme-init.js"></script>
-  <title>CV | Monica Kodwani</title>
-  <meta name="description" content="Curriculum vitae of Monica Kodwani, PhD candidate in Computer Science at The George Washington University, available as a PDF.">
-  <link rel="canonical" href="https://monicakodwani.github.io/cv.html">
-  <meta property="og:title" content="CV | Monica Kodwani">
-  <meta property="og:description" content="Curriculum vitae of Monica Kodwani, available as a PDF.">
+  <title>Projects | Monica Kodwani</title>
+  <meta name="description" content="Case studies of Monica Kodwani's research projects: human evaluation and auditing of generative AI, research infrastructure, privacy and interaction histories, and workplace AI governance.">
+  <link rel="canonical" href="https://monicakodwani.github.io/projects.html">
+  <meta property="og:title" content="Projects | Monica Kodwani">
+  <meta property="og:description" content="Research projects combining study design with the systems built to run them.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://monicakodwani.github.io/assets/images/profile/headshot-monica.jpg">
   <link rel="icon" href="assets/images/icons/monogram.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
   <script type="module" src="assets/js/site.js"></script>
 </head>
-<body data-page="cv">
+<body data-page="projects">
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header class="site-header">
@@ -25,9 +25,9 @@
       <nav id="site-nav" class="site-nav" aria-label="Main navigation">
         <ul class="nav-list">
           <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
           <li><a href="publications.html">Publications</a></li>
-          <li><a href="cv.html" aria-current="page">CV</a></li>
+          <li><a href="cv.html">CV</a></li>
         </ul>
         <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
           <span class="theme-toggle-icon" aria-hidden="true"></span>
@@ -39,18 +39,10 @@
 
   <main id="main-content">
     <section class="page-intro">
-      <h1>Curriculum vitae</h1>
+      <h1>Projects</h1>
       <p class="page-lede" id="page-lede"></p>
     </section>
-    <section class="cv-panel" aria-labelledby="cv-panel-heading">
-      <h2 id="cv-panel-heading" class="visually-hidden">CV download and summary</h2>
-      <div class="cta-row">
-        <a class="btn btn-primary btn-large" id="cv-open" href="docs/resume.pdf" target="_blank" rel="noopener">Open CV (PDF)</a>
-        <a class="btn btn-secondary" id="cv-email" href="#">Email me</a>
-      </div>
-      <p class="cv-summary" id="cv-summary"></p>
-      <ul class="profile-links" id="cv-links"></ul>
-    </section>
+    <div class="projects-list" id="projects-list"></div>
   </main>
 
   <footer class="site-footer">
