@@ -3,24 +3,5 @@
   "pronouns": "She/Her",
   "role": "PhD candidate in Computer Science",
   "institution": "The George Washington University",
-  "location": "Washington, DC area",
-  "shortBio": "I am a PhD candidate in Computer Science (usable security and privacy) at The George Washington University. I build human-centered tools and methods for evaluating, auditing, and governing generative AI systems in real-world use, with a focus on privacy reflection, transparency, and accountability.",
-  "quickFacts": [
-    {
-      "label": "Role",
-      "value": "PhD candidate in Computer Science"
-    },
-    {
-      "label": "Area",
-      "value": "Human-centered evaluation and governance of generative AI"
-    },
-    {
-      "label": "Methods",
-      "value": "Interactive audits, user studies, privacy reflection tools, and evaluation infrastructure"
-    },
-    {
-      "label": "Systems",
-      "value": "Audit interfaces, AI interaction history dashboards, and open-source evaluation workflows"
-    }
-  ]
+  "location": "Washington, DC area"
 }

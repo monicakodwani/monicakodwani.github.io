@@ -1,30 +1,11 @@
 {
   "site": {
     "name": "Monica Kodwani",
-    "tagline": "Human-centered evaluation, auditing, privacy reflection, and governance for generative AI.",
-    "description": "Personal academic website for Monica Kodwani, a PhD student building human-centered tools and methods for evaluating, auditing, and governing generative AI systems.",
-    "roleLine": "PhD student in usable security and privacy at The George Washington University",
+    "tagline": "PhD research at The George Washington University on how people audit and trust generative AI.",
+    "description": "Personal website of Monica Kodwani, a human-centered AI researcher who studies how people make sense of generative AI and builds the software behind that research.",
     "location": "Washington, DC area",
-    "footerNote": "Human-centered AI evaluation, auditing, and privacy reflection.",
+    "footerNote": "PhD research at The George Washington University on how people audit and trust generative AI.",
     "cvPath": "docs/resume.pdf",
     "lastUpdated": "July 2026"
-  },
-  "navigation": [
-    {
-      "label": "Home",
-      "href": "index.html"
-    },
-    {
-      "label": "Projects",
-      "href": "projects.html"
-    },
-    {
-      "label": "Publications",
-      "href": "publications.html"
-    },
-    {
-      "label": "CV",
-      "href": "cv.html"
-    }
-  ]
+  }
 }

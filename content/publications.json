@@ -6,13 +6,13 @@
     "venue": "FAccT",
     "venueFull": "ACM Conference on Fairness, Accountability, and Transparency",
     "year": "2026",
-    "status": "To appear",
+    "status": "",
     "topics": ["Generative AI evaluation"],
-    "summary": "Large-scale interactive study (254 participants, 551 conversations) of how lay users probe chatbots for problems and bias. Participants often failed to surface expected issues, and even limited probing frequently increased trust — revealing systematic gaps in user-driven auditing.",
+    "summary": "Interactive study (254 participants, 551 conversations) of how lay users probe chatbots for problems and bias. Participants often failed to surface expected issues, and even limited probing frequently increased trust — a systematic gap in user-driven auditing.",
     "links": [
       {
-        "label": "Conference",
-        "url": "https://facctconference.org"
+        "label": "Paper (ACM DL)",
+        "url": "https://doi.org/10.1145/3805689.3806751"
       }
     ]
   },
@@ -42,7 +42,7 @@
     "year": "2025",
     "status": "",
     "topics": ["Measurement & methods"],
-    "summary": "Review of 130 AI user studies showing that most measure user perceptions with unvalidated Likert items. Calls for a community repository of rigorously tested scales and outlines a roadmap for developing validated measures of how people perceive AI systems.",
+    "summary": "Review of 130 AI user studies showing that most measure user perceptions with unvalidated Likert items. Calls for a community repository of validated scales and lays out how to build them.",
     "links": []
   },
   {
@@ -54,7 +54,7 @@
     "year": "2024",
     "status": "",
     "topics": ["Privacy transparency"],
-    "summary": "Large-scale comparison of Apple privacy labels against apps' actual privacy policies using fine-tuned language models. Identified significant discrepancies between what labels claim and what policies state, with implications for label accuracy and developer support.",
+    "summary": "Used fine-tuned language models to compare Apple privacy labels against the apps' own privacy policies, surfacing discrepancies between what labels claim and what the policies actually say.",
     "links": [
       {
         "label": "arXiv",
@@ -71,7 +71,7 @@
     "year": "2022",
     "status": "Preprint",
     "topics": ["Privacy transparency"],
-    "summary": "Weekly snapshots of 1.6 million apps (July 2021 – October 2022) tracking privacy-label adoption over time. Found roughly 70% adoption driven largely by new apps, with labels rarely updated after creation — raising questions about their reliability.",
+    "summary": "Weekly snapshots of 1.6 million apps (July 2021 – October 2022) tracking privacy-label adoption over time. Found roughly 70% adoption, with growth coming mostly from newly listed apps and labels rarely updated after creation — raising questions about their reliability.",
     "links": [
       {
         "label": "arXiv",

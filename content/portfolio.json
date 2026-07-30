@@ -1,8 +1,35 @@
 {
   "hero": {
-    "roleLine": "Human-centered AI researcher and research-tool builder",
-    "lede": "I study how people evaluate, trust, audit, and govern generative AI — and I build the interfaces and research infrastructure needed to collect those judgments at scale.",
+    "roleLine": "Human-centered AI researcher",
+    "lede": "I study what people notice, miss, trust, and disclose when they use generative AI. I also build the study tools behind that work: chat interfaces, annotation workflows, and privacy dashboards.",
     "context": "PhD candidate in Computer Science at The George Washington University."
+  },
+  "howIWork": [
+    {
+      "label": "Study",
+      "value": "I run studies of how people interpret AI responses, decide what to trust, and recognize privacy or safety problems."
+    },
+    {
+      "label": "Build",
+      "value": "I write the software those studies run on — from survey flow to chat backend to the pipeline that exports clean data for analysis."
+    },
+    {
+      "label": "Apply",
+      "value": "I use the results to show where current evaluation methods fall short — and what evidence product teams and regulators would need instead."
+    }
+  ],
+  "jobSearch": {
+    "text": "I'm looking for research and research-engineering roles. If your team evaluates AI systems with real users — or needs the tooling to do it — I'd like to talk."
+  },
+  "projectsPage": {
+    "lede": "Four projects: an open-source study platform, the published auditing study that ran on it, and two studies still in the field."
+  },
+  "publicationsPage": {
+    "lede": "Peer-reviewed and preprint work on how people judge AI chatbots, how studies should measure those judgments, and how privacy information reaches — or fails to reach — users."
+  },
+  "cvPage": {
+    "lede": "Education, publications, research experience, and the systems behind them, in one PDF.",
+    "summary": "PhD candidate in Computer Science (usable security and privacy; trustworthy AI) at The George Washington University, advised by Adam Aviv. Recent work spans chatbot auditing studies, privacy-label measurement, and the software that runs them."
   },
   "researchProfile": [
     {
@@ -21,15 +48,5 @@
       "label": "Currently",
       "value": "PhD candidate in Computer Science at The George Washington University, advised by Adam Aviv."
     }
-  ],
-  "projectsPage": {
-    "lede": "Each project combines research design with systems I built to run it. Together they cover human evaluation and auditing, research infrastructure, privacy and interaction histories, and workplace adoption and governance."
-  },
-  "publicationsPage": {
-    "lede": "Peer-reviewed and preprint work on generative AI evaluation and auditing, measurement of user perceptions, and privacy transparency. My earlier work on privacy labels runs directly into my current focus: how people and institutions evaluate the systems they are asked to trust."
-  },
-  "cvPage": {
-    "lede": "My CV covers education, publications, research experience, systems I have built, and technical skills.",
-    "summary": "PhD candidate in Computer Science (usable security and privacy; trustworthy AI) at The George Washington University. I work on human-centered evaluation and auditing of generative AI, privacy, and AI governance, and I build the study platforms and interfaces that make that research possible."
-  }
+  ]
 }
