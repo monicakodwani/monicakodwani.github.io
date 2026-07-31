@@ -33,15 +33,17 @@ function findProject(content, id) {
   return content.projects.find((project) => project.id === id);
 }
 
-/* Short badge for a project's maturity — derived, not styled per status */
+/* Readable badge label from the project's explicit `maturity` field */
+const MATURITY_LABELS = {
+  "published": "Published",
+  "open-source": "Open source",
+  "analysis": "Analysis underway",
+  "recruiting": "Recruitment pending",
+  "in-progress": "In progress"
+};
+
 function statusBadge(project) {
-  if (project.publications && project.publications.length > 0) {
-    return "Published";
-  }
-  if ((project.status || "").toLowerCase().includes("open source")) {
-    return "Open source";
-  }
-  return "In progress";
+  return MATURITY_LABELS[project.maturity] || MATURITY_LABELS["in-progress"];
 }
 
 /* Default case-study section headings; projects override via `headings` */
@@ -195,7 +197,8 @@ function renderSupportingWork(content) {
   const grid = document.getElementById("supporting-work");
   clearChildren(grid);
 
-  ["interaction-history-reflection", "workplace-ai-governance"].forEach((id) => {
+  /* The homepage list lives in portfolio.json, not in code */
+  (content.portfolio.homeSupportingProjects || []).forEach((id) => {
     const project = findProject(content, id);
     if (!project) {
       return;
@@ -330,11 +333,22 @@ function renderCaseStudy(content, project, index) {
     railEntry(rail, "Publications", list);
   }
 
-  /* When a project lists publications, its external links are the papers
-     themselves — already linked above, so skip a duplicate Links block */
-  const external = project.publications && project.publications.length > 0
-    ? []
-    : (project.links || []).filter((item) => isExternal(item.url));
+  /* Rail links: external secondary links, minus any URL already carried by a
+     linked publication (papers and artifacts live on the publications page).
+     Primary links render as the case study's closing button instead. */
+  const publicationUrls = new Set();
+  (project.publications || []).forEach((pubId) => {
+    const publication = content.publications.find((p) => p.id === pubId);
+    if (publication) {
+      (publication.links || []).forEach((item) => publicationUrls.add(item.url));
+    }
+  });
+  const external = (project.links || []).filter(
+    (item) =>
+      isExternal(item.url) &&
+      item.type !== "primary" &&
+      !publicationUrls.has(item.url)
+  );
   if (external.length > 0) {
     const list = el("div");
     external.forEach((item) => {

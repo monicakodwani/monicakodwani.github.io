@@ -2,23 +2,24 @@
   {
     "id": "auditing-infrastructure",
     "category": "Research infrastructure",
-    "title": "Human-Centered Generative AI Auditing Platform",
+    "title": "Open-Source Infrastructure for Human-Centered AI Auditing",
     "shortTitle": "Auditing platform",
-    "oneLiner": "An open-source platform for studies that mix surveys, live chatbot conversations, and guided auditing.",
-    "teaser": "An open-source platform for studies that combine surveys, live chatbot conversations, and guided auditing tasks. I build the annotation tools, the study flows, and the export pipeline that turns conversations into analyzable data.",
-    "summary": "An open-source platform for studies that combine surveys, live chatbot conversations, and guided auditing tasks. I design and build the system, including its annotation tools, study flows, and structured data export.",
-    "problem": "Benchmarks measure what a model does on fixed inputs. They don't tell you what a person sitting in front of the model actually notices or questions. Getting that kind of evidence takes real software — consent flows, tutorials, a chat interface, annotation tools, a data pipeline — and most research teams rebuild all of it for every study.",
-    "role": "I design and build the platform, and I use it to run my own auditing studies.",
+    "oneLiner": "A configurable platform for studies that combine surveys, live chatbot interaction, turn-level annotation, and structured data export.",
+    "teaser": "A reusable platform for running human-centered AI evaluations with surveys, live chatbot conversations, guided auditing, turn-level annotation, and structured export. I am turning the system used in our 254-participant study into open-source research infrastructure.",
+    "summary": "Human-centered AI studies often require researchers to rebuild the same components: consent and survey flows, a chat interface, model connections, annotation tools, logging, and data export. I am turning the system used in our 254-participant chatbot study into an open-source platform that can support different models, tasks, and study designs.",
+    "problem": "The original system was built for one interactive chatbot study. The open-source version separates study content from application logic so researchers can configure a new evaluation without rewriting the platform. It also preserves the link between a conversation turn, a participant's annotation, and the survey measures used in later analysis.",
+    "role": "I designed and built the platform and continue to lead its open-source development.",
     "built": [
-      "Study flows that combine surveys, live chatbot conversations, and guided auditing tasks",
+      "Configurable survey, chat, audit, and completion flows",
+      "Live chatbot interaction through a model-relay server",
       "Turn-level highlighting and annotation of model responses",
-      "Likert-scale and free-text responses tied to specific conversation turns",
-      "Tutorial gating so participants practice the auditing task before the main study",
-      "Structured data storage, export, and study replay",
-      "Study content kept separate from system logic, so a new study is a configuration, not a rewrite"
+      "Likert and free-text responses tied to specific conversation turns",
+      "Tutorial gating before the main task",
+      "Structured local (IndexedDB) and server-side storage, export, and replay",
+      "Study content separated from application logic"
     ],
     "headings": {
-      "problem": "Why the platform exists",
+      "problem": "From one study to a platform",
       "built": "What the system supports",
       "role": "My role"
     },
@@ -27,9 +28,10 @@
       "Study workflow design",
       "Data collection"
     ],
-    "stack": "React, Node.js, and MongoDB",
+    "stack": "React, Node.js/Express, and Dexie (IndexedDB)",
     "scale": "Used in a study with 254 participants and 551 conversations",
-    "status": "Open source · in active development",
+    "status": "Open source · active development",
+    "maturity": "open-source",
     "findings": [],
     "publications": [],
     "links": [
@@ -53,22 +55,20 @@
   {
     "id": "how-people-audit",
     "category": "Human evaluation & auditing",
-    "title": "How People Audit and Trust Generative AI",
+    "title": "Lay-User Auditing and Trust in Generative AI",
     "shortTitle": "User auditing & trust",
-    "oneLiner": "We asked 254 people to hunt for problems in AI chatbots. Many came away trusting the chatbot more.",
-    "teaser": "What do everyday users actually catch when you ask them to find problems in a chatbot? In 551 conversations, many participants missed the issues the study was designed to surface — and probing often made them more trusting, not less.",
-    "pullQuote": "Hunting for problems usually left participants trusting the chatbot more — even when the hunt turned up little.",
-    "summary": "We asked 254 U.S. participants to probe chatbots for problematic and unfair behavior — 551 conversations, run through an audit interface I built. Many missed issues the study was designed to surface, and the exercise often left them more trusting of the model.",
-    "problem": "Product teams and regulators sometimes treat “let users try the model” as a check on AI systems. We tested what that check actually produces: what everyday users catch, what they miss, and what the exercise does to their trust.",
-    "whyItMatters": "If probing leaves people more confident without making them better at finding problems, user testing can manufacture trust rather than measure it. And since participants who started out more trusting flagged fewer problems, the people most inclined to rely on a model are the least likely to catch its failures.",
-    "role": "I led the interactive study and designed and deployed the chat, survey, and annotation system it ran on. Study design and analysis were joint work with a multi-institution team.",
+    "oneLiner": "In 551 chatbot conversations, participants often failed to find the problems they expected, while probing generally increased their trust.",
+    "teaser": "We asked 254 U.S. participants to investigate whether a chatbot produced problematic, questionable, or unfair responses. Across 551 conversations, participants often failed to uncover the issues they expected, and trustworthiness ratings generally rose after the exercise.",
+    "pullQuote": "Trustworthiness ratings generally increased after probing, whether or not participants detected a problem.",
+    "summary": "We asked 254 U.S. participants to investigate whether a chatbot produced problematic, questionable, or unfair responses. Using a researcher-supplied probing tool, participants held 551 open-ended conversations and flagged issues they encountered. Participants frequently failed to uncover the problems they expected to find. Trustworthiness perceptions increased after probing whether or not a problem was detected, and participants with higher initial trust were less likely to flag one.",
+    "problem": "User-driven auditing assumes that people can turn their concerns about AI into evidence through direct interaction. This study tests that assumption by comparing what participants tried to uncover, what they actually flagged, and how the audit exercise changed their perceptions of the chatbot.",
+    "whyItMatters": "The results suggest that lay users may recognize that generative AI raises concerns without being well equipped to surface those concerns on their own. They also show that an unsuccessful audit can increase confidence rather than calibrate it.",
+    "role": "I led the implementation and deployment of the interactive study platform and contributed to the study design and analysis with the research team.",
     "built": [],
     "findings": [
-      "Participants often failed to surface problems the study was designed to let them find.",
-      "Probing frequently increased trust in the chatbot, even when it was limited or unsuccessful.",
-      "Participants who began with higher trust flagged fewer problems.",
-      "A companion survey of 123 U.S. chatbot users found three distinct groups — Hesitant Skeptics, Cautious Trusters, and Confident Adopters — with usage frequency, not demographics, the strongest predictor of trust.",
-      "A review of 130 AI user studies found most rely on unvalidated rating scales, which is part of why we argue for validated instruments."
+      "Participants frequently failed to uncover the problems they expected to find.",
+      "Trustworthiness perceptions increased after probing, whether or not a problem was detected.",
+      "Participants with higher initial trust were less likely to flag a problem."
     ],
     "headings": {
       "problem": "What we tested",
@@ -84,7 +84,8 @@
     ],
     "stack": "",
     "scale": "254 U.S. participants · 551 conversations",
-    "status": "Published at FAccT 2026, SOUPS 2025, and ConPro 2025",
+    "status": "Published at FAccT 2026 · related work at SOUPS 2025 and ConPro 2025",
+    "maturity": "published",
     "collaborators": "With co-authors at The George Washington University and partner universities.",
     "publications": [
       "facct-2026-probing-bias-trustworthiness",
@@ -105,59 +106,20 @@
     ]
   },
   {
-    "id": "privacy-label-ecosystem",
-    "category": "Privacy transparency",
-    "title": "How Privacy Disclosures Are Created, Maintained, and Understood",
-    "shortTitle": "Privacy-label ecosystem",
-    "oneLiner": "A multi-year study of Apple's privacy-label ecosystem, from large-scale measurement to developer surveys and interviews.",
-    "summary": "Apple's privacy labels are intended to provide a concise account of an app's data practices. Across this research program, we track how labels are adopted and updated, compare them with apps' privacy policies, and study how developers interpret and maintain these disclosures.",
-    "problem": "Privacy labels can only help users when they remain accurate as apps and their third-party dependencies change. Developers may be asked to report practices they do not fully control or understand, while disclosure tools remain disconnected from ordinary development workflows.",
-    "whyItMatters": "Our findings show that disclosure failures are not explained only by deliberate deception. Ambiguous terminology, third-party SDKs, fragmented organizational responsibility, and limited maintenance support can allow labels to remain unchanged even when an app evolves.",
-    "role": "My work in this research line spans longitudinal measurement, privacy-policy comparison, and developer-focused mixed-methods research.",
-    "built": [],
-    "methods": [
-      "Longitudinal ecosystem measurement",
-      "Privacy-policy comparison",
-      "Developer surveys",
-      "Semi-structured interviews",
-      "Content analysis"
-    ],
-    "stack": "",
-    "scale": "926,240 apps · 7,000 developers contacted · 128 responses · 19 interviews",
-    "status": "Published at PoPETs 2026 and PETS 2024",
-    "findings": [],
-    "publications": [
-      "popets-2026-privacy-label-updates",
-      "pets-2024-honesty-best-policy",
-      "arxiv-longitudinal-privacy-labels"
-    ],
-    "links": [
-      {
-        "label": "PoPETs 2026 paper",
-        "url": "https://doi.org/10.56553/popets-2026-0151",
-        "type": "primary"
-      },
-      {
-        "label": "Research artifact",
-        "url": "https://doi.org/10.17605/OSF.IO/BUXYJ",
-        "type": "primary"
-      }
-    ]
-  },
-  {
     "id": "interaction-history-reflection",
     "category": "Privacy & interaction histories",
     "title": "Reflecting on AI Interaction Histories",
     "shortTitle": "Interaction histories",
-    "oneLiner": "A dashboard study of what people disclose to chatbots over months of use — and whether seeing it all changes anything.",
-    "summary": "People tell chatbots things one conversation at a time, but providers keep the whole history. In this study, participants see their own history in a dashboard I am building — selected past conversations, resurfaced with reflection prompts — so we can measure what they notice about their disclosures and whether they change how they manage their data.",
-    "problem": "A single conversation can feel disposable. A year of them can reveal health worries, finances, and relationships — and support inferences across conversations that no single exchange shows. Most people never look back at what they have shared.",
-    "role": "I designed the study and I am building the dashboard and data-collection tooling.",
+    "oneLiner": "A dashboard study of what people notice when months of ChatGPT conversations become reviewable as a single record.",
+    "summary": "People disclose information to chatbots one conversation at a time, while providers retain the entire history. A conversation that seemed minor when it occurred may later reveal sensitive information, reliance patterns, emotional context, or changes in how someone uses the system. This study asks what people notice when they review their own ChatGPT histories and whether that review changes privacy concern, trust, disclosure awareness, or plans to manage stored conversations.",
+    "problem": "Most people experience AI histories as separate chats rather than as an accumulated record. The study makes selected parts of that record reviewable and asks whether retrospective reflection reveals risks or benefits that were not apparent during the original interaction.",
+    "role": "I designed the study and am building the participant-facing dashboard and data-collection system.",
     "built": [
-      "A consent-based mechanism for collecting participants' own AI interaction histories",
-      "A participant-facing dashboard that resurfaces selected past conversations",
-      "Guided reflection prompts about sensitive disclosures and cross-conversation inference",
-      "Pre- and post-intervention measures of disclosure awareness, perceived privacy risk, perceived benefits, and intentions to review, delete, or manage stored histories"
+      "Consent-based collection of a participant's own ChatGPT history",
+      "Participant- and researcher-selected sampling of past conversations",
+      "A dashboard for reviewing selected conversations with guided reflection prompts",
+      "Pre- and post-review measures of privacy concern, trust, disclosure awareness, and data-management intentions",
+      "Structured data export"
     ],
     "headings": {
       "problem": "Why histories matter",
@@ -172,45 +134,144 @@
     ],
     "stack": "",
     "scale": "",
-    "status": "IRB approved · data collection in progress",
-    "statusNote": "Results will be reported when data collection is complete.",
+    "status": "IRB and ethics approvals complete · pilot completed · recruitment pending",
+    "maturity": "recruiting",
+    "statusNote": "Results will be reported when the main study is complete.",
     "findings": [],
     "publications": [],
     "links": []
   },
   {
-    "id": "workplace-ai-governance",
-    "category": "Workplace adoption & governance",
-    "title": "AI in the Workplace: Adoption, Trust, and Governance",
+    "id": "employee-ai-adoption-governance",
+    "category": "Workplace adoption and governance",
+    "title": "Employee Adoption and Governance of Generative AI",
     "shortTitle": "Workplace AI",
-    "oneLiner": "Interviews with employees and AI practitioners about what work goes to AI, who checks its output, and what employers do about it.",
-    "summary": "Semi-structured interviews with employees and AI practitioners about how AI actually enters a workplace: which tasks it takes on, why people adopt or avoid it, how they check its output, and what their organizations do about any of it.",
-    "problem": "Standards and governance frameworks address organizations, but adoption happens one person at a time. Governance that works in practice has to start from what employees actually do: the judgment calls, the double-checking, the workarounds.",
+    "oneLiner": "Interviews with NIST employees about where generative AI fits into their work, where they avoid it, and how they judge and verify its outputs.",
+    "summary": "This study examines the tasks employees use generative AI for, the outcomes and impacts they experience, and the reasons they use or avoid it. Interviews also ask how employees decide that a use is appropriate, how they check generated output, and what organizational guidance and support they need.",
+    "problem": "Workplace use carries consequences that personal use may not. An inaccurate output can affect a colleague, client, or organizational record, and employees must make decisions about confidentiality, verification, disclosure, and professional judgment even when formal guidance is incomplete.",
     "questions": [
-      "What tasks do employees hand to AI, and what does that change about their work?",
-      "Why do people adopt AI tools — or deliberately avoid them?",
-      "How do employees decide when AI use is appropriate, and how do they verify output?",
-      "What support and oversight do organizations actually provide?",
-      "How do practitioners run human-centered evaluations inside real organizations, and what evidence changes product and governance decisions?"
+      "For what tasks do employees use generative AI at work?",
+      "How is generative AI incorporated into employees' work, and what positive or negative impacts do they experience?",
+      "How do employees assess AI-assisted work and verify generated output?",
+      "How do organizations support or fail to support employee use?",
+      "Why do employees use, selectively use, or avoid generative AI?",
+      "How do employees decide whether a particular use is appropriate?"
     ],
-    "role": "I conduct interviews and qualitative analysis in a collaboration with NIST researchers.",
+    "role": "I co-designed the study, prepared the GWU IRB materials, conducted interviews with NIST employees, and am co-leading qualitative coding and analysis.",
     "built": [],
     "headings": {
-      "problem": "What we are asking",
-      "questions": "Questions on the table",
-      "role": "Interviews and analysis",
-      "status": "Current status"
+      "problem": "Why workplace use is different",
+      "questions": "Questions this study asks",
+      "role": "My role"
     },
     "methods": [
       "Semi-structured interviews",
-      "Qualitative coding and analysis"
+      "Qualitative coding",
+      "Thematic analysis",
+      "Workplace technology research"
     ],
     "stack": "",
-    "scale": "",
-    "status": "Research in progress",
-    "collaborators": "With researchers at the National Institute of Standards and Technology (NIST).",
+    "scale": "38 completed interviews",
+    "status": "38 interviews completed · coding and analysis underway",
+    "maturity": "analysis",
+    "collaborators": "Conducted with researchers at the National Institute of Standards and Technology (NIST).",
     "findings": [],
     "publications": [],
     "links": []
+  },
+  {
+    "id": "practitioner-ai-evaluation",
+    "category": "Evaluation practice and governance",
+    "title": "Practitioner Perspectives on Human-Centered AI Evaluation",
+    "shortTitle": "Evaluation practitioners",
+    "oneLiner": "Interviews with people who design, conduct, support, or use AI evaluations about what human-centered evaluation looks like in practice.",
+    "summary": "This study asks how practitioners define human-centered AI evaluation, which methods and evidence they use, whose perspectives are included, how disagreement and subjective feedback are handled, and what tools or workflows are missing.",
+    "problem": "A team can value user perspectives and still face practical questions: whom to recruit, how much evidence is enough, how to interpret conflicting feedback, and how evaluation findings become something a research, product, or governance team can use. This study examines how those choices are made in practice.",
+    "questions": [
+      "How do practitioners define human-centered AI evaluation?",
+      "Which methods, criteria, and forms of evidence do they use?",
+      "Where does human judgment enter the evaluation process?",
+      "Whose perspectives are included, and how is disagreement handled?",
+      "Which methodological, organizational, technical, or governance constraints make evaluation difficult?",
+      "What tools, documentation, workflows, or data exports are missing?",
+      "How are findings interpreted, communicated, and acted upon?"
+    ],
+    "role": "I designed the study and interview protocol and obtained GWU IRB approval. Recruitment and interviews are planned as part of my dissertation research.",
+    "built": [],
+    "headings": {
+      "problem": "Why practice matters",
+      "questions": "Questions this study asks",
+      "role": "My role"
+    },
+    "methods": [
+      "Semi-structured interviews",
+      "Qualitative coding",
+      "Thematic analysis",
+      "Requirements elicitation"
+    ],
+    "stack": "",
+    "scale": "",
+    "status": "Study and interview protocol complete · GWU IRB approved · recruitment pending",
+    "maturity": "recruiting",
+    "findings": [],
+    "publications": [],
+    "links": []
+  },
+  {
+    "id": "privacy-label-ecosystem",
+    "category": "Mobile privacy transparency",
+    "title": "Privacy Label Observatory and Ecosystem Studies",
+    "shortTitle": "Privacy labels",
+    "oneLiner": "Longitudinal measurement, policy comparison, and developer research on how app privacy labels are created and maintained.",
+    "summary": "This research line tracks Apple privacy labels over time, compares labels with apps' privacy policies, and studies why developers update — or leave unchanged — their disclosures. The public Privacy Label Observatory makes longitudinal privacy-label data available through per-app histories and ecosystem-level views.",
+    "problem": "Privacy labels are useful only when they continue to reflect an app's data practices. Apps, dependencies, and development teams change, but the disclosure may remain untouched. This work studies where that maintenance process breaks down.",
+    "whyItMatters": "Across the studies, disclosure problems arise from more than deliberate deception. Developers may not know what third-party components collect, responsibility may be divided across teams, and privacy-label maintenance may sit outside normal development workflows.",
+    "role": "I built Android crawling infrastructure, contributed to systems for collecting and visualizing longitudinal privacy-label data, and supported privacy-policy and label analysis. I also contributed to the developer-study protocol and early interviews.",
+    "built": [],
+    "headings": {
+      "problem": "Where maintenance breaks down",
+      "whyItMatters": "What the studies show",
+      "role": "My role"
+    },
+    "methods": [
+      "Longitudinal ecosystem measurement",
+      "App-store crawling",
+      "Privacy-policy comparison",
+      "Developer surveys",
+      "Semi-structured interviews",
+      "Qualitative analysis"
+    ],
+    "stack": "",
+    "scale": "926,240 apps (developer-update study) · 1.6 million apps (longitudinal dataset) · 128 developer survey responses · 19 interviews",
+    "status": "Published research · public observatory",
+    "maturity": "published",
+    "findings": [],
+    "publications": [
+      "popets-2026-privacy-label-updates",
+      "pets-2024-honesty-best-policy",
+      "arxiv-longitudinal-privacy-labels"
+    ],
+    "links": [
+      {
+        "label": "Explore the Observatory",
+        "url": "https://privlabels.gwusec.seas.gwu.edu",
+        "type": "primary"
+      },
+      {
+        "label": "GitHub repository",
+        "url": "https://github.com/gwusec/privacy-label-observatory",
+        "type": "secondary"
+      },
+      {
+        "label": "PoPETs 2026 paper",
+        "url": "https://doi.org/10.56553/popets-2026-0151",
+        "type": "secondary"
+      },
+      {
+        "label": "Research artifact",
+        "url": "https://doi.org/10.17605/OSF.IO/BUXYJ",
+        "type": "secondary"
+      }
+    ]
   }
 ]

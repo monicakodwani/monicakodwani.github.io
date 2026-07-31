@@ -8,7 +8,7 @@
     "year": "2026",
     "status": "",
     "topics": ["Generative AI evaluation"],
-    "summary": "Interactive study (254 participants, 551 conversations) of how lay users probe chatbots for problems and bias. Participants often failed to surface expected issues, and even limited probing frequently increased trust — a systematic gap in user-driven auditing.",
+    "summary": "Interactive study with 254 U.S. participants who held 551 open-ended conversations while investigating problematic, questionable, or unfair chatbot responses. Participants frequently failed to uncover the issues they expected, trustworthiness perceptions generally increased after probing, and participants with higher initial trust were less likely to flag problems.",
     "links": [
       {
         "label": "Paper (ACM DL)",
@@ -47,7 +47,7 @@
     "year": "2025",
     "status": "",
     "topics": ["Generative AI evaluation"],
-    "summary": "Survey of 123 U.S. chatbot users with a new trust–risk–fairness instrument. Identified three user segments — Hesitant Skeptics, Cautious Trusters, and Confident Adopters — with usage frequency, not demographics, the strongest predictor of higher trust and lower perceived risk.",
+    "summary": "Survey of 123 U.S. chatbot users examining perceived trust, fairness, and risk. Factor and latent-class analyses identified three groups — Hesitant Skeptics, Cautious Trusters, and Confident Adopters — and found that more frequent chatbot use was associated with higher trust and fairness perceptions and lower perceived risk.",
     "links": [
       {
         "label": "Paper",
@@ -64,7 +64,7 @@
     "year": "2025",
     "status": "",
     "topics": ["Measurement & methods"],
-    "summary": "Review of 130 AI user studies showing that most measure user perceptions with unvalidated Likert items. Calls for a community repository of validated scales and lays out how to build them.",
+    "summary": "Review of 130 AI user studies examining how researchers measure perceptions such as trust and fairness. Most studies relied on unvalidated rating items, motivating a call for validated instruments, clearer construct definitions, and shared measurement resources.",
     "links": []
   },
   {
@@ -76,7 +76,7 @@
     "year": "2024",
     "status": "",
     "topics": ["Privacy transparency"],
-    "summary": "Used fine-tuned language models to compare Apple privacy labels against the apps' own privacy policies, surfacing discrepancies between what labels claim and what the policies actually say.",
+    "summary": "Compared Apple privacy labels with the corresponding apps' privacy policies using language-model-assisted analysis, identifying discrepancies between the practices described in the two forms of disclosure.",
     "links": [
       {
         "label": "arXiv",

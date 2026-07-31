@@ -13,7 +13,7 @@ different option could be promoted later.
 ## Production pages
 
 - `index.html` — hero, research profile, selected work
-- `projects.html` — five case studies rendered from `content/projects.json`
+- `projects.html` — research case studies rendered from `content/projects.json`
 - `publications.html` — publication list rendered from
   `content/publications.json`
 - `cv.html` — CV download page
@@ -52,8 +52,8 @@ and every preview, so a single edit updates everything:
 - `content/contact.json` — email and external profile links
 - `content/portfolio.json` — hero copy, research-profile entries, page
   intros
-- `content/projects.json` — structured case-study data for the five
-  research projects
+- `content/projects.json` — structured case-study data for the research
+  projects
 - `content/publications.json` — publication entries (title, authors, venue,
   year, status, topics, summary, links)
 

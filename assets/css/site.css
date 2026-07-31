@@ -536,6 +536,9 @@ button:focus-visible {
 }
 
 .feature-figure img {
+  /* height:auto keeps the width/height attributes as aspect ratio only */
+  width: 100%;
+  height: auto;
   border: 1px solid var(--rule-strong);
   border-radius: 4px;
 }

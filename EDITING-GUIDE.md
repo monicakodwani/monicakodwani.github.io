@@ -36,6 +36,7 @@ Open `content/portfolio.json`:
 - `hero.lede` — the first-person introduction sentence
 - `hero.context` — the "PhD candidate…" line
 - `researchApproach` — the two "Research approach" paragraphs
+- `homeSupportingProjects` — project ids shown under "More selected work"
 - `projectsPage.lede`, `publicationsPage.lede`, `cvPage.lede`,
   `cvPage.summary` — the intro text on those pages
 
@@ -47,21 +48,26 @@ empty arrays are simply skipped by the pages:
 - `id` — used for links like `projects.html#auditing-infrastructure`; do not
   change casually
 - `category` — short label, e.g. "Research infrastructure"
-- `title`, `oneLiner`, `summary`
-- `problem` — rendered as "The question"
+- `title`, `shortTitle` (in-page index), `oneLiner`, `summary`
+- `teaser` — shorter homepage version of the summary (featured projects)
+- `pullQuote` — the homepage pull-finding (featured study only)
+- `problem` — motivation paragraph
 - `whyItMatters` — optional context paragraph
-- `role` — what you personally did (first person, rendered as "My role")
-- `built` — list rendered as "What I built"
-- `questions` — list rendered as "Questions this work asks"
-- `findings` — list rendered as "What we learned"; leave empty until
-  results are real
-- `methods` — short labels rendered as chips
-- `stack`, `scale`, `status`, `statusNote`, `collaborators` — facts
-  rendered under "Where it stands" and the fact list
+- `headings` — optional per-project section-title overrides, e.g.
+  `{"problem": "What we tested"}`
+- `role` — what you personally did (first person)
+- `built` — list of system capabilities
+- `questions` — list of research questions
+- `findings` — list of results; leave empty until results are real
+- `methods` — short labels shown in the left rail
+- `stack`, `scale`, `status`, `statusNote`, `collaborators` — rail facts
+- `maturity` — explicit badge value: `published`, `open-source`,
+  `analysis`, `recruiting`, or `in-progress`
 - `publications` — publication `id`s from `content/publications.json`,
   rendered as venue links automatically
-- `links` — objects with `label`, `url`, `type` (`"primary"` or
-  `"secondary"`)
+- `links` — objects with `label`, `url`, `type` (`"primary"` renders as the
+  closing button; secondary external links appear in the rail unless a
+  linked publication already carries the same URL)
 
 ## Edit publications
 
@@ -109,9 +115,9 @@ dark. Each design preview keeps its own palette at the top of its CSS file
 ## Page structure (when text lives in HTML)
 
 The static page skeletons are the root HTML files themselves. Headings such
-as "What I work on" and "Selected work" are in `index.html`; the 404 page
-text is in `404.html`. The renderers that fill in JSON-driven parts are in
-`assets/js/site.js`.
+as "Research approach", "Featured project", and "More selected work" are in
+`index.html`; the 404 page text is in `404.html`. The renderers that fill in
+JSON-driven parts are in `assets/js/site.js`.
 
 ## The design previews
 
