@@ -105,6 +105,46 @@
     ]
   },
   {
+    "id": "privacy-label-ecosystem",
+    "category": "Privacy transparency",
+    "title": "How Privacy Disclosures Are Created, Maintained, and Understood",
+    "shortTitle": "Privacy-label ecosystem",
+    "oneLiner": "A multi-year study of Apple's privacy-label ecosystem, from large-scale measurement to developer surveys and interviews.",
+    "summary": "Apple's privacy labels are intended to provide a concise account of an app's data practices. Across this research program, we track how labels are adopted and updated, compare them with apps' privacy policies, and study how developers interpret and maintain these disclosures.",
+    "problem": "Privacy labels can only help users when they remain accurate as apps and their third-party dependencies change. Developers may be asked to report practices they do not fully control or understand, while disclosure tools remain disconnected from ordinary development workflows.",
+    "whyItMatters": "Our findings show that disclosure failures are not explained only by deliberate deception. Ambiguous terminology, third-party SDKs, fragmented organizational responsibility, and limited maintenance support can allow labels to remain unchanged even when an app evolves.",
+    "role": "My work in this research line spans longitudinal measurement, privacy-policy comparison, and developer-focused mixed-methods research.",
+    "built": [],
+    "methods": [
+      "Longitudinal ecosystem measurement",
+      "Privacy-policy comparison",
+      "Developer surveys",
+      "Semi-structured interviews",
+      "Content analysis"
+    ],
+    "stack": "",
+    "scale": "926,240 apps · 7,000 developers contacted · 128 responses · 19 interviews",
+    "status": "Published at PoPETs 2026 and PETS 2024",
+    "findings": [],
+    "publications": [
+      "popets-2026-privacy-label-updates",
+      "pets-2024-honesty-best-policy",
+      "arxiv-longitudinal-privacy-labels"
+    ],
+    "links": [
+      {
+        "label": "PoPETs 2026 paper",
+        "url": "https://doi.org/10.56553/popets-2026-0151",
+        "type": "primary"
+      },
+      {
+        "label": "Research artifact",
+        "url": "https://doi.org/10.17605/OSF.IO/BUXYJ",
+        "type": "primary"
+      }
+    ]
+  },
+  {
     "id": "interaction-history-reflection",
     "category": "Privacy & interaction histories",
     "title": "Reflecting on AI Interaction Histories",

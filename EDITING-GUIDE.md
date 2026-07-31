@@ -28,14 +28,14 @@ python3 -m json.tool content/projects.json
 
 (or whichever file you touched) to find the exact line.
 
-## Edit the homepage hero and research profile
+## Edit the homepage hero and research approach
 
 Open `content/portfolio.json`:
 
 - `hero.roleLine` — the line under your name
 - `hero.lede` — the first-person introduction sentence
 - `hero.context` — the "PhD candidate…" line
-- `researchProfile` — the four label + sentence pairs in "What I work on"
+- `researchApproach` — the two "Research approach" paragraphs
 - `projectsPage.lede`, `publicationsPage.lede`, `cvPage.lede`,
   `cvPage.summary` — the intro text on those pages
 

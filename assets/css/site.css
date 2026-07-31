@@ -471,23 +471,23 @@ button:focus-visible {
   object-position: 50% 22%;
 }
 
-/* ---------- 7. How I work ---------- */
+/* ---------- 7. Research approach ---------- */
 
-.how-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2.5rem;
+.approach {
   margin-top: 1.5rem;
+  max-width: 44rem;
 }
 
-.how-item + .how-item {
-  border-left: 1px solid var(--rule);
-  padding-left: 2.5rem;
+.approach p {
+  font-size: 1.08rem;
+  line-height: 1.7;
 }
 
-.how-item .kicker {
-  display: block;
-  margin-bottom: 0.6rem;
+.approach p + p {
+  margin-top: 1.2rem;
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  color: var(--ink);
 }
 
 /* ---------- 8. Featured projects and supporting work ---------- */
@@ -1057,17 +1057,9 @@ button:focus-visible {
 }
 
 @media (max-width: 760px) {
-  .how-grid,
   .support-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.75rem;
-  }
-
-  .how-item + .how-item {
-    border-left: none;
-    border-top: 1px solid var(--rule);
-    padding-left: 0;
-    padding-top: 1.6rem;
   }
 
   .pub-year-group {

@@ -17,6 +17,28 @@
     ]
   },
   {
+    "id": "popets-2026-privacy-label-updates",
+    "title": "“Because I Didn't Touch These and Even Don't Know Why I Should Change These”: Why App Developers Do (Not) Update Apple's Privacy Labels",
+    "authors": "Arwa Alsahdi, Jialiang Yan, Monica Kodwani, Matthias Fassl, Chris Kanich, Adam J. Aviv",
+    "venue": "PoPETs",
+    "venueFull": "Proceedings on Privacy Enhancing Technologies",
+    "issuePages": "2026(4), 906–926",
+    "year": "2026",
+    "status": "",
+    "topics": ["Privacy transparency", "Developer practices", "Mixed methods"],
+    "summary": "A four-year analysis of privacy-label changes across 926,240 iOS apps, complemented by responses from 128 developers and interviews with 19 developers. Fewer than 6% of apps changed their labels. The study shows how uncertainty about third-party data practices, fragmented responsibility, and limited workflow support can encourage minimal or optimistic disclosure.",
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://doi.org/10.56553/popets-2026-0151"
+      },
+      {
+        "label": "Artifact",
+        "url": "https://doi.org/10.17605/OSF.IO/BUXYJ"
+      }
+    ]
+  },
+  {
     "id": "soups-2025-safety-perceptions",
     "title": "Safety Perceptions of Generative AI Conversational Agents: Uncovering Perceptual Differences in Trust, Risk, and Fairness",
     "authors": "Jan Tolsdorf, Alan F. Luo, Monica Kodwani, Junho Eum, Mahmood Sharif, Michelle L. Mazurek, Adam J. Aviv",

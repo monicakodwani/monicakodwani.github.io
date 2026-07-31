@@ -1,31 +1,21 @@
 {
   "hero": {
     "roleLine": "Human-centered AI researcher",
-    "lede": "I study what people notice, miss, trust, and disclose when they use generative AI. I also build the study tools behind that work: chat interfaces, annotation workflows, and privacy dashboards.",
+    "lede": "I study the gap between what generative AI systems do and what people think they are doing. My work examines what users notice, miss, trust, and disclose in real interactions with AI. I also build the research tools needed to study those interactions.",
     "context": "PhD candidate in Computer Science at The George Washington University."
   },
-  "howIWork": [
-    {
-      "label": "Study",
-      "value": "I run studies of how people interpret AI responses, decide what to trust, and recognize privacy or safety problems."
-    },
-    {
-      "label": "Build",
-      "value": "I write the software those studies run on — from survey flow to chat backend to the pipeline that exports clean data for analysis."
-    },
-    {
-      "label": "Apply",
-      "value": "I use the results to show where current evaluation methods fall short — and what evidence product teams and regulators would need instead."
-    }
+  "researchApproach": [
+    "Most AI evaluations focus on model behavior. I focus on the person interacting with the model. Through interactive studies, surveys, and interviews, I examine how people interpret AI responses, recognize problems, and decide when to rely on a system. I also build the chat interfaces, auditing workflows, and privacy tools that make those studies possible.",
+    "Across this work, I ask what trustworthy AI evaluation should measure when human judgment is part of the system—not merely an observer of it."
   ],
   "jobSearch": {
     "text": "I'm looking for research and research-engineering roles. If your team evaluates AI systems with real users — or needs the tooling to do it — I'd like to talk."
   },
   "projectsPage": {
-    "lede": "Four projects: an open-source study platform, the published auditing study that ran on it, and two studies still in the field."
+    "lede": "Five projects spanning human-centered AI auditing, privacy and interaction histories, workplace governance, and the systems behind that research."
   },
   "publicationsPage": {
-    "lede": "Peer-reviewed and preprint work on how people judge AI chatbots, how studies should measure those judgments, and how privacy information reaches — or fails to reach — users."
+    "lede": "Peer-reviewed work on how people judge AI systems, how researchers should measure those judgments, and how privacy information is produced, maintained, and communicated."
   },
   "cvPage": {
     "lede": "Education, publications, research experience, and the systems behind them, in one PDF.",

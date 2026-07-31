@@ -115,14 +115,11 @@ function renderHero(content) {
   renderProfileLinks(document.getElementById("hero-links"), content.contact);
 }
 
-function renderHowIWork(content) {
-  const grid = document.getElementById("how-grid");
-  clearChildren(grid);
-  content.portfolio.howIWork.forEach((item) => {
-    const block = el("div", "how-item");
-    block.appendChild(el("span", "kicker", item.label));
-    block.appendChild(el("p", "", item.value));
-    grid.appendChild(block);
+function renderResearchApproach(content) {
+  const container = document.getElementById("research-approach");
+  clearChildren(container);
+  content.portfolio.researchApproach.forEach((paragraph) => {
+    container.appendChild(el("p", "", paragraph));
   });
 }
 
@@ -243,7 +240,7 @@ function renderClosing(content) {
 
 function renderHome(content) {
   renderHero(content);
-  renderHowIWork(content);
+  renderResearchApproach(content);
   renderFeaturedPlatform(content);
   renderFeaturedStudy(content);
   renderSupportingWork(content);
@@ -461,7 +458,11 @@ function renderPublications(content) {
       authors.appendChild(highlightAuthor(publication.authors));
       article.appendChild(authors);
 
-      const venue = el("p", "pub-venue", publication.venueFull);
+      /* Optional issue/pages, e.g. "…Enhancing Technologies, 2026(4), 906–926" */
+      const venueText = publication.issuePages
+        ? publication.venueFull + ", " + publication.issuePages
+        : publication.venueFull;
+      const venue = el("p", "pub-venue", venueText);
       if (publication.status) {
         venue.appendChild(document.createTextNode(" · "));
         venue.appendChild(el("span", "pub-status", publication.status));
