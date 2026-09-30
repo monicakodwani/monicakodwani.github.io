@@ -94,5 +94,5 @@ The production site and all previews share that key.
 
 `.github/workflows/pages.yml` deploys the repository to GitHub Pages on every
 push to `master`. The public site is served at
-[https://monicakodwani.github.io/](https://monicakodwani.github.io/). Work on
+[https://monicakodwani.com/](https://monicakodwani.com/). Work on
 other branches does not affect the live site until merged into `master`.
