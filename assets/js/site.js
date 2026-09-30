@@ -330,7 +330,7 @@ function renderCaseStudy(content, project, index) {
       );
       list.appendChild(line);
     });
-    railEntry(rail, "Publications", list);
+    railEntry(rail, "Related publications", list);
   }
 
   /* Rail links: external secondary links, minus any URL already carried by a
@@ -362,7 +362,6 @@ function renderCaseStudy(content, project, index) {
     });
     railEntry(rail, "Links", list);
   }
-  columns.appendChild(rail);
 
   /* Main column: summary + sections, varied by what the project has */
   const main = el("div", "case-main");
@@ -420,7 +419,10 @@ function renderCaseStudy(content, project, index) {
     main.appendChild(row);
   }
 
+  /* Main before rail in the DOM so keyboard focus follows the mobile
+     reading order; the desktop grid places the rail visually first */
   columns.appendChild(main);
+  columns.appendChild(rail);
   article.appendChild(columns);
   return article;
 }
@@ -539,6 +541,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     renderFooter(content);
+
+    /* Content renders after the browser's own fragment scroll, so jump to
+       a #hash target once it exists (scroll-margin-top clears the header) */
+    if (window.location.hash) {
+      const target = document.getElementById(window.location.hash.slice(1));
+      if (target) {
+        target.scrollIntoView();
+      }
+    }
   } catch (error) {
     showLoadError(error);
   }

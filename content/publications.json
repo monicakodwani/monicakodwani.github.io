@@ -11,14 +11,14 @@
     "summary": "Interactive study with 254 U.S. participants who held 551 open-ended conversations while investigating problematic, questionable, or unfair chatbot responses. Participants frequently failed to uncover the issues they expected, trustworthiness perceptions generally increased after probing, and participants with higher initial trust were less likely to flag problems.",
     "links": [
       {
-        "label": "Paper (ACM DL)",
+        "label": "Paper",
         "url": "https://doi.org/10.1145/3805689.3806751"
       }
     ]
   },
   {
     "id": "popets-2026-privacy-label-updates",
-    "title": "“Because I Didn't Touch These and Even Don't Know Why I Should Change These”: Why App Developers Do (Not) Update Apple's Privacy Labels",
+    "title": "“Because I Didn’t Touch These and Even Don’t Know Why I Should Change These”: Why App Developers Do (Not) Update Apple’s Privacy Labels",
     "authors": "Arwa Alsahdi, Jialiang Yan, Monica Kodwani, Matthias Fassl, Chris Kanich, Adam J. Aviv",
     "venue": "PoPETs",
     "venueFull": "Proceedings on Privacy Enhancing Technologies",
@@ -43,14 +43,14 @@
     "title": "ARIA Evaluation Planning Manual: Elements of ARIA-Style AI Evaluations",
     "authors": "Theodore Jensen, Mark Przybocki, Monica Kodwani, Kristen Greene, Patrick Hall, Razvan Amironesei, Craig Greenberg",
     "venue": "NIST AI 200-3",
-    "venueFull": "NIST Trustworthy and Responsible AI report",
+    "venueFull": "NIST Trustworthy and Responsible AI report (NIST AI 200-3)",
     "year": "2026",
     "status": "",
     "topics": ["Generative AI evaluation", "Measurement & methods"],
     "summary": "A planning manual for NIST's Assessing Risks and Impacts of AI (ARIA) evaluations, which assess an AI application's trustworthiness by combining three kinds of testing: model testing, red teaming, and user testing. The manual outlines the elements each evaluation needs, from study materials to supporting infrastructure.",
     "links": [
       {
-        "label": "Report (DOI)",
+        "label": "Report",
         "url": "https://doi.org/10.6028/NIST.AI.200-3"
       },
       {
@@ -86,11 +86,16 @@
     "status": "",
     "topics": ["Measurement & methods"],
     "summary": "Review of 130 AI user studies examining how researchers measure perceptions such as trust and fairness. Most studies relied on unvalidated rating items, motivating a call for validated instruments, clearer construct definitions, and shared measurement resources.",
-    "links": []
+    "links": [
+      {
+        "label": "Paper (PDF)",
+        "url": "https://www.ieee-security.org/TC/SPW2025/ConPro/papers/tolsdorf-conpro25.pdf"
+      }
+    ]
   },
   {
     "id": "pets-2024-honesty-best-policy",
-    "title": "Honesty is the Best Policy: On the Accuracy of Apple Privacy Labels Compared to Apps' Privacy Policies",
+    "title": "Honesty is the Best Policy: On the Accuracy of Apple Privacy Labels Compared to Apps’ Privacy Policies",
     "authors": "Mir Masood Ali, David G. Balash, Monica Kodwani, Chris Kanich, Adam J. Aviv",
     "venue": "PETS",
     "venueFull": "Proceedings on Privacy Enhancing Technologies",
