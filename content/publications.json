@@ -39,6 +39,27 @@
     ]
   },
   {
+    "id": "nist-2026-aria-evaluation-manual",
+    "title": "ARIA Evaluation Planning Manual: Elements of ARIA-Style AI Evaluations",
+    "authors": "Theodore Jensen, Mark Przybocki, Monica Kodwani, Kristen Greene, Patrick Hall, Razvan Amironesei, Craig Greenberg",
+    "venue": "NIST AI 200-3",
+    "venueFull": "NIST Trustworthy and Responsible AI report",
+    "year": "2026",
+    "status": "",
+    "topics": ["Generative AI evaluation", "Measurement & methods"],
+    "summary": "A planning manual for NIST's Assessing Risks and Impacts of AI (ARIA) evaluations, which assess an AI application's trustworthiness by combining three kinds of testing: model testing, red teaming, and user testing. The manual outlines the elements each evaluation needs, from study materials to supporting infrastructure.",
+    "links": [
+      {
+        "label": "Report (DOI)",
+        "url": "https://doi.org/10.6028/NIST.AI.200-3"
+      },
+      {
+        "label": "NIST publication page",
+        "url": "https://www.nist.gov/publications/aria-evaluation-planning-manual-elements-aria-style-ai-evaluations"
+      }
+    ]
+  },
+  {
     "id": "soups-2025-safety-perceptions",
     "title": "Safety Perceptions of Generative AI Conversational Agents: Uncovering Perceptual Differences in Trust, Risk, and Fairness",
     "authors": "Jan Tolsdorf, Alan F. Luo, Monica Kodwani, Junho Eum, Mahmood Sharif, Michelle L. Mazurek, Adam J. Aviv",
