@@ -195,6 +195,33 @@ function renderFeaturedStudy(content) {
   target.appendChild(links);
 }
 
+function renderFeaturedWorkplace(content) {
+  const project = findProject(content, "employee-ai-adoption-governance");
+  const target = document.getElementById("featured-workplace");
+  if (!project || !target) {
+    return;
+  }
+  clearChildren(target);
+
+  const title = el("h2", "feature-title");
+  title.appendChild(link("projects.html#" + project.id, project.title));
+  target.appendChild(title);
+
+  target.appendChild(el("p", "feature-summary", project.teaser || project.summary));
+  const evidence = [project.scale, project.status].filter(Boolean).join(" · ");
+  if (evidence) {
+    target.appendChild(el("p", "feature-evidence", evidence + "."));
+  }
+
+  const links = el("ul", "link-row");
+  const caseLink = el("li");
+  caseLink.appendChild(
+    link("projects.html#" + project.id, "Read the case study", "text-link")
+  );
+  links.appendChild(caseLink);
+  target.appendChild(links);
+}
+
 function renderSupportingWork(content) {
   const grid = document.getElementById("supporting-work");
   clearChildren(grid);
@@ -247,6 +274,7 @@ function renderHome(content) {
   renderResearchApproach(content);
   renderFeaturedPlatform(content);
   renderFeaturedStudy(content);
+  renderFeaturedWorkplace(content);
   renderSupportingWork(content);
   renderClosing(content);
 }
