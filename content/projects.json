@@ -32,6 +32,14 @@
     "scale": "Used in a study with 254 participants and 551 conversations",
     "status": "Open source · active development",
     "maturity": "open-source",
+    "image": {
+      "webp": "assets/images/projects/audit-annotation.webp",
+      "png": "assets/images/projects/audit-annotation.png",
+      "alt": "Auditing interface showing a chatbot response with a passage highlighted in yellow and the same passage captured in the marked-passages panel.",
+      "caption": "Turn-level annotation in the auditing platform.",
+      "width": 1600,
+      "height": 716
+    },
     "findings": [],
     "publications": [],
     "links": [

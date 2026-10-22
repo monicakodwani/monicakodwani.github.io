@@ -33,7 +33,8 @@ function findProject(content, id) {
   return content.projects.find((project) => project.id === id);
 }
 
-/* Readable badge label from the project's explicit `maturity` field */
+/* Status pill from the project's explicit `maturity` field: readable label
+   plus a maturity-tinted class (color reinforces, text carries the meaning) */
 const MATURITY_LABELS = {
   "published": "Published",
   "open-source": "Open source",
@@ -42,8 +43,9 @@ const MATURITY_LABELS = {
   "in-progress": "In progress"
 };
 
-function statusBadge(project) {
-  return MATURITY_LABELS[project.maturity] || MATURITY_LABELS["in-progress"];
+function statusPill(project) {
+  const maturity = MATURITY_LABELS[project.maturity] ? project.maturity : "in-progress";
+  return el("span", "status-pill status-" + maturity, MATURITY_LABELS[maturity]);
 }
 
 /* Default case-study section headings; projects override via `headings` */
@@ -81,7 +83,7 @@ function renderProfileLinks(listElement, contact) {
 
 function renderFooter(content) {
   const footer = document.getElementById("site-footer");
-  if (!footer) {
+  if (!footer || footer.dataset.prerendered !== undefined) {
     return;
   }
   clearChildren(footer);
@@ -133,7 +135,7 @@ function renderFeaturedPlatform(content) {
   }
   clearChildren(target);
 
-  const title = el("h3", "feature-title");
+  const title = el("h2", "feature-title");
   title.appendChild(link("projects.html#" + project.id, project.title));
   target.appendChild(title);
 
@@ -163,7 +165,7 @@ function renderFeaturedStudy(content) {
   }
   clearChildren(target);
 
-  const title = el("h3", "feature-title");
+  const title = el("h2", "feature-title");
   title.appendChild(link("projects.html#" + project.id, project.title));
   target.appendChild(title);
 
@@ -204,14 +206,13 @@ function renderSupportingWork(content) {
       return;
     }
     const item = el("article", "support-item");
-    item.appendChild(el("p", "kicker kicker--muted", project.category));
 
     const title = el("h3", "support-title");
     title.appendChild(link("projects.html#" + project.id, project.title));
     item.appendChild(title);
 
     item.appendChild(el("p", "", project.oneLiner));
-    item.appendChild(el("p", "support-status", project.status));
+    item.appendChild(statusPill(project));
     grid.appendChild(item);
   });
 }
@@ -255,15 +256,19 @@ function renderHome(content) {
 function renderWorkIndex(content) {
   const index = document.getElementById("work-index");
   clearChildren(index);
-  index.appendChild(el("span", "kicker kicker--muted", "On this page"));
+  index.appendChild(el("p", "kicker kicker--muted", "On this page"));
+  const list = el("ol");
+  /* list-style:none strips list semantics in VoiceOver; restore them */
+  list.setAttribute("role", "list");
   content.projects.forEach((project, i) => {
-    if (i > 0) {
-      const sep = el("span", "sep", "·");
-      sep.setAttribute("aria-hidden", "true");
-      index.appendChild(sep);
-    }
-    index.appendChild(link("#" + project.id, project.shortTitle || project.title));
+    const item = el("li");
+    const anchor = link("#" + project.id, "");
+    anchor.appendChild(el("span", "toc-num", String(i + 1).padStart(2, "0")));
+    anchor.appendChild(document.createTextNode(project.shortTitle || project.title));
+    item.appendChild(anchor);
+    list.appendChild(item);
   });
+  index.appendChild(list);
 }
 
 function railEntry(rail, label, value) {
@@ -301,8 +306,7 @@ function renderCaseStudy(content, project, index) {
 
   const header = el("header", "case-header");
   header.appendChild(el("span", "case-number", String(index + 1).padStart(2, "0")));
-  header.appendChild(el("span", "kicker kicker--muted", project.category));
-  header.appendChild(el("span", "badge", statusBadge(project)));
+  header.appendChild(statusPill(project));
   article.appendChild(header);
 
   article.appendChild(el("h2", "case-title", project.title));
@@ -367,6 +371,29 @@ function renderCaseStudy(content, project, index) {
   const main = el("div", "case-main");
   main.appendChild(el("p", "case-summary", project.summary));
 
+  if (project.image) {
+    const figure = el("figure", "case-figure");
+    const picture = el("picture");
+    if (project.image.webp) {
+      const source = document.createElement("source");
+      source.srcset = project.image.webp;
+      source.type = "image/webp";
+      picture.appendChild(source);
+    }
+    const img = document.createElement("img");
+    img.src = project.image.png;
+    img.alt = project.image.alt;
+    img.width = project.image.width;
+    img.height = project.image.height;
+    img.loading = "lazy";
+    picture.appendChild(img);
+    figure.appendChild(picture);
+    if (project.image.caption) {
+      figure.appendChild(el("figcaption", "", project.image.caption));
+    }
+    main.appendChild(figure);
+  }
+
   if (project.problem) {
     main.appendChild(caseSection(project, "problem", el("p", "", project.problem)));
   }
@@ -393,11 +420,14 @@ function renderCaseStudy(content, project, index) {
   }
 
   if (project.role) {
-    main.appendChild(caseSection(project, "role", el("p", "", project.role)));
+    const roleBlock = el("div", "case-role");
+    roleBlock.appendChild(el("span", "case-role-label", headingFor(project, "role")));
+    roleBlock.appendChild(el("p", "", project.role));
+    main.appendChild(roleBlock);
   }
 
   /* In-progress projects state their status in prose; published ones don't
-     repeat it (the rail and badge already carry it) */
+     repeat it (the rail and status pill already carry it) */
   if (project.statusNote) {
     main.appendChild(
       caseSection(
@@ -441,10 +471,13 @@ function renderProjects(content) {
 /* ---------- publications ---------- */
 
 function renderPublications(content) {
+  const container = document.getElementById("publications-list");
+  /* publications.html ships prerendered (tools/prerender.mjs); skip re-rendering */
+  if (container && container.dataset.prerendered !== undefined) {
+    return;
+  }
   document.getElementById("page-lede").textContent =
     content.portfolio.publicationsPage.lede;
-
-  const container = document.getElementById("publications-list");
   clearChildren(container);
 
   /* Group by year, keeping the JSON's order of years and entries */

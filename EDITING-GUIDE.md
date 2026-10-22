@@ -61,8 +61,10 @@ empty arrays are simply skipped by the pages:
 - `findings` — list of results; leave empty until results are real
 - `methods` — short labels shown in the left rail
 - `stack`, `scale`, `status`, `statusNote`, `collaborators` — rail facts
-- `maturity` — explicit badge value: `published`, `open-source`,
-  `analysis`, `recruiting`, or `in-progress`
+- `maturity` — status-pill value: `published`, `open-source`, `analysis`,
+  `recruiting`, or `in-progress` (each gets its own muted tint)
+- `image` — optional case-study figure: `webp`, `png`, `alt`, `caption`,
+  `width`, `height`
 - `publications` — publication `id`s from `content/publications.json`,
   rendered as venue links automatically
 - `links` — objects with `label`, `url`, `type` (`"primary"` renders as the
@@ -72,6 +74,13 @@ empty arrays are simply skipped by the pages:
 ## Edit publications
 
 Open `content/publications.json`. Each entry:
+
+**After editing, run `node tools/prerender.mjs` from the repository root** —
+the publications page ships prerendered HTML (so it works without
+JavaScript), and the script regenerates it from the JSON. Commit the updated
+`publications.html` together with the JSON change. The same applies after
+changing `footerNote`, `location`, or `lastUpdated` in `content/site.json`,
+or the publications lede in `content/portfolio.json`.
 
 - `id` — anchor target; projects reference it via their `publications` field
 - `title`, `authors` (plain comma-separated string; your name is bolded
@@ -108,7 +117,9 @@ every footer; update it when you publish meaningful changes), and `cvPath`
 
 Production: the palette lives in CSS variables at the top of
 `assets/css/site.css` — `:root` for light, `:root[data-theme="dark"]` for
-dark. Each design preview keeps its own palette at the top of its CSS file
+dark. Display type is Fraunces, self-hosted in `assets/fonts/fraunces/`
+(SIL OFL license, included); body text and labels use system sans and mono
+stacks. Each design preview keeps its own palette at the top of its CSS file
 (`design-options/editorial/editorial.css`,
 `design-options/technical/technical.css`, `design-options/warm/warm.css`).
 

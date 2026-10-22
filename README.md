@@ -29,8 +29,12 @@ different option could be promoted later.
 - `assets/js/theme.js` — theme toggle and mobile navigation behavior
 - `assets/js/theme-init.js` — early theme loader that prevents a flash of
   the wrong theme
+- `assets/fonts/fraunces/` — self-hosted Fraunces display face (SIL OFL)
 - `assets/images/profile/headshot-monica.jpg` — portrait
 - `docs/resume.pdf` — the CV PDF
+- `tools/prerender.mjs` — bakes the publications list into
+  `publications.html` (run after editing publications content; no build
+  step otherwise)
 
 ## Design previews
 

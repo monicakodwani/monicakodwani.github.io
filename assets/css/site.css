@@ -2,24 +2,26 @@
  * Monica Kodwani — production stylesheet.
  *
  * Warm editorial research portfolio. Hierarchy comes from typography,
- * whitespace, and thin rules — not from boxes. Tinted panels and pills are
- * reserved for a small number of deliberate uses (findings, short status
- * badges). Serif for display type, system sans for everything else.
+ * whitespace, and scale — not from boxes. Tinted panels and pills are
+ * reserved for a small number of deliberate uses (findings, role insets,
+ * status pills). Fraunces for display type, system sans for body, system
+ * mono for micro-labels.
  *
  * Contrast (WCAG relative luminance, computed):
- *   Light: ink #292420 on bg #faf7f2 ≈ 13.9:1; body #453e36 ≈ 9.9:1;
+ *   Light: ink #211b14 on bg #faf7f2 ≈ 15.4:1; body #423b33 ≈ 10.3:1;
  *          muted #6b6157 ≈ 5.7:1; accent #a04a28 on bg = 5.6:1,
  *          on tint #f2ece3 = 5.1:1; white on accent fill = 6.0:1;
- *          control borders #8d7c64 ≈ 3.8:1 (non-text).
- *   Dark:  ink #f0ebe3 on bg #1b1917 ≈ 14.6:1; body #d9d2c7 ≈ 11.9:1;
- *          muted #a89d90 ≈ 6.6:1; accent #e59b77 on bg = 7.8:1;
- *          #1b1917 on accent fill = 7.8:1;
- *          control borders #7d6e5b ≈ 3.3:1 (non-text).
+ *          control borders #8d7c64 ≈ 3.8:1 (non-text);
+ *          status pills (fg on tint) 5.9–7.0:1.
+ *   Dark:  ink #f2f0ed on bg #191819 ≈ 15.6:1; body #d9d6d2 ≈ 12.2:1;
+ *          muted #a7a29d ≈ 7.0:1; accent #e59b77 on bg = 7.8:1;
+ *          #191819 on accent fill = 7.8:1; control borders ≈ 3.3:1;
+ *          status pills (fg on tint) 6.7–8.2:1.
  *
  * Contents:
  *   1. Tokens (light + dark)
  *   2. Reset and base typography
- *   3. Utilities (skip link, kickers, rules, badge)
+ *   3. Utilities (skip link, kickers, section openers, status pills)
  *   4. Header and navigation
  *   5. Buttons and links
  *   6. Hero and portrait
@@ -35,22 +37,50 @@
  *  16. Reduced motion
  */
 
+/* ---------- 0. Display face (self-hosted, SIL OFL — see assets/fonts) ---------- */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/fraunces/fraunces-latin-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/fraunces/fraunces-latin-italic-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* ---------- 1. Tokens ---------- */
 
 :root {
   color-scheme: light;
   --bg: #faf7f2;
   --tint: #f2ece3;
-  --ink: #292420;
-  --body: #453e36;
+  --ink: #211b14;
+  --body: #423b33;
   --muted: #6b6157;
   --accent: #a04a28;
   --accent-ink: #ffffff;
   --rule: #e4dccd;
   --rule-strong: #c7baa5;
   --control-border: #8d7c64;
-  --serif: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  /* Status-pill tints (text on tint computed ≥ 4.5:1 in both themes) */
+  --st-published-bg: #e2ecdc;
+  --st-published-fg: #3a5428;
+  --st-open-bg: #f5e3d5;
+  --st-open-fg: #8a3d1f;
+  --st-analysis-bg: #f1e6c8;
+  --st-analysis-fg: #6b5310;
+  --st-recruiting-bg: #eae5dc;
+  --st-recruiting-fg: #5c544a;
+  --serif: "Fraunces", ui-serif, Georgia, Cambria, "Times New Roman", serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
   --container: 68rem;
   --transition: 160ms ease;
   /* Type scale, keyed to the 17px body. Every text size on the site maps
@@ -61,18 +91,27 @@
   --text-lede: 19px;   /* ledes, case summaries, approach prose */
 }
 
+/* Dark mode: neutral charcoal surfaces; the accent carries the warmth */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #1b1917;
-  --tint: #242019;
-  --ink: #f0ebe3;
-  --body: #d9d2c7;
-  --muted: #a89d90;
+  --bg: #191819;
+  --tint: #232225;
+  --ink: #f2f0ed;
+  --body: #d9d6d2;
+  --muted: #a7a29d;
   --accent: #e59b77;
-  --accent-ink: #1b1917;
-  --rule: #383129;
-  --rule-strong: #55493c;
-  --control-border: #7d6e5b;
+  --accent-ink: #191819;
+  --rule: #343236;
+  --rule-strong: #555259;
+  --control-border: #7c766f;
+  --st-published-bg: #283020;
+  --st-published-fg: #b6d09e;
+  --st-open-bg: #362721;
+  --st-open-fg: #eba173;
+  --st-analysis-bg: #332c1a;
+  --st-analysis-fg: #ddb75f;
+  --st-recruiting-bg: #2b2925;
+  --st-recruiting-fg: #b9b1a5;
 }
 
 /* ---------- 2. Reset and base ---------- */
@@ -89,7 +128,8 @@ html {
 
 /* Anchor targets clear the sticky header when jumped to */
 .case-study,
-.publication {
+.publication,
+.closing {
   scroll-margin-top: 5.5rem;
 }
 
@@ -185,12 +225,13 @@ button:focus-visible {
   white-space: nowrap;
 }
 
-/* THE tracked-uppercase micro-label. Every small label on the site uses
-   this same size/tracking/weight; only the color varies (accent or muted). */
+/* THE tracked-uppercase micro-label, now in mono. Every small label on the
+   site uses this same style; only the color varies (accent or muted). */
 .kicker {
+  font-family: var(--mono);
   font-size: var(--text-label);
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -199,25 +240,67 @@ button:focus-visible {
   color: var(--muted);
 }
 
-/* Sections open with a thin rule, not a box */
+/* Section opener: mono-numbered overline + a real serif heading.
+   Scale does the separating; no full-width hairline. */
 .ruled {
-  border-top: 1px solid var(--rule-strong);
-  padding-top: 2.25rem;
-  margin-top: 4.5rem;
+  margin-top: 5.5rem;
 }
 
-/* The one sanctioned pill: short status metadata only */
-.badge {
-  display: inline-block;
+.section-overline {
+  font-family: var(--mono);
   font-size: var(--text-label);
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
-  border: 1px solid var(--control-border);
+  margin-bottom: 0.9rem;
+}
+
+.section-overline .idx {
+  color: var(--accent);
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3vw, 31px);
+  font-weight: 560;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+/* Status pills: tinted by project maturity; the label always carries the
+   meaning, color is reinforcement only */
+.status-pill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   border-radius: 999px;
-  padding: 0.15rem 0.65rem;
+  padding: 0.22rem 0.7rem;
   white-space: nowrap;
+}
+
+.status-published {
+  background: var(--st-published-bg);
+  color: var(--st-published-fg);
+}
+
+.status-open-source {
+  background: var(--st-open-bg);
+  color: var(--st-open-fg);
+}
+
+.status-analysis {
+  background: var(--st-analysis-bg);
+  color: var(--st-analysis-fg);
+}
+
+.status-recruiting,
+.status-in-progress {
+  background: var(--st-recruiting-bg);
+  color: var(--st-recruiting-fg);
 }
 
 /* ---------- 4. Header and navigation ---------- */
@@ -332,7 +415,7 @@ button:focus-visible {
 }
 
 /* Photographs glow against the dark background; take the edge off */
-:root[data-theme="dark"] .feature-figure img,
+:root[data-theme="dark"] .case-figure img,
 :root[data-theme="dark"] .hero-portrait {
   filter: brightness(0.87);
 }
@@ -414,18 +497,22 @@ button:focus-visible {
 }
 
 .hero h1 {
-  font-size: clamp(2.6rem, 6vw, 4.1rem);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  font-size: clamp(2.3rem, 4.6vw, 3.4rem);
+  font-weight: 560;
+  margin-bottom: 0.4rem;
 }
 
-/* The role line is the hero's second-most important text — sized up so it
-   no longer reads as fine print between the name and the lede */
+/* Role line and PhD context sit together as one identity block */
 .hero-role {
   font-size: 21px;
   font-weight: 600;
   color: var(--accent);
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.3rem;
+}
+
+.hero-context {
+  color: var(--muted);
+  margin-bottom: 1.4rem;
 }
 
 .hero-lede {
@@ -433,12 +520,17 @@ button:focus-visible {
   line-height: 1.6;
   color: var(--ink);
   max-width: 32em;
-  margin-bottom: 0.9rem;
+  margin-bottom: 1.6rem;
 }
 
-.hero-context {
-  color: var(--muted);
+/* The job-search note, surfaced in the hero as a quiet line */
+.hero-looking {
+  font-size: var(--text-small);
   margin-bottom: 1.9rem;
+}
+
+.hero-looking a {
+  font-weight: 600;
 }
 
 .hero .cta-row {
@@ -514,7 +606,9 @@ button:focus-visible {
 
 .feature-title {
   font-family: var(--serif);
-  font-size: clamp(1.7rem, 3.2vw, 2.35rem);
+  font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+  font-weight: 560;
+  letter-spacing: -0.01em;
   margin: 0.75rem 0 1rem;
 }
 
@@ -547,46 +641,79 @@ button:focus-visible {
   margin-bottom: 0.9rem;
 }
 
-.feature-figure img {
-  /* height:auto keeps the width/height attributes as aspect ratio only */
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--rule-strong);
-  border-radius: 4px;
+/* Platform flow: four small step cards, drawn from the real study stages */
+.flow {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
 }
 
-.feature-figure figcaption {
-  margin-top: 0.6rem;
+.flow li {
+  position: relative;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
   font-size: var(--text-meta);
   color: var(--muted);
+  line-height: 1.45;
 }
 
-/* Survey → Chat → Audit → Export workflow strip */
-.workflow {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 0.4rem;
-  margin-top: 1.4rem;
+.flow li strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 560;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+
+.flow .flow-k {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  font-family: var(--mono);
   font-size: var(--text-label);
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+/* The dot-matrix figure: one dot per participant */
+.dots-figure {
+  background: var(--tint);
+  border-radius: 10px;
+  padding: 1.6rem 1.75rem 1.4rem;
+}
+
+.dots-figure svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  color: var(--accent);
+}
+
+.dots-figure .dots-caption {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.dots-figure .dots-stat {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3vw, 31px);
+  font-weight: 560;
+  color: var(--ink);
+}
+
+.dots-figure .dots-note {
+  font-family: var(--mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
-}
-
-.workflow li {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.workflow li:not(:last-child)::after {
-  /* alternative-text syntax hides the decorative arrow from screen readers */
-  content: "→" / "";
-  color: var(--accent);
-  font-weight: 400;
 }
 
 /* Featured study: a serif pull line in a tinted panel —
@@ -615,29 +742,34 @@ button:focus-visible {
   margin-top: 0.85rem;
 }
 
-/* Supporting (in-progress) projects: text teasers, not cards */
+/* "More selected work": a tinted band — the homepage's one surface shift */
+.band {
+  background: var(--tint);
+  border-radius: 12px;
+  padding: 2.4rem 2.6rem 2.6rem;
+}
+
 .support-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2.5rem;
-  margin-top: 1.5rem;
+  gap: 2rem 2.5rem;
+  margin-top: 1.4rem;
 }
 
 .support-item {
-  border-top: 1px solid var(--rule);
-  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule-strong);
+  padding-top: 1.1rem;
 }
 
 .support-title {
   font-family: var(--serif);
   font-size: 22px;
-  margin: 0.55rem 0;
+  font-weight: 560;
+  margin: 0 0 0.45rem;
 }
 
-.support-status {
-  font-size: var(--text-meta);
-  color: var(--muted);
-  margin-top: 0.6rem;
+.support-item .status-pill {
+  margin-top: 0.7rem;
 }
 
 /* ---------- 9. Closing section ---------- */
@@ -646,13 +778,14 @@ button:focus-visible {
   margin-bottom: 5rem;
 }
 
-.closing p {
+#closing-text {
   font-family: var(--serif);
   font-size: clamp(21px, 2.2vw, 24px);
+  font-weight: 480;
   line-height: 1.5;
   color: var(--ink);
   max-width: 34em;
-  margin: 0.75rem 0 1.5rem;
+  margin: 0.25rem 0 1.5rem;
 }
 
 /* ---------- 10. Projects page ---------- */
@@ -663,7 +796,8 @@ button:focus-visible {
 }
 
 .page-intro h1 {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-size: clamp(2.1rem, 4.4vw, 2.9rem);
+  font-weight: 560;
   margin-bottom: 1rem;
 }
 
@@ -672,28 +806,40 @@ button:focus-visible {
   color: var(--body);
 }
 
-/* Compact in-page index: text links, not pills */
+/* In-page index: a numbered table of contents, not a tag row */
 .work-index {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.3rem 0.6rem;
-  margin-top: 1.25rem;
-  font-size: var(--text-small);
+  margin-top: 2rem;
+  border-top: 1px solid var(--rule-strong);
+  padding-top: 0.4rem;
 }
 
-.work-index .kicker {
-  margin-right: 0.4rem;
+.work-index ol {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 3rem;
 }
 
 .work-index a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  min-height: 46px;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
 }
 
-.work-index .sep {
-  color: var(--rule-strong);
+.work-index a:hover {
+  color: var(--accent);
+}
+
+.work-index .toc-num {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--accent);
 }
 
 .case-study {
@@ -716,14 +862,17 @@ button:focus-visible {
 
 .case-number {
   font-family: var(--serif);
-  /* base-size serif moment, fixed so the numeral holds its weight on mobile */
-  font-size: 17px;
+  font-size: 27px;
+  font-weight: 560;
+  line-height: 1;
   color: var(--accent);
 }
 
 .case-title {
   font-family: var(--serif);
-  font-size: clamp(1.65rem, 3vw, 2.2rem);
+  font-size: clamp(1.65rem, 3vw, 2.1rem);
+  font-weight: 560;
+  letter-spacing: -0.01em;
   margin-bottom: 1.6rem;
   max-width: 24em;
 }
@@ -752,9 +901,10 @@ button:focus-visible {
 }
 
 .case-rail dt {
+  font-family: var(--mono);
   font-size: var(--text-label);
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 0.2rem;
@@ -786,11 +936,58 @@ button:focus-visible {
   max-width: 40em;
 }
 
+/* "My part": a labeled inset for Monica's contribution */
+.case-role {
+  display: flex;
+  gap: 1.1rem;
+  align-items: baseline;
+  background: var(--tint);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.3rem;
+  margin-bottom: 1.9rem;
+  max-width: 42em;
+}
+
+.case-role-label {
+  font-family: var(--mono);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.case-role p {
+  font-size: var(--text-small);
+  color: var(--ink);
+}
+
+/* Interface figure inside a case study */
+.case-figure {
+  margin: 0 0 1.9rem;
+}
+
+.case-figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule-strong);
+  border-radius: 8px;
+}
+
+.case-figure figcaption {
+  margin-top: 0.6rem;
+  font-size: var(--text-meta);
+  color: var(--muted);
+}
+
 .case-section h3,
 .case-findings h3 {
+  font-family: var(--mono);
   font-size: var(--text-label);
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.55rem;
@@ -868,11 +1065,12 @@ button:focus-visible {
 
 .pub-title {
   font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.35;
+  font-size: 24px;
+  font-weight: 560;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
   margin-bottom: 0.5rem;
-  max-width: 38em;
+  max-width: 36em;
 }
 
 .pub-authors {
@@ -1094,6 +1292,14 @@ button:focus-visible {
     gap: 1.75rem;
   }
 
+  .band {
+    padding: 1.6rem 1.4rem 1.8rem;
+  }
+
+  .work-index ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .pub-year-group {
     grid-template-columns: minmax(0, 1fr);
     gap: 0.9rem;
@@ -1107,6 +1313,15 @@ button:focus-visible {
 @media (max-width: 480px) {
   body {
     font-size: 16px;
+  }
+
+  .flow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case-role {
+    flex-direction: column;
+    gap: 0.4rem;
   }
 
   .case-rail {

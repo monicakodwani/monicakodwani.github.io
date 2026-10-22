@@ -15,6 +15,7 @@
   <meta property="og:image" content="https://monicakodwani.com/assets/images/og/social-card.png">
   <meta property="og:image:alt" content="Monica Kodwani — Human-centered AI researcher and research engineer">
   <link rel="icon" href="assets/images/icons/monogram.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/fraunces/fraunces-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/site.css">
   <script type="module" src="assets/js/site.js"></script>
   <script type="application/ld+json">
@@ -70,8 +71,9 @@
       <div class="hero-text">
         <h1>Monica Kodwani</h1>
         <p class="hero-role" id="hero-role"></p>
-        <p class="hero-lede" id="hero-lede"></p>
         <p class="hero-context" id="hero-context"></p>
+        <p class="hero-lede" id="hero-lede"></p>
+        <p class="hero-looking">Currently looking: <a href="#whats-next" id="hero-looking-link">research &amp; research-engineering roles</a></p>
         <div class="cta-row">
           <a class="btn btn-primary" href="projects.html">View selected projects</a>
           <a class="btn btn-secondary" href="docs/resume.pdf">View CV</a>
@@ -85,49 +87,51 @@
     </section>
 
     <section class="ruled" aria-labelledby="approach-heading">
-      <h2 class="kicker" id="approach-heading">Research approach</h2>
+      <p class="section-overline"><span class="idx">01</span> / Approach</p>
+      <h2 class="section-title" id="approach-heading">Research approach</h2>
       <div class="approach" id="research-approach"></div>
     </section>
 
-    <section class="ruled" aria-labelledby="platform-heading">
-      <h2 class="kicker" id="platform-heading">Featured project</h2>
+    <section class="ruled" aria-label="Featured project">
+      <p class="section-overline"><span class="idx">02</span> / Featured project</p>
       <div class="feature">
         <div id="featured-platform"></div>
         <div class="feature-visual">
-          <figure class="feature-figure">
-            <picture>
-              <source srcset="assets/images/projects/audit-annotation.webp" type="image/webp">
-              <img
-                src="assets/images/projects/audit-annotation.png"
-                alt="Auditing interface showing a chatbot response with a passage highlighted in yellow and the same passage captured in the marked-passages panel."
-                width="1600"
-                height="716"
-              >
-            </picture>
-            <figcaption>Turn-level annotation in the auditing platform.</figcaption>
-          </figure>
-          <ol class="workflow" aria-label="Study workflow, in order">
-            <li>Survey</li>
-            <li>Chat</li>
-            <li>Audit</li>
-            <li>Export</li>
+          <ol class="flow" role="list" aria-label="What a configured study runs, in order">
+            <li><span class="flow-k" aria-hidden="true">01</span><strong>Survey</strong>Consent, measures, and tutorial gating</li>
+            <li><span class="flow-k" aria-hidden="true">02</span><strong>Chat</strong>Live conversation with the model</li>
+            <li><span class="flow-k" aria-hidden="true">03</span><strong>Audit</strong>Turn-level highlighting and annotation</li>
+            <li><span class="flow-k" aria-hidden="true">04</span><strong>Export</strong>Structured data, linked turn to rating</li>
           </ol>
         </div>
       </div>
     </section>
 
-    <section class="ruled" aria-labelledby="study-heading">
-      <h2 class="kicker" id="study-heading">Featured study</h2>
-      <div id="featured-study"></div>
+    <section class="ruled" aria-label="Featured study">
+      <p class="section-overline"><span class="idx">03</span> / Featured study</p>
+      <div class="feature">
+        <div id="featured-study"></div>
+        <div class="feature-visual">
+          <figure class="dots-figure">
+            <svg viewBox="0 0 257 166" role="img" aria-label="254 dots, one for each study participant." fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="3.5"/><circle cx="18" cy="5" r="3.5"/><circle cx="31" cy="5" r="3.5"/><circle cx="44" cy="5" r="3.5"/><circle cx="57" cy="5" r="3.5"/><circle cx="70" cy="5" r="3.5"/><circle cx="83" cy="5" r="3.5"/><circle cx="96" cy="5" r="3.5"/><circle cx="109" cy="5" r="3.5"/><circle cx="122" cy="5" r="3.5"/><circle cx="135" cy="5" r="3.5"/><circle cx="148" cy="5" r="3.5"/><circle cx="161" cy="5" r="3.5"/><circle cx="174" cy="5" r="3.5"/><circle cx="187" cy="5" r="3.5"/><circle cx="200" cy="5" r="3.5"/><circle cx="213" cy="5" r="3.5"/><circle cx="226" cy="5" r="3.5"/><circle cx="239" cy="5" r="3.5"/><circle cx="252" cy="5" r="3.5"/><circle cx="5" cy="18" r="3.5"/><circle cx="18" cy="18" r="3.5"/><circle cx="31" cy="18" r="3.5"/><circle cx="44" cy="18" r="3.5"/><circle cx="57" cy="18" r="3.5"/><circle cx="70" cy="18" r="3.5"/><circle cx="83" cy="18" r="3.5"/><circle cx="96" cy="18" r="3.5"/><circle cx="109" cy="18" r="3.5"/><circle cx="122" cy="18" r="3.5"/><circle cx="135" cy="18" r="3.5"/><circle cx="148" cy="18" r="3.5"/><circle cx="161" cy="18" r="3.5"/><circle cx="174" cy="18" r="3.5"/><circle cx="187" cy="18" r="3.5"/><circle cx="200" cy="18" r="3.5"/><circle cx="213" cy="18" r="3.5"/><circle cx="226" cy="18" r="3.5"/><circle cx="239" cy="18" r="3.5"/><circle cx="252" cy="18" r="3.5"/><circle cx="5" cy="31" r="3.5"/><circle cx="18" cy="31" r="3.5"/><circle cx="31" cy="31" r="3.5"/><circle cx="44" cy="31" r="3.5"/><circle cx="57" cy="31" r="3.5"/><circle cx="70" cy="31" r="3.5"/><circle cx="83" cy="31" r="3.5"/><circle cx="96" cy="31" r="3.5"/><circle cx="109" cy="31" r="3.5"/><circle cx="122" cy="31" r="3.5"/><circle cx="135" cy="31" r="3.5"/><circle cx="148" cy="31" r="3.5"/><circle cx="161" cy="31" r="3.5"/><circle cx="174" cy="31" r="3.5"/><circle cx="187" cy="31" r="3.5"/><circle cx="200" cy="31" r="3.5"/><circle cx="213" cy="31" r="3.5"/><circle cx="226" cy="31" r="3.5"/><circle cx="239" cy="31" r="3.5"/><circle cx="252" cy="31" r="3.5"/><circle cx="5" cy="44" r="3.5"/><circle cx="18" cy="44" r="3.5"/><circle cx="31" cy="44" r="3.5"/><circle cx="44" cy="44" r="3.5"/><circle cx="57" cy="44" r="3.5"/><circle cx="70" cy="44" r="3.5"/><circle cx="83" cy="44" r="3.5"/><circle cx="96" cy="44" r="3.5"/><circle cx="109" cy="44" r="3.5"/><circle cx="122" cy="44" r="3.5"/><circle cx="135" cy="44" r="3.5"/><circle cx="148" cy="44" r="3.5"/><circle cx="161" cy="44" r="3.5"/><circle cx="174" cy="44" r="3.5"/><circle cx="187" cy="44" r="3.5"/><circle cx="200" cy="44" r="3.5"/><circle cx="213" cy="44" r="3.5"/><circle cx="226" cy="44" r="3.5"/><circle cx="239" cy="44" r="3.5"/><circle cx="252" cy="44" r="3.5"/><circle cx="5" cy="57" r="3.5"/><circle cx="18" cy="57" r="3.5"/><circle cx="31" cy="57" r="3.5"/><circle cx="44" cy="57" r="3.5"/><circle cx="57" cy="57" r="3.5"/><circle cx="70" cy="57" r="3.5"/><circle cx="83" cy="57" r="3.5"/><circle cx="96" cy="57" r="3.5"/><circle cx="109" cy="57" r="3.5"/><circle cx="122" cy="57" r="3.5"/><circle cx="135" cy="57" r="3.5"/><circle cx="148" cy="57" r="3.5"/><circle cx="161" cy="57" r="3.5"/><circle cx="174" cy="57" r="3.5"/><circle cx="187" cy="57" r="3.5"/><circle cx="200" cy="57" r="3.5"/><circle cx="213" cy="57" r="3.5"/><circle cx="226" cy="57" r="3.5"/><circle cx="239" cy="57" r="3.5"/><circle cx="252" cy="57" r="3.5"/><circle cx="5" cy="70" r="3.5"/><circle cx="18" cy="70" r="3.5"/><circle cx="31" cy="70" r="3.5"/><circle cx="44" cy="70" r="3.5"/><circle cx="57" cy="70" r="3.5"/><circle cx="70" cy="70" r="3.5"/><circle cx="83" cy="70" r="3.5"/><circle cx="96" cy="70" r="3.5"/><circle cx="109" cy="70" r="3.5"/><circle cx="122" cy="70" r="3.5"/><circle cx="135" cy="70" r="3.5"/><circle cx="148" cy="70" r="3.5"/><circle cx="161" cy="70" r="3.5"/><circle cx="174" cy="70" r="3.5"/><circle cx="187" cy="70" r="3.5"/><circle cx="200" cy="70" r="3.5"/><circle cx="213" cy="70" r="3.5"/><circle cx="226" cy="70" r="3.5"/><circle cx="239" cy="70" r="3.5"/><circle cx="252" cy="70" r="3.5"/><circle cx="5" cy="83" r="3.5"/><circle cx="18" cy="83" r="3.5"/><circle cx="31" cy="83" r="3.5"/><circle cx="44" cy="83" r="3.5"/><circle cx="57" cy="83" r="3.5"/><circle cx="70" cy="83" r="3.5"/><circle cx="83" cy="83" r="3.5"/><circle cx="96" cy="83" r="3.5"/><circle cx="109" cy="83" r="3.5"/><circle cx="122" cy="83" r="3.5"/><circle cx="135" cy="83" r="3.5"/><circle cx="148" cy="83" r="3.5"/><circle cx="161" cy="83" r="3.5"/><circle cx="174" cy="83" r="3.5"/><circle cx="187" cy="83" r="3.5"/><circle cx="200" cy="83" r="3.5"/><circle cx="213" cy="83" r="3.5"/><circle cx="226" cy="83" r="3.5"/><circle cx="239" cy="83" r="3.5"/><circle cx="252" cy="83" r="3.5"/><circle cx="5" cy="96" r="3.5"/><circle cx="18" cy="96" r="3.5"/><circle cx="31" cy="96" r="3.5"/><circle cx="44" cy="96" r="3.5"/><circle cx="57" cy="96" r="3.5"/><circle cx="70" cy="96" r="3.5"/><circle cx="83" cy="96" r="3.5"/><circle cx="96" cy="96" r="3.5"/><circle cx="109" cy="96" r="3.5"/><circle cx="122" cy="96" r="3.5"/><circle cx="135" cy="96" r="3.5"/><circle cx="148" cy="96" r="3.5"/><circle cx="161" cy="96" r="3.5"/><circle cx="174" cy="96" r="3.5"/><circle cx="187" cy="96" r="3.5"/><circle cx="200" cy="96" r="3.5"/><circle cx="213" cy="96" r="3.5"/><circle cx="226" cy="96" r="3.5"/><circle cx="239" cy="96" r="3.5"/><circle cx="252" cy="96" r="3.5"/><circle cx="5" cy="109" r="3.5"/><circle cx="18" cy="109" r="3.5"/><circle cx="31" cy="109" r="3.5"/><circle cx="44" cy="109" r="3.5"/><circle cx="57" cy="109" r="3.5"/><circle cx="70" cy="109" r="3.5"/><circle cx="83" cy="109" r="3.5"/><circle cx="96" cy="109" r="3.5"/><circle cx="109" cy="109" r="3.5"/><circle cx="122" cy="109" r="3.5"/><circle cx="135" cy="109" r="3.5"/><circle cx="148" cy="109" r="3.5"/><circle cx="161" cy="109" r="3.5"/><circle cx="174" cy="109" r="3.5"/><circle cx="187" cy="109" r="3.5"/><circle cx="200" cy="109" r="3.5"/><circle cx="213" cy="109" r="3.5"/><circle cx="226" cy="109" r="3.5"/><circle cx="239" cy="109" r="3.5"/><circle cx="252" cy="109" r="3.5"/><circle cx="5" cy="122" r="3.5"/><circle cx="18" cy="122" r="3.5"/><circle cx="31" cy="122" r="3.5"/><circle cx="44" cy="122" r="3.5"/><circle cx="57" cy="122" r="3.5"/><circle cx="70" cy="122" r="3.5"/><circle cx="83" cy="122" r="3.5"/><circle cx="96" cy="122" r="3.5"/><circle cx="109" cy="122" r="3.5"/><circle cx="122" cy="122" r="3.5"/><circle cx="135" cy="122" r="3.5"/><circle cx="148" cy="122" r="3.5"/><circle cx="161" cy="122" r="3.5"/><circle cx="174" cy="122" r="3.5"/><circle cx="187" cy="122" r="3.5"/><circle cx="200" cy="122" r="3.5"/><circle cx="213" cy="122" r="3.5"/><circle cx="226" cy="122" r="3.5"/><circle cx="239" cy="122" r="3.5"/><circle cx="252" cy="122" r="3.5"/><circle cx="5" cy="135" r="3.5"/><circle cx="18" cy="135" r="3.5"/><circle cx="31" cy="135" r="3.5"/><circle cx="44" cy="135" r="3.5"/><circle cx="57" cy="135" r="3.5"/><circle cx="70" cy="135" r="3.5"/><circle cx="83" cy="135" r="3.5"/><circle cx="96" cy="135" r="3.5"/><circle cx="109" cy="135" r="3.5"/><circle cx="122" cy="135" r="3.5"/><circle cx="135" cy="135" r="3.5"/><circle cx="148" cy="135" r="3.5"/><circle cx="161" cy="135" r="3.5"/><circle cx="174" cy="135" r="3.5"/><circle cx="187" cy="135" r="3.5"/><circle cx="200" cy="135" r="3.5"/><circle cx="213" cy="135" r="3.5"/><circle cx="226" cy="135" r="3.5"/><circle cx="239" cy="135" r="3.5"/><circle cx="252" cy="135" r="3.5"/><circle cx="5" cy="148" r="3.5"/><circle cx="18" cy="148" r="3.5"/><circle cx="31" cy="148" r="3.5"/><circle cx="44" cy="148" r="3.5"/><circle cx="57" cy="148" r="3.5"/><circle cx="70" cy="148" r="3.5"/><circle cx="83" cy="148" r="3.5"/><circle cx="96" cy="148" r="3.5"/><circle cx="109" cy="148" r="3.5"/><circle cx="122" cy="148" r="3.5"/><circle cx="135" cy="148" r="3.5"/><circle cx="148" cy="148" r="3.5"/><circle cx="161" cy="148" r="3.5"/><circle cx="174" cy="148" r="3.5"/><circle cx="187" cy="148" r="3.5"/><circle cx="200" cy="148" r="3.5"/><circle cx="213" cy="148" r="3.5"/><circle cx="226" cy="148" r="3.5"/><circle cx="239" cy="148" r="3.5"/><circle cx="252" cy="148" r="3.5"/><circle cx="5" cy="161" r="3.5"/><circle cx="18" cy="161" r="3.5"/><circle cx="31" cy="161" r="3.5"/><circle cx="44" cy="161" r="3.5"/><circle cx="57" cy="161" r="3.5"/><circle cx="70" cy="161" r="3.5"/><circle cx="83" cy="161" r="3.5"/><circle cx="96" cy="161" r="3.5"/><circle cx="109" cy="161" r="3.5"/><circle cx="122" cy="161" r="3.5"/><circle cx="135" cy="161" r="3.5"/><circle cx="148" cy="161" r="3.5"/><circle cx="161" cy="161" r="3.5"/><circle cx="174" cy="161" r="3.5"/></svg>
+            <figcaption class="dots-caption">
+              <span class="dots-stat">254</span>
+              <span class="dots-note">participants · one dot each</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
     </section>
 
-    <section class="ruled" aria-labelledby="more-work-heading">
-      <h2 class="kicker" id="more-work-heading">More selected work</h2>
+    <section class="ruled band" aria-labelledby="more-work-heading">
+      <p class="section-overline"><span class="idx">04</span> / More selected work</p>
+      <h2 class="section-title" id="more-work-heading">More selected work</h2>
       <div class="support-grid" id="supporting-work"></div>
     </section>
 
-    <section class="ruled closing" aria-labelledby="closing-heading">
-      <h2 class="kicker" id="closing-heading">What's next</h2>
+    <section class="ruled closing" id="whats-next" aria-labelledby="closing-heading">
+      <p class="section-overline"><span class="idx">05</span> / What's next</p>
+      <h2 class="section-title" id="closing-heading">What's next</h2>
       <p id="closing-text"></p>
       <ul class="link-row" id="closing-links"></ul>
     </section>

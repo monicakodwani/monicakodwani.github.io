@@ -140,3 +140,53 @@ desktop, portrait-first and modest on mobile.
   running instance.
 - Optionally add a dashboard visual for the interaction-history study when
   the system is far enough along.
+
+---
+
+# Design feedback pass — October 2026
+
+Responding to external design feedback ("sections all feel the same",
+"headings too small", "statuses don't read as tags", "AI-template beige",
+"publications should work without JavaScript") plus a set of example pages.
+
+## What changed
+
+- **Display face.** Fraunces (variable, SIL OFL, self-hosted in
+  `assets/fonts/fraunces/` — no external font requests) now carries the
+  name, page/section headings, project and publication titles, numerals,
+  and pull moments. Body stays system sans; micro-labels move to the
+  system mono stack.
+- **Real section headings.** The homepage's 12px label-as-heading pattern
+  is gone: each section opens with a mono-numbered overline ("02 /
+  Featured project") and, where the section needs one, a ~30px serif
+  heading. Full-width document rules removed; scale does the separating.
+- **Hero.** Role line and PhD context are co-located; a quiet "Currently
+  looking" line links to the closing section; the name is slightly
+  smaller in Fraunces.
+- **Status pills.** Project maturity renders as small mono pills with
+  muted status tints (published / open source / analysis / recruitment
+  pending), AA-checked in both themes. The long dot-separated status
+  strings left the homepage.
+- **Custom visuals.** The homepage screenshot was replaced by two honest,
+  palette-native figures: a four-step flow (Survey → Chat → Audit →
+  Export, grounded in the platform's real capabilities) and a 254-dot
+  SVG matrix (one dot per participant). The interface screenshot moved
+  into the auditing case study on the projects page (new `image` field
+  in `content/projects.json`).
+- **Projects page.** Numbered table-of-contents (two columns, top-down —
+  the sticky variant was considered and deferred), 27px serif case
+  numerals, category taglines removed from case headers, and the role
+  paragraph restyled as a labeled "my part" inset.
+- **Publications without JavaScript.** `tools/prerender.mjs` (plain
+  Node, run manually — no build pipeline) bakes the publication list,
+  lede, and footer into `publications.html`; `site.js` skips containers
+  marked `data-prerendered`.
+- **Dark mode.** Surfaces neutralized to charcoal so the terracotta/
+  apricot accent carries the warmth.
+- Social card regenerated in Fraunces.
+
+## Deliberately not adopted from the example pages
+
+Hiding projects behind a one-at-a-time index with tabs; question-style
+headlines replacing project titles; the fictional interactive demo
+panel; "Let's talk" CTA copy; a tilted portrait; Google-hosted webfonts.
