@@ -195,30 +195,38 @@ function renderFeaturedStudy(content) {
   target.appendChild(links);
 }
 
-function renderFeaturedWorkplace(content) {
-  const project = findProject(content, "employee-ai-adoption-governance");
-  const target = document.getElementById("featured-workplace");
-  if (!project || !target) {
+function renderFeaturedReport(content) {
+  const publication = content.publications.find(
+    (p) => p.id === "nist-2026-aria-evaluation-manual"
+  );
+  const target = document.getElementById("featured-report");
+  if (!publication || !target) {
     return;
   }
   clearChildren(target);
 
   const title = el("h2", "feature-title");
-  title.appendChild(link("projects.html#" + project.id, project.title));
+  title.appendChild(
+    link("publications.html#" + publication.id, publication.title)
+  );
   target.appendChild(title);
 
-  target.appendChild(el("p", "feature-summary", project.teaser || project.summary));
-  const evidence = [project.scale, project.status].filter(Boolean).join(" · ");
-  if (evidence) {
-    target.appendChild(el("p", "feature-evidence", evidence + "."));
-  }
+  target.appendChild(el("p", "feature-summary", publication.summary));
+  target.appendChild(
+    el("p", "feature-evidence", publication.venueFull + " · " + publication.year + ".")
+  );
 
   const links = el("ul", "link-row");
-  const caseLink = el("li");
-  caseLink.appendChild(
-    link("projects.html#" + project.id, "Read the case study", "text-link")
+  (publication.links || []).forEach((item) => {
+    const li = el("li");
+    li.appendChild(link(item.url, item.label, "text-link", isExternal(item.url)));
+    links.appendChild(li);
+  });
+  const detail = el("li");
+  detail.appendChild(
+    link("publications.html#" + publication.id, "Publication details", "text-link")
   );
-  links.appendChild(caseLink);
+  links.appendChild(detail);
   target.appendChild(links);
 }
 
@@ -274,7 +282,7 @@ function renderHome(content) {
   renderResearchApproach(content);
   renderFeaturedPlatform(content);
   renderFeaturedStudy(content);
-  renderFeaturedWorkplace(content);
+  renderFeaturedReport(content);
   renderSupportingWork(content);
   renderClosing(content);
 }
