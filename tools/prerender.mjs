@@ -103,3 +103,26 @@ page = replaceBetween(page, "<!-- prerender:publications:start -->", "<!-- prere
 page = replaceBetween(page, "<!-- prerender:footer:start -->", "<!-- prerender:footer:end -->", footerHtml);
 writeFileSync("publications.html", page);
 console.log(`prerendered ${publications.length} publications in ${groups.length} year groups`);
+
+/* ---- version-stamp asset references ----
+   A single stamp ties each page to the exact CSS/JS/JSON it was written
+   against, so a redeploy can never pair fresh HTML with a stale cached
+   script (or vice versa). Run this script before every commit. */
+
+const stamp = new Date().toISOString().replace(/[-:T]/g, "").slice(0, 12);
+const vq = (s) => s.replace(/(assets\/(?:css\/site\.css|js\/site\.js|js\/theme-init\.js))(\?v=\d+)?/g, `$1?v=${stamp}`);
+
+for (const file of ["index.html", "projects.html", "publications.html", "cv.html", "404.html"]) {
+  let doc = vq(readFileSync(file, "utf8"));
+  if (doc.includes('name="site-version"')) {
+    doc = doc.replace(/(<meta name="site-version" content=")\d*(")/, `$1${stamp}$2`);
+  } else {
+    doc = doc.replace('<meta charset="utf-8">', `<meta charset="utf-8">\n  <meta name="site-version" content="${stamp}">`);
+  }
+  writeFileSync(file, doc);
+}
+
+let siteJs = readFileSync("assets/js/site.js", "utf8");
+siteJs = siteJs.replace(/\.\/(data|theme)\.js(\?v=\d+)?/g, `./$1.js?v=${stamp}`);
+writeFileSync("assets/js/site.js", siteJs);
+console.log(`stamped assets with version ${stamp}`);

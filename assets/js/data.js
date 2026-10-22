@@ -10,12 +10,20 @@
 const CONTENT_ROOT = new URL("../../content/", import.meta.url);
 const cache = new Map();
 
+/* Set by tools/prerender.mjs in each page's <head>; versioning the fetch
+   URLs keeps JSON, markup, and scripts from mixing across deploys */
+const SITE_VERSION =
+  document.querySelector('meta[name="site-version"]')?.content || "";
+
 export function loadJson(fileName) {
   if (cache.has(fileName)) {
     return cache.get(fileName);
   }
 
   const url = new URL(fileName, CONTENT_ROOT);
+  if (SITE_VERSION) {
+    url.searchParams.set("v", SITE_VERSION);
+  }
   const promise = fetch(url).then((response) => {
     if (!response.ok) {
       throw new Error(`Could not load ${url.pathname} (HTTP ${response.status})`);

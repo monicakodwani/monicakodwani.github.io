@@ -1,7 +1,7 @@
 /*
  * Production site renderers.
  * Fills the static page skeletons with content from content/*.json
- * (loaded via ./data.js). One render function per page, keyed off
+ * (loaded via ./data.js?v=202610222159). One render function per page, keyed off
  * document.body.dataset.page.
  */
 import {
@@ -10,8 +10,8 @@ import {
   clearChildren,
   highlightAuthor,
   showLoadError
-} from "./data.js";
-import { initThemeToggle, initMobileNav } from "./theme.js";
+} from "./data.js?v=202610222159";
+import { initThemeToggle, initMobileNav } from "./theme.js?v=202610222159";
 
 /* ---------- small helpers ---------- */
 

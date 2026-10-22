@@ -75,12 +75,12 @@ empty arrays are simply skipped by the pages:
 
 Open `content/publications.json`. Each entry:
 
-**After editing, run `node tools/prerender.mjs` from the repository root** —
-the publications page ships prerendered HTML (so it works without
-JavaScript), and the script regenerates it from the JSON. Commit the updated
-`publications.html` together with the JSON change. The same applies after
-changing `footerNote`, `location`, or `lastUpdated` in `content/site.json`,
-or the publications lede in `content/portfolio.json`.
+**Run `node tools/prerender.mjs` from the repository root before every
+commit.** It does two things: regenerates the prerendered publications page
+from the JSON (so it works without JavaScript), and stamps a fresh version
+on every CSS/JS/JSON reference so browsers never mix a cached script with
+newer markup after a deploy. Commit whatever it changes along with your
+edit.
 
 - `id` — anchor target; projects reference it via their `publications` field
 - `title`, `authors` (plain comma-separated string; your name is bolded
